@@ -56,3 +56,27 @@ func newCategoryQuestion(categories []categoryEntry) choiceQuestion {
 		Criteria:     criteria,
 	}
 }
+
+// noulQuestion is a JEV "noul" question: the answer is the probability of yes.
+type noulQuestion struct {
+	Type         string       `json:"type"`
+	Instructions string       `json:"instructions"`
+	Criteria     noulCriteria `json:"criteria"`
+}
+
+type noulCriteria struct {
+	True  string `json:"true"`
+	False string `json:"false"`
+}
+
+// EssentialQuestion asks whether the expense is essential; the criteria split one definition into yes and no.
+func EssentialQuestion() noulQuestion {
+	return noulQuestion{
+		Type:         "noul",
+		Instructions: "Is the transaction an essential expense?",
+		Criteria: noulCriteria{
+			True:  "Essential expenses are needed for survival, work, or school.",
+			False: "Non-essential expenses are optional and can be cut without real hardship.",
+		},
+	}
+}
