@@ -3,7 +3,7 @@
 package main
 
 import (
-	"errors"
+	"encoding/json"
 	"fmt"
 	"image"
 	"image/color"
@@ -14,6 +14,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // This file will contain the preprocessing steps to convert a bank statement pdf into an extracted list of transactions
@@ -281,15 +282,57 @@ func parseCents(amount string) (int64, error) {
 	return strconv.ParseInt(digits, 10, 64)
 }
 
+// jevState is the JSON object JEV receives for one transaction.
+type jevState struct {
+	Date        string      `json:"Date"`
+	Description string      `json:"Description"`
+	Amount      json.Number `json:"Amount"`
+}
+
+const statementDateLayout = "01/02/06"
+
+// Other date spellings that are rewritten to statementDateLayout.
+var alternateDateLayouts = []string{"2006-01-02", "1/2/06", "1/2/2006", "01/02/2006"}
+
 // Function Contract:
 // Input: list of transactions
-// Output: JSON file
-// Logic: Computer reads the list of transactions and converts it to a JSON file
-func ConvertTransactionsToJSON() (string, error) {
-	// For each transaction, create a JSON object where each field is accompanied by a definition of the transaction (TBD)
-	// Export the JSON file to the computer
-	// return the JSON file as a string
-	return "", errors.New("not implemented")
+// Output: JSON array of JEV states as a string
+// Logic: Computer converts each transaction to {"Date", "Description", "Amount"}, with the date
+// enforced as MM/DD/YY and the amount as a number in dollars.
+func ConvertTransactionsToJSON(transactions []Transaction) (string, error) {
+	states := make([]jevState, 0, len(transactions))
+	for _, transaction := range transactions {
+		date, err := normalizeDate(transaction.Date)
+		if err != nil {
+			return "", err
+		}
+		states = append(states, jevState{
+			Date:        date,
+			Description: transaction.Description,
+			Amount:      formatDollars(transaction.AmountCents),
+		})
+	}
+	encoded, err := json.Marshal(states)
+	return string(encoded), err
+}
+
+// normalizeDate returns date as MM/DD/YY, converting the alternate spellings.
+func normalizeDate(date string) (string, error) {
+	for _, layout := range append([]string{statementDateLayout}, alternateDateLayouts...) {
+		if parsed, err := time.Parse(layout, date); err == nil {
+			return parsed.Format(statementDateLayout), nil
+		}
+	}
+	return "", fmt.Errorf("unrecognized date %q", date)
+}
+
+// formatDollars converts -164160 to the JSON number -1641.60.
+func formatDollars(cents int64) json.Number {
+	sign := ""
+	if cents < 0 {
+		sign, cents = "-", -cents
+	}
+	return json.Number(fmt.Sprintf("%s%d.%02d", sign, cents/100, cents%100))
 }
 
 func main() {
@@ -303,7 +346,10 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	for _, t := range transactions {
-		fmt.Printf("%s | %s | %d | %s\n", t.Date, t.Section, t.AmountCents, t.Description)
+	statesJSON, err := ConvertTransactionsToJSON(transactions)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
 	}
+	fmt.Println(statesJSON)
 }
