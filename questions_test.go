@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"os"
 	"testing"
 )
@@ -38,5 +39,18 @@ func TestBuildCategoryQuestionsRealFile(t *testing.T) {
 	}
 	if got := len(questions[category12QuestionID].Criteria); got != 13 {
 		t.Errorf("category_12 has %d options, want 13", got)
+	}
+}
+
+func TestEssentialQuestionJSON(t *testing.T) {
+	got, err := json.Marshal(EssentialQuestion())
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := `{"type":"noul","instructions":"Is the transaction an essential expense?",` +
+		`"criteria":{"true":"Essential expenses are needed for survival, work, or school.",` +
+		`"false":"Non-essential expenses are optional and can be cut without real hardship."}}`
+	if string(got) != want {
+		t.Errorf("got %s\nwant %s", got, want)
 	}
 }
