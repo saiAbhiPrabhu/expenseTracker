@@ -11,6 +11,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"strconv"
 	"strings"
 )
@@ -188,16 +189,96 @@ func ocrImage(img image.Image, workDir string) (string, error) {
 	return string(out), nil
 }
 
+// Transaction is one statement row. Amount is in cents, negative for withdrawals.
+type Transaction struct {
+	Date        string
+	Description string
+	AmountCents int64
+	Section     string
+}
+
+var (
+	tableHeaderLine  = "Date Description Amount"
+	pageEndLine      = "continued on the next page"
+	continuedSuffix  = " - continued"
+	datePrefix       = regexp.MustCompile(`^\d{2}/\d{2}/\d{2}\b`)
+	transactionRow   = regexp.MustCompile(`^(\d{2}/\d{2}/\d{2})\s+(.*\S)\s+(-?[\d,]+\.\d{2})$`)
+	sectionTotalLine = regexp.MustCompile(`^Total\b.*\s(-?)\$([\d,]+\.\d{2})$`)
+)
+
 // Function Contract:
 // Input: textFile as a string
 // Output: list of transactions
-// Logic: Computer reads the text file and extracts the transactions from the text file and returns the list of transactions
-func ExtractTransactionsFromText() ([]string, error) {
-	// Any row that starts with a date is a transaction
-	// To extract each field in a transaction, we can delimit by tabs potentially
-	// transaction fields are date, description, amount, balance
-	// return the list of transactions
-	return nil, errors.New("not implemented")
+// Logic: Computer reads the OCR text and returns every transaction row, tagged with its section.
+// Each section's printed Total is checked against the sum of its rows; a mismatch means OCR misread a row.
+func ExtractTransactionsFromText(textFile string) ([]Transaction, error) {
+	var (
+		transactions []Transaction
+		sectionSums  = map[string]int64{}
+		section      string
+		capturing    bool
+		previousLine string
+	)
+	for _, rawLine := range strings.Split(textFile, "\n") {
+		line := strings.TrimSpace(rawLine)
+		switch {
+		case line == tableHeaderLine:
+			section = strings.TrimSuffix(previousLine, continuedSuffix)
+			capturing = true
+		case !capturing || line == "":
+		case line == pageEndLine:
+			capturing = false
+		case sectionTotalLine.MatchString(line):
+			capturing = false
+			if err := checkSectionTotal(section, line, sectionSums[section]); err != nil {
+				return nil, err
+			}
+		case datePrefix.MatchString(line):
+			transaction, err := parseTransactionRow(line, section)
+			if err != nil {
+				return nil, err
+			}
+			transactions = append(transactions, transaction)
+			sectionSums[section] += transaction.AmountCents
+		case len(transactions) > 0:
+			last := &transactions[len(transactions)-1]
+			last.Description += " " + line
+		}
+		if line != "" {
+			previousLine = line
+		}
+	}
+	return transactions, nil
+}
+
+func parseTransactionRow(line string, section string) (Transaction, error) {
+	match := transactionRow.FindStringSubmatch(line)
+	if match == nil {
+		return Transaction{}, fmt.Errorf("row starts with a date but has no amount: %q", line)
+	}
+	cents, err := parseCents(match[3])
+	if err != nil {
+		return Transaction{}, err
+	}
+	return Transaction{Date: match[1], Description: match[2], AmountCents: cents, Section: section}, nil
+}
+
+func checkSectionTotal(section string, totalLine string, rowSumCents int64) error {
+	match := sectionTotalLine.FindStringSubmatch(totalLine)
+	printed, err := parseCents(match[1] + match[2])
+	if err != nil {
+		return err
+	}
+	if printed != rowSumCents {
+		return fmt.Errorf("section %q: printed total %d cents, rows sum to %d cents", section, printed, rowSumCents)
+	}
+	return nil
+}
+
+// parseCents converts "-1,641.60" to -164160.
+func parseCents(amount string) (int64, error) {
+	digits := strings.NewReplacer(",", "", ".", "").Replace(amount)
+	return strconv.ParseInt(digits, 10, 64)
 }
 
 // Function Contract:
@@ -217,5 +298,12 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	fmt.Print(text)
+	transactions, err := ExtractTransactionsFromText(text)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+	for _, t := range transactions {
+		fmt.Printf("%s | %s | %d | %s\n", t.Date, t.Section, t.AmountCents, t.Description)
+	}
 }
