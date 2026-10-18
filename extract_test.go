@@ -47,3 +47,26 @@ func TestExtractTransactionsFromTextChecksumMismatch(t *testing.T) {
 		t.Fatal("expected checksum error")
 	}
 }
+
+func TestConvertTransactionsToJSON(t *testing.T) {
+	got, err := ConvertTransactionsToJSON([]Transaction{
+		{"01/04/25", "COFFEE SHOP", -425, "x"},
+		{"2025-01-05", "PAYROLL", 100000, "y"},
+		{"1/6/2025", "TOTAL", -164160, "z"},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := `[{"Date":"01/04/25","Description":"COFFEE SHOP","Amount":-4.25},` +
+		`{"Date":"01/05/25","Description":"PAYROLL","Amount":1000.00},` +
+		`{"Date":"01/06/25","Description":"TOTAL","Amount":-1641.60}]`
+	if got != want {
+		t.Errorf("got %s\nwant %s", got, want)
+	}
+}
+
+func TestConvertTransactionsToJSONBadDate(t *testing.T) {
+	if _, err := ConvertTransactionsToJSON([]Transaction{{"yesterday", "X", 1, ""}}); err == nil {
+		t.Fatal("expected date error")
+	}
+}

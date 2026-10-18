@@ -1,0 +1,134 @@
+{
+  "categories_20": [
+    {
+      "category": "Housing",
+      "description": "Rent, mortgage, renter's insurance, and other recurring costs of keeping a place to live."
+    },
+    {
+      "category": "Utilities and Internet",
+      "description": "Electricity, water, gas, internet, and other household service bills."
+    },
+    {
+      "category": "Groceries",
+      "description": "Supermarket, convenience store, and other purchases of food and staples prepared at home."
+    },
+    {
+      "category": "Dining and Drinks",
+      "description": "Restaurants, cafes, bars, takeout, food delivery, and campus dining spending."
+    },
+    {
+      "category": "Transportation",
+      "description": "Gas, public transit, rideshare, parking, tolls, car payments, and vehicle maintenance."
+    },
+    {
+      "category": "Health and Pharmacy",
+      "description": "Pharmacy purchases, doctor visits, health insurance, therapy, and other medical costs."
+    },
+    {
+      "category": "Fitness and Wellness",
+      "description": "Gym memberships, fitness classes, sports gear, and other wellness-focused spending."
+    },
+    {
+      "category": "Education",
+      "description": "Tuition, textbooks, school supplies, and academic software or course fees."
+    },
+    {
+      "category": "Clothing and Accessories",
+      "description": "Apparel, shoes, jewelry, and watches bought from stores or online retailers."
+    },
+    {
+      "category": "General Shopping",
+      "description": "Online marketplace orders, electronics, home goods, and other miscellaneous retail purchases."
+    },
+    {
+      "category": "Entertainment",
+      "description": "Concerts, movies, games, events, hobbies, and other leisure activities."
+    },
+    {
+      "category": "Subscriptions",
+      "description": "Recurring digital services such as streaming, apps, and AI tools billed monthly or annually."
+    },
+    {
+      "category": "Personal Care",
+      "description": "Haircuts, cosmetics, salon visits, and similar grooming or self-care services."
+    },
+    {
+      "category": "Travel",
+      "description": "Flights, hotels, vacation rentals, and other expenses for trips away from home."
+    },
+    {
+      "category": "Gifts and Donations",
+      "description": "Presents for others and charitable contributions."
+    },
+    {
+      "category": "Fees and Insurance",
+      "description": "Bank fees, phone plans, non-health insurance premiums, and other required service charges."
+    },
+    {
+      "category": "Savings and Investing",
+      "description": "Transfers to brokerage, retirement, or savings accounts, which are not true spending."
+    },
+    {
+      "category": "Debt Payments",
+      "description": "Credit card payments, student loans, and other payments toward money owed."
+    },
+    {
+      "category": "Transfers and Peer Payments",
+      "description": "Venmo, Zelle, and cash sent to friends or family, plus transfers between your own accounts."
+    },
+    {
+      "category": "Income and Refunds",
+      "description": "Paychecks, side income, interest, returns, and reimbursements deposited into the account."
+    }
+  ],
+  "categories_12": [
+    {
+      "category": "Housing and Utilities",
+      "description": "Rent, mortgage, renter's insurance, electricity, water, internet, and other home-related recurring bills."
+    },
+    {
+      "category": "Groceries",
+      "description": "Supermarket and convenience store purchases of food and household staples for home use."
+    },
+    {
+      "category": "Dining and Drinks",
+      "description": "Restaurants, cafes, bars, takeout, food delivery, and campus dining spending."
+    },
+    {
+      "category": "Transportation",
+      "description": "Gas, transit, rideshare, parking, tolls, car payments, and vehicle upkeep."
+    },
+    {
+      "category": "Health and Wellness",
+      "description": "Pharmacy, medical visits, health insurance, therapy, gym memberships, and other wellness spending."
+    },
+    {
+      "category": "Education",
+      "description": "Tuition, textbooks, school supplies, and academic software or course fees."
+    },
+    {
+      "category": "Shopping",
+      "description": "Clothing, electronics, home goods, and general online or in-store retail purchases."
+    },
+    {
+      "category": "Entertainment and Subscriptions",
+      "description": "Streaming, apps, AI tools, games, events, and other leisure or recurring digital services."
+    },
+    {
+      "category": "Personal Care, Travel, and Gifts",
+      "description": "Haircuts and grooming, trips and lodging, presents, and charitable donations."
+    },
+    {
+      "category": "Savings, Investing, and Debt",
+      "description": "Brokerage or savings transfers and payments toward credit cards or loans, not true spending."
+    },
+    {
+      "category": "Transfers and Peer Payments",
+      "description": "Venmo, Zelle, and cash sent to friends or family, plus transfers between your own accounts."
+    },
+    {
+      "category": "Income and Refunds",
+      "description": "Paychecks, side income, interest, returns, and reimbursements deposited into the account."
+    }
+  ]
+}
