@@ -3,3 +3,4 @@
 /documents/*
 /snapshots/*
 *.env
+/abtest/*

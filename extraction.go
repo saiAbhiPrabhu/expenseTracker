@@ -11,8 +11,8 @@ import (
 	"time"
 )
 
-// Extraction: turns statement text into transactions (grab the features, standardize them) and
-// constructs the JSON states for JEV.
+// Extraction: turns statement text into transactions (grab the features, standardize them), anonymizes
+// them, and constructs the JSON states for JEV.
 
 // Transaction is one statement row. Amount is in cents, negative for withdrawals.
 type Transaction struct {
@@ -76,6 +76,20 @@ func ExtractTransactionsFromText(textFile string) ([]Transaction, error) {
 	return transactions, nil
 }
 
+const depositsSection = "Deposits and other additions"
+
+// RemoveDeposits drops the money-in rows. It runs after ExtractTransactionsFromText because the
+// deposits rows are still needed there to check the printed Total.
+func RemoveDeposits(transactions []Transaction) []Transaction {
+	var spending []Transaction
+	for _, transaction := range transactions {
+		if transaction.Section != depositsSection {
+			spending = append(spending, transaction)
+		}
+	}
+	return spending
+}
+
 func parseTransactionRow(line string, section string) (Transaction, error) {
 	match := transactionRow.FindStringSubmatch(line)
 	if match == nil {
@@ -126,18 +140,26 @@ var alternateDateLayouts = []string{"2006-01-02", "1/2/06", "1/2/2006", "01/02/2
 func ConvertTransactionsToJSON(transactions []Transaction) (string, error) {
 	states := make([]jevState, 0, len(transactions))
 	for _, transaction := range transactions {
-		date, err := normalizeDate(transaction.Date)
+		state, err := toJEVState(transaction)
 		if err != nil {
 			return "", err
 		}
-		states = append(states, jevState{
-			Date:        date,
-			Description: transaction.Description,
-			Amount:      formatDollars(transaction.AmountCents),
-		})
+		states = append(states, state)
 	}
 	encoded, err := json.Marshal(states)
 	return string(encoded), err
+}
+
+func toJEVState(transaction Transaction) (jevState, error) {
+	date, err := normalizeDate(transaction.Date)
+	if err != nil {
+		return jevState{}, err
+	}
+	return jevState{
+		Date:        date,
+		Description: transaction.Description,
+		Amount:      formatDollars(transaction.AmountCents),
+	}, nil
 }
 
 // normalizeDate returns date as MM/DD/YY, converting the alternate spellings.
@@ -157,4 +179,65 @@ func formatDollars(cents int64) json.Number {
 		sign, cents = "-", -cents
 	}
 	return json.Number(fmt.Sprintf("%s%d.%02d", sign, cents/100, cents%100))
+}
+
+const redacted = "[REDACTED]"
+
+var (
+	// A peer-payment keyword and optional cue words; everything after them is the counterparty and memo.
+	peerParty = regexp.MustCompile(`(?i)(\b(?:zelle|venmo|cash ?app|paypal)\b(?:[\s*:]+(?:payment|transfer|to|from|sent|received))*[\s*:]+).+$`)
+	// Any "KEY:" label; the text after it, up to the next label, is that field's value.
+	fieldLabel = regexp.MustCompile(`[A-Za-z_]+:`)
+	// Account, card and reference numbers. Shorter runs are kept: statement dates are 4 digits.
+	longNumber = regexp.MustCompile(`\d{6,}`)
+)
+
+// Function Contract:
+// Input: transactions
+// Output: copies with anonymized descriptions
+// Logic: Computer masks everything after Zelle/Venmo-style keywords and every KEY:value field value,
+// then masks long digit runs.
+func ScrubTransactions(transactions []Transaction) []Transaction {
+	scrubbed := make([]Transaction, len(transactions))
+	for i, transaction := range transactions {
+		transaction.Description = scrubDescription(transaction.Description)
+		scrubbed[i] = transaction
+	}
+	return scrubbed
+}
+
+func scrubDescription(description string) string {
+	description = peerParty.ReplaceAllString(description, "${1}"+redacted)
+	description = maskFieldValues(description)
+	return longNumber.ReplaceAllString(description, redacted)
+}
+
+// maskFieldValues keeps each label and replaces its value.
+func maskFieldValues(description string) string {
+	labels := fieldLabel.FindAllStringIndex(description, -1)
+	if labels == nil {
+		return description
+	}
+	var out strings.Builder
+	out.WriteString(description[:labels[0][1]])
+	for i, label := range labels {
+		valueEnd := len(description)
+		if i+1 < len(labels) {
+			valueEnd = labels[i+1][0]
+		}
+		out.WriteString(redactKeepingSpaces(description[label[1]:valueEnd]))
+		if i+1 < len(labels) {
+			out.WriteString(description[labels[i+1][0]:labels[i+1][1]])
+		}
+	}
+	return out.String()
+}
+
+func redactKeepingSpaces(value string) string {
+	trimmed := strings.TrimSpace(value)
+	if trimmed == "" {
+		return value
+	}
+	start := strings.Index(value, trimmed)
+	return value[:start] + redacted + value[start+len(trimmed):]
 }

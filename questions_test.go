@@ -54,3 +54,12 @@ func TestEssentialQuestionJSON(t *testing.T) {
 		t.Errorf("got %s\nwant %s", got, want)
 	}
 }
+
+func mustReadCategories(t *testing.T) []byte {
+	t.Helper()
+	data, err := os.ReadFile("transaction_categories.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	return data
+}
