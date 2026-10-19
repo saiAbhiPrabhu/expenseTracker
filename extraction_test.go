@@ -70,3 +70,49 @@ func TestConvertTransactionsToJSONBadDate(t *testing.T) {
 		t.Fatal("expected date error")
 	}
 }
+
+func TestRemoveDeposits(t *testing.T) {
+	got, err := ExtractTransactionsFromText(sampleText)
+	if err != nil {
+		t.Fatal(err)
+	}
+	spending := RemoveDeposits(got)
+	if len(spending) != 2 {
+		t.Fatalf("got %d rows, want the 2 card rows: %+v", len(spending), spending)
+	}
+	for _, transaction := range spending {
+		if transaction.Section != "ATM and debit card subtractions" {
+			t.Errorf("unexpected section kept: %+v", transaction)
+		}
+	}
+}
+
+func TestScrubDescription(t *testing.T) {
+	cases := []struct{ input, want string }{
+		{`Zelle payment to Jane Doe for "rent 9:30 pm"; Conf# abc123`, `Zelle payment to [REDACTED]`},
+		{`Zelle payment from jane  DOE Conf# zzz`, `Zelle payment from [REDACTED]`},
+		{`PURCHASE 0910 VENMO *Bob Smith 855-123 CA`, `PURCHASE 0910 VENMO *[REDACTED]`},
+		{`PMNT SENT 0823 VENMO* Bob Smith Visa Direct NY`, `PMNT SENT 0823 VENMO* [REDACTED]`},
+		{`ACME LLC DES:PAYROLL ID:99 INDN:Jane Doe CO ID:12 WEB`, `ACME LLC DES:[REDACTED] ID:[REDACTED] INDN:[REDACTED] ID:[REDACTED]`},
+		{`ACME LLC DES:X NAME:Jane Doe`, `ACME LLC DES:[REDACTED] NAME:[REDACTED]`},
+		{`CHECKCARD 0910 STARBUCKS 12345678 CA`, `CHECKCARD 0910 STARBUCKS [REDACTED] CA`},
+		{`Zelle 5551234`, `Zelle [REDACTED]`},
+		{`CHECKCARD 0910 STARBUCKS CA`, `CHECKCARD 0910 STARBUCKS CA`},
+	}
+	for _, c := range cases {
+		if got := scrubDescription(c.input); got != c.want {
+			t.Errorf("%q\n got  %q\n want %q", c.input, got, c.want)
+		}
+	}
+}
+
+func TestScrubTransactionsKeepsOtherFields(t *testing.T) {
+	in := []Transaction{{Date: "01/02/25", Description: "Zelle payment to Jane Doe", AmountCents: -500, Section: "S"}}
+	out := ScrubTransactions(in)
+	if out[0].Description != "Zelle payment to [REDACTED]" || out[0].AmountCents != -500 || out[0].Section != "S" {
+		t.Errorf("got %+v", out[0])
+	}
+	if in[0].Description != "Zelle payment to Jane Doe" {
+		t.Errorf("input mutated: %+v", in[0])
+	}
+}
