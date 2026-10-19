@@ -181,3 +181,21 @@ func ocrImage(img image.Image, workDir string) (string, error) {
 	}
 	return string(out), nil
 }
+
+// OCRFix is a manual correction for a known OCR misread, e.g. "-177.4)" -> "-177.41".
+type OCRFix struct {
+	Old string
+	New string
+}
+
+// ApplyOCRFixes replaces each fix's Old text, which must appear exactly once so a fix
+// cannot silently miss or hit the wrong row. The section checksum still validates the result.
+func ApplyOCRFixes(text string, fixes []OCRFix) (string, error) {
+	for _, fix := range fixes {
+		if count := strings.Count(text, fix.Old); count != 1 {
+			return "", fmt.Errorf("OCR fix %q: found %d times, want exactly 1", fix.Old, count)
+		}
+		text = strings.Replace(text, fix.Old, fix.New, 1)
+	}
+	return text, nil
+}

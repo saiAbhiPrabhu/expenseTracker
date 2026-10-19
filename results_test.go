@@ -12,6 +12,10 @@ func TestParseChoiceAnswer(t *testing.T) {
 	if _, err := ParseChoiceAnswer([]byte(valid), testQuestion); err != nil {
 		t.Errorf("valid answer rejected: %v", err)
 	}
+	rounded := `{"type":"choice","choice":"A","probabilities":{"A":0.8,"B":0.19},"confidence":0.7}`
+	if _, err := ParseChoiceAnswer([]byte(rounded), testQuestion); err != nil {
+		t.Errorf("answer summing to 0.99 rejected: %v", err)
+	}
 	invalid := map[string]string{
 		"wrong type":      `{"type":"noul","choice":"A","probabilities":{"A":1},"confidence":1}`,
 		"unknown choice":  `{"type":"choice","choice":"Z","probabilities":{"A":1},"confidence":1}`,

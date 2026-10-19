@@ -14,7 +14,8 @@ import (
 
 const (
 	essentialQuestionID = "essential_vs_non_essential"
-	probabilityEpsilon  = 1e-3
+	// JEV rounds each probability to 2 decimals, so with 13-21 options the total can drift by several hundredths.
+	probabilityEpsilon = 0.1
 )
 
 // ChoiceAnswer: Choice is one of the question's options and Probabilities is a distribution over them.

@@ -9,21 +9,35 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 const categoriesFile = "transaction_categories.json"
 
 func main() {
 	abTestDir := flag.String("abtest-dir", "", "run the JEV A/B test and write results.json and report.md here")
+	var ocrFixes []OCRFix
+	flag.Func("fix-ocr", "manual OCR correction as OLD=NEW (repeatable)", func(value string) error {
+		old, replacement, found := strings.Cut(value, "=")
+		if !found || old == "" {
+			return fmt.Errorf("want OLD=NEW, got %q", value)
+		}
+		ocrFixes = append(ocrFixes, OCRFix{Old: old, New: replacement})
+		return nil
+	})
 	flag.Parse()
-	if err := run(flag.Arg(0), os.Getenv("SNAPSHOT_DIR"), *abTestDir, os.Getenv("TYPESAFE_API_KEY")); err != nil {
+	if err := run(flag.Arg(0), os.Getenv("SNAPSHOT_DIR"), *abTestDir, os.Getenv("TYPESAFE_API_KEY"), ocrFixes); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }
 
-func run(pdfFile string, snapshotDir string, abTestDir string, apiKey string) error {
+func run(pdfFile string, snapshotDir string, abTestDir string, apiKey string, ocrFixes []OCRFix) error {
 	text, err := ConvertPDFToText(pdfFile, snapshotDir)
+	if err != nil {
+		return err
+	}
+	text, err = ApplyOCRFixes(text, ocrFixes)
 	if err != nil {
 		return err
 	}

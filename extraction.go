@@ -184,8 +184,9 @@ func formatDollars(cents int64) json.Number {
 const redacted = "[REDACTED]"
 
 var (
-	// A peer-payment keyword and optional cue words; everything after them is the counterparty and memo.
-	peerParty = regexp.MustCompile(`(?i)(\b(?:zelle|venmo|cash ?app|paypal)\b(?:[\s*:]+(?:payment|transfer|to|from|sent|received))*[\s*:]+).+$`)
+	// A peer-payment keyword and optional cue words, split by any punctuation OCR produces (VENMO?*);
+	// everything after them is the counterparty and memo.
+	peerParty = regexp.MustCompile(`(?i)(\b(?:zelle|venmo|cash ?app|paypal)\b(?:[^A-Za-z0-9]+(?:payment|transfer|to|from|sent|received))*[^A-Za-z0-9]+).+$`)
 	// Any "KEY:" label; the text after it, up to the next label, is that field's value.
 	fieldLabel = regexp.MustCompile(`[A-Za-z_]+:`)
 	// Account, card and reference numbers. Shorter runs are kept: statement dates are 4 digits.
