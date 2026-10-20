@@ -17,6 +17,7 @@ const categoriesFile = "transaction_categories.json"
 func main() {
 	abTestDir := flag.String("abtest-dir", "", "run the JEV A/B test and write results.json and report.md here")
 	var ocrFixes []OCRFix
+	titlesCSV := flag.String("titles-csv", "", "TEMPORARY: use already-extracted titles from this CSV instead of a PDF")
 	flag.Func("fix-ocr", "manual OCR correction as OLD=NEW (repeatable)", func(value string) error {
 		old, replacement, found := strings.Cut(value, "=")
 		if !found || old == "" {
@@ -26,26 +27,17 @@ func main() {
 		return nil
 	})
 	flag.Parse()
-	if err := run(flag.Arg(0), os.Getenv("SNAPSHOT_DIR"), *abTestDir, os.Getenv("TYPESAFE_API_KEY"), ocrFixes); err != nil {
+	if err := run(flag.Arg(0), os.Getenv("SNAPSHOT_DIR"), *abTestDir, os.Getenv("TYPESAFE_API_KEY"), ocrFixes, *titlesCSV); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }
 
-func run(pdfFile string, snapshotDir string, abTestDir string, apiKey string, ocrFixes []OCRFix) error {
-	text, err := ConvertPDFToText(pdfFile, snapshotDir)
+func run(pdfFile string, snapshotDir string, abTestDir string, apiKey string, ocrFixes []OCRFix, titlesCSV string) error {
+	spending, err := loadSpending(pdfFile, snapshotDir, ocrFixes, titlesCSV)
 	if err != nil {
 		return err
 	}
-	text, err = ApplyOCRFixes(text, ocrFixes)
-	if err != nil {
-		return err
-	}
-	transactions, err := ExtractTransactionsFromText(text)
-	if err != nil {
-		return err
-	}
-	spending := ScrubTransactions(RemoveDeposits(transactions))
 	if abTestDir != "" {
 		return runABTest(spending, abTestDir, apiKey)
 	}
@@ -91,4 +83,29 @@ func writeABTestOutput(dir string, classified []ClassifiedTransaction) error {
 	}
 	report := FormatABReport(CompareCategorySets(classified))
 	return os.WriteFile(filepath.Join(dir, "report.md"), []byte(report), 0o644)
+}
+
+// loadSpending returns the transactions to classify: the titles from titlesCSV when given (already
+// extracted and scrubbed), otherwise the scrubbed spending rows of the statement PDF.
+func loadSpending(pdfFile string, snapshotDir string, ocrFixes []OCRFix, titlesCSV string) ([]Transaction, error) {
+	if titlesCSV != "" {
+		data, err := os.ReadFile(titlesCSV)
+		if err != nil {
+			return nil, err
+		}
+		return ParseTitlesCSV(string(data))
+	}
+	text, err := ConvertPDFToText(pdfFile, snapshotDir)
+	if err != nil {
+		return nil, err
+	}
+	text, err = ApplyOCRFixes(text, ocrFixes)
+	if err != nil {
+		return nil, err
+	}
+	transactions, err := ExtractTransactionsFromText(text)
+	if err != nil {
+		return nil, err
+	}
+	return ScrubTransactions(RemoveDeposits(transactions)), nil
 }
