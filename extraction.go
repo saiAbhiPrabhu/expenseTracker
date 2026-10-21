@@ -151,25 +151,26 @@ func ConvertTransactionsToJSON(transactions []Transaction) (string, error) {
 }
 
 func toJEVState(transaction Transaction) (jevState, error) {
-	date, err := normalizeDate(transaction.Date)
+	date, err := parseDate(transaction.Date)
 	if err != nil {
 		return jevState{}, err
 	}
 	return jevState{
-		Date:        date,
+		Date:        date.Format(statementDateLayout),
 		Description: transaction.Description,
 		Amount:      formatDollars(transaction.AmountCents),
 	}, nil
 }
 
-// normalizeDate returns date as MM/DD/YY, converting the alternate spellings.
-func normalizeDate(date string) (string, error) {
+// parseDate reads a date written as MM/DD/YY or one of the alternate spellings. Every date in the
+// code goes through here, so the accepted formats are defined in one place.
+func parseDate(date string) (time.Time, error) {
 	for _, layout := range append([]string{statementDateLayout}, alternateDateLayouts...) {
 		if parsed, err := time.Parse(layout, date); err == nil {
-			return parsed.Format(statementDateLayout), nil
+			return parsed, nil
 		}
 	}
-	return "", fmt.Errorf("unrecognized date %q", date)
+	return time.Time{}, fmt.Errorf("unrecognized date %q", date)
 }
 
 // formatDollars converts -164160 to the JSON number -1641.60.
