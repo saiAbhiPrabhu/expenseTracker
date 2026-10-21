@@ -17,6 +17,7 @@ const categoriesFile = "transaction_categories.json"
 func main() {
 	abTestDir := flag.String("abtest-dir", "", "run the JEV A/B test and write results.json and report.md here")
 	var ocrFixes []OCRFix
+	exportDir := flag.String("export", "", "read the A/B results.json files given as arguments and write the combined states and expenditure totals to this directory")
 	titlesCSV := flag.String("titles-csv", "", "TEMPORARY: use already-extracted titles from this CSV instead of a PDF")
 	flag.Func("fix-ocr", "manual OCR correction as OLD=NEW (repeatable)", func(value string) error {
 		old, replacement, found := strings.Cut(value, "=")
@@ -27,6 +28,13 @@ func main() {
 		return nil
 	})
 	flag.Parse()
+	if *exportDir != "" {
+		if err := runExport(flag.Args(), *exportDir); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
+		return
+	}
 	if err := run(flag.Arg(0), os.Getenv("SNAPSHOT_DIR"), *abTestDir, os.Getenv("TYPESAFE_API_KEY"), ocrFixes, *titlesCSV); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
@@ -108,4 +116,34 @@ func loadSpending(pdfFile string, snapshotDir string, ocrFixes []OCRFix, titlesC
 		return nil, err
 	}
 	return ScrubTransactions(RemoveDeposits(transactions)), nil
+}
+
+// runExport reads the results.json files of several A/B runs and writes the export files to dir.
+// It makes no API calls; the content comes from Export.
+func runExport(resultFiles []string, dir string) error {
+	var classified []ClassifiedTransaction
+	for _, file := range resultFiles {
+		data, err := os.ReadFile(file)
+		if err != nil {
+			return err
+		}
+		var results []ClassifiedTransaction
+		if err := json.Unmarshal(data, &results); err != nil {
+			return fmt.Errorf("%s: %w", file, err)
+		}
+		classified = append(classified, results...)
+	}
+	files, err := Export(classified)
+	if err != nil {
+		return err
+	}
+	if err := os.MkdirAll(dir, 0o755); err != nil {
+		return err
+	}
+	for name, content := range map[string]string{"jev_states.json": files.StatesJSON, "jev_states.csv": files.StatesCSV, "expenditure_totals.json": files.TotalsJSON} {
+		if err := os.WriteFile(filepath.Join(dir, name), []byte(content), 0o644); err != nil {
+			return err
+		}
+	}
+	return nil
 }

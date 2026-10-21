@@ -117,3 +117,15 @@ func TestScrubTransactionsKeepsOtherFields(t *testing.T) {
 		t.Errorf("input mutated: %+v", in[0])
 	}
 }
+
+func TestParseDate(t *testing.T) {
+	for _, date := range []string{"01/06/25", "2025-01-06", "1/6/25", "1/6/2025", "01/06/2025"} {
+		parsed, err := parseDate(date)
+		if err != nil || parsed.Format(statementDateLayout) != "01/06/25" {
+			t.Errorf("%q: got %v, %v", date, parsed, err)
+		}
+	}
+	if _, err := parseDate("yesterday"); err == nil {
+		t.Error("expected an error for an unrecognized date")
+	}
+}
