@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
@@ -17,6 +18,7 @@ const categoriesFile = "transaction_categories.json"
 func main() {
 	abTestDir := flag.String("abtest-dir", "", "run the JEV A/B test and write results.json and report.md here")
 	var ocrFixes []OCRFix
+	serveAddr := flag.String("serve", "", "start the web app on this address (for example :8080), serving web/dist")
 	exportDir := flag.String("export", "", "read the A/B results.json files given as arguments and write the combined states and expenditure totals to this directory")
 	titlesCSV := flag.String("titles-csv", "", "TEMPORARY: use already-extracted titles from this CSV instead of a PDF")
 	flag.Func("fix-ocr", "manual OCR correction as OLD=NEW (repeatable)", func(value string) error {
@@ -28,6 +30,19 @@ func main() {
 		return nil
 	})
 	flag.Parse()
+	if *serveAddr != "" {
+		demo, err := loadDemoFiles()
+		if err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
+		fmt.Fprintf(os.Stderr, "serving web/dist and the demo API on %s\n", *serveAddr)
+		if err := http.ListenAndServe(*serveAddr, NewWebHandler(os.DirFS("web/dist"), demo)); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
+		return
+	}
 	if *exportDir != "" {
 		if err := runExport(flag.Args(), *exportDir); err != nil {
 			fmt.Fprintln(os.Stderr, err)
@@ -93,15 +108,19 @@ func writeABTestOutput(dir string, classified []ClassifiedTransaction) error {
 	return os.WriteFile(filepath.Join(dir, "report.md"), []byte(report), 0o644)
 }
 
-// loadSpending returns the transactions to classify: the titles from titlesCSV when given (already
-// extracted and scrubbed), otherwise the scrubbed spending rows of the statement PDF.
+// loadSpending returns the scrubbed transactions to classify: the titles from titlesCSV when given
+// (already extracted), otherwise the spending rows of the statement PDF.
 func loadSpending(pdfFile string, snapshotDir string, ocrFixes []OCRFix, titlesCSV string) ([]Transaction, error) {
 	if titlesCSV != "" {
 		data, err := os.ReadFile(titlesCSV)
 		if err != nil {
 			return nil, err
 		}
-		return ParseTitlesCSV(string(data))
+		transactions, err := ParseTitlesCSV(string(data))
+		if err != nil {
+			return nil, err
+		}
+		return ScrubTransactions(transactions), nil // scrubbing is idempotent, so scrubbed titles are unchanged
 	}
 	text, err := ConvertPDFToText(pdfFile, snapshotDir)
 	if err != nil {
@@ -146,4 +165,17 @@ func runExport(resultFiles []string, dir string) error {
 		}
 	}
 	return nil
+}
+
+// loadDemoFiles reads the saved demo run (see demo/cache) and the category list.
+func loadDemoFiles() (*DemoData, error) {
+	results, err := os.ReadFile(filepath.Join("demo", "cache", "results.json"))
+	if err != nil {
+		return nil, fmt.Errorf("demo data missing (run the demo cache first, see README): %w", err)
+	}
+	categories, err := os.ReadFile(categoriesFile)
+	if err != nil {
+		return nil, err
+	}
+	return LoadDemoData(results, categories)
 }

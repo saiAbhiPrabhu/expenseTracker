@@ -1,0 +1,22 @@
+/* Neutral placeholder styling. Real design comes later. */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; color: #222; background: #fff; }
+main { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+h1 { margin: 0 0 16px; }
+
+.menu { padding: 8px 16px; }
+.menu-toggle { font-size: 20px; line-height: 1; padding: 4px 10px; cursor: pointer; }
+.menu-links { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.menu-links a { color: inherit; }
+
+.center { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.button-row { display: flex; gap: 16px; justify-content: center; margin-top: 16px; }
+.button, button { font: inherit; padding: 10px 24px; border: 1px solid #222; background: #fff; color: #222; border-radius: 4px; text-decoration: none; cursor: pointer; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+.form { display: flex; flex-direction: column; gap: 12px; width: 280px; text-align: left; }
+.form input { display: block; width: 100%; padding: 8px; margin-top: 4px; }
+.notice { color: #666; }
+
+.stepper { display: flex; gap: 16px; list-style: none; padding: 0; flex-wrap: wrap; }
+.stepper .current { font-weight: 700; text-decoration: underline; }
+.panel { border: 1px solid #ccc; border-radius: 4px; padding: 24px; min-height: 240px; margin-bottom: 16px; }
