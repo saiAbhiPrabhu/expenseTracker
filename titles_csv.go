@@ -1,6 +1,6 @@
 // titles_csv.go
 //
-// TEMPORARY: loads already-extracted (and scrubbed) titles from a labels CSV so JEV can be tested
+// TEMPORARY: loads already-extracted titles from a CSV (they are scrubbed after loading) so JEV can be tested
 // on a chosen set of rows without re-running the PDF pipeline. Remove once the A/B test is settled.
 
 package main

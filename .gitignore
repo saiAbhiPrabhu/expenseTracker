@@ -4,3 +4,5 @@
 /snapshots/*
 *.env
 /abtest/*
+/web/node_modules
+/web/dist

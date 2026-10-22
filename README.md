@@ -45,11 +45,15 @@ If a row's amount is misread by OCR, the run stops by design (the checksum would
 | `export.go` | Everything exported: a SHA-256 key per transaction (date, title, amount), the raw JEV answers (JSON and CSV), and expenditure totals per month and per category. Expenditure is any outflow (a negative amount). |
 | `results.go` | Typed, validated models for JEV answers (`ChoiceAnswer`, `NoulAnswer`, `ClassifiedTransaction`). Invalid answers are rejected when parsed. |
 | `abtest.go` | Compares the two category sets and formats the agreement report. |
+| `serve.go` | The web server: serves the built front end (`web/dist`) and mounts the `/api` routes. |
+| `demo.go` | The demo's saved data and API. Replays the cached JEV run on synthetic transactions (`demo/`); no JEV calls, no per-user server state. |
+| `web/` | The front end (React and TypeScript, built with Vite): home page with a folded menu, a non-functional log-in page, and the 5-step demo (placeholders for now). |
 | `titles_csv.go` | TEMPORARY: loads already-extracted titles from a CSV (`-titles-csv`) to test JEV without re-running the PDF pipeline. |
 | `transaction_categories.json` | The 20-category and 12-category sets with descriptions. |
 | `*_test.go` | Tests for the file with the same name. |
 | `CLAUDE.md`, `PERFECT_FUNCTION.md` | Working rules for the repo: behavior, and function design. |
 | `future_isses.md` | Known problems and planned fixes. |
+| `demo/` | Synthetic demo data (safe to commit): `transactions.csv`, its generator `build_demo_data.py`, and the saved JEV run in `cache/`. |
 | `documents/`, `snapshots/`, `abtest/` | Local data: statements and labels, per-page images and text, and A/B outputs. All gitignored. |
 
 ## How to Use
@@ -88,11 +92,24 @@ go run . -export abtest/combined abtest/may/results.json abtest/jun/results.json
 ```
 Combines the A/B `results.json` files into `jev_states.json` and `jev_states.csv` (raw answers for every transaction, oldest first, each with its key) and `expenditure_totals.json` (expenditure per month, per category, and overall).
 
+### Run the web app (skeleton)
+```
+cd web && npm install && npm run build && cd ..
+go run . -serve :8080
+```
+Open `http://localhost:8080`. The demo API reads the saved run in `demo/cache/results.json`:
+- `GET /api/demo/transactions`: every transaction with JEV's answers and a review flag (confidence below 0.5).
+- `GET /api/demo/categories`: the 20 categories plus "Other".
+- `GET` or `POST /api/demo/summary`: dashboard numbers (expenditure per month, per category, essential split). `POST` takes `{"edits": {"<key>": {"category": "...", "essential": true}}}` and returns the numbers with those edits applied; the browser keeps the edits.
+
+For front-end development, run `go run . -serve :8080` and `npm run dev` (in `web/`) together; Vite proxies `/api` to the Go server.
+
 ### Useful flags
 - `-abtest-dir <dir>`: run JEV and write results to `<dir>`.
+- `-serve <addr>`: start the web app, for example `:8080`.
 - `-export <dir>`: read the `results.json` files given as arguments and write the export files to `<dir>`.
 - `-fix-ocr 'OLD=NEW'`: correct a known OCR misread before extraction (repeatable). The text must appear exactly once, and the section checksum still has to pass. Example: `-fix-ocr '-177.4)=-177.41'`.
-- `-titles-csv <file>`: temporary. Use titles from a CSV with `date`, `amount` and `title` columns instead of a PDF.
+- `-titles-csv <file>`: temporary. Use titles from a CSV with `date`, `amount` and `title` columns instead of a PDF (titles are scrubbed on load).
 
 ### Privacy
 Statements, snapshots and A/B outputs contain personal financial data. They live in gitignored folders and must never be committed. Only scrubbed descriptions are sent to JEV, but scrubbing is heuristic, so check results before sharing.

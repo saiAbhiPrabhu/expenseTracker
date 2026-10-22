@@ -94,6 +94,9 @@ func TestScrubDescription(t *testing.T) {
 		{`PURCHASE 0910 VENMO *Bob Smith 855-123 CA`, `PURCHASE 0910 VENMO *[REDACTED]`},
 		{`PMNT SENT 0823 VENMO* Bob Smith Visa Direct NY`, `PMNT SENT 0823 VENMO* [REDACTED]`},
 		{`PMNT SENT 0726 VENMO?* Jane Do Visa Direct NY`, `PMNT SENT 0726 VENMO?* [REDACTED]`},
+		{`PAYPAL *wok express`, `PAYPAL *wok express`},                                                 // processor: merchant kept
+		{`PAYPAL INST XFER SPOTIFY WEB ID: PAYPALSI44`, `PAYPAL INST XFER SPOTIFY WEB ID: [REDACTED]`}, // merchant kept, id masked
+		{`PAYPAL PAYMENT TO Jane Doe`, `PAYPAL PAYMENT TO [REDACTED]`},                                 // names a recipient: masked
 		{`ACME LLC DES:PAYROLL ID:99 INDN:Jane Doe CO ID:12 WEB`, `ACME LLC DES:[REDACTED] ID:[REDACTED] INDN:[REDACTED] ID:[REDACTED]`},
 		{`ACME LLC DES:X NAME:Jane Doe`, `ACME LLC DES:[REDACTED] NAME:[REDACTED]`},
 		{`CHECKCARD 0910 STARBUCKS 12345678 CA`, `CHECKCARD 0910 STARBUCKS [REDACTED] CA`},
@@ -127,5 +130,23 @@ func TestParseDate(t *testing.T) {
 	}
 	if _, err := parseDate("yesterday"); err == nil {
 		t.Error("expected an error for an unrecognized date")
+	}
+}
+
+// Scrubbing already-scrubbed text must change nothing, because the titles-csv path scrubs titles that
+// may have been scrubbed before.
+func TestScrubIsIdempotent(t *testing.T) {
+	for _, title := range []string{
+		`Zelle payment to Jane Doe for "rent"; Conf# abc123`,
+		`PMNT SENT 0726 VENMO?* Jane Do Visa Direct NY`,
+		`ACME LLC DES:PAYROLL ID:99 INDN:Jane Doe CO ID:12 WEB`,
+		`CHECKCARD 0910 STARBUCKS 12345678 CA`,
+		`PAYPAL INST XFER SPOTIFY WEB ID: PAYPALSI44`,
+		`PAYPAL PAYMENT TO Jane Doe`,
+	} {
+		once := scrubDescription(title)
+		if twice := scrubDescription(once); twice != once {
+			t.Errorf("%q: first %q, second %q", title, once, twice)
+		}
 	}
 }
