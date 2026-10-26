@@ -32,11 +32,10 @@ export default function EditStep() {
     <div>
       <p className="dash-total" aria-live="polite">
         {summary
-          ? `Total expenditure ${money.format(summary.totalExpenditure)}${includeMoneyMovement ? "" : " (transfers, savings and debt payments left out)"}. Essential ${money.format(summary.essential.essential)}, non-essential ${money.format(summary.essential.nonEssential)}. ${changed} row${changed === 1 ? "" : "s"} changed.`
+          ? `Total expenditure ${money.format(summary.totalExpenditure)}${includeMoneyMovement ? "" : " (without transfers, savings and debt payments)"}. Essential ${money.format(summary.essential.essential)}, non-essential ${money.format(summary.essential.nonEssential)}. ${changed} row${changed === 1 ? "" : "s"} changed.`
           : summaryError ? "" : "Loading the totals…"}
         {summaryError && <span className="notice"> Could not update the totals.</span>}
       </p>
-      <p className="notice">Change a row's category or essential flag, or filter the list. Title, date and amount cannot be changed.</p>
       <ControlBar continueLabel="Done" onContinue={() => goTo("dashboard")} hideBack />
       <p>
         <label>
@@ -49,13 +48,13 @@ export default function EditStep() {
           </select>
         </label>{" "}
         <label>
-          <input type="checkbox" checked={onlyChanged} onChange={(event) => setOnlyChanged(event.target.checked)} /> Show only rows I changed
+          <input type="checkbox" checked={onlyChanged} onChange={(event) => setOnlyChanged(event.target.checked)} /> Changed rows only
         </label>{" "}
         {changed > 0 && <button onClick={resetAll}>Undo all changes</button>}
       </p>
-      <p className="notice">Showing {shown.length} of {transactions.length} rows</p>
+      <p className="notice">{shown.length} of {transactions.length} rows</p>
       {shown.length === 0 && (
-        <p className="notice">{onlyChanged && changed === 0 ? "You have not changed any rows yet." : "No rows match."}</p>
+        <p className="notice">{onlyChanged && changed === 0 ? "No changed rows." : "No rows match."}</p>
       )}
       <table className="review-table" aria-label="All transactions">
         <thead>

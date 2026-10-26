@@ -29,14 +29,13 @@ export default function UploadStep() {
           Statement PDFs{" "}
           <input type="file" accept="application/pdf" multiple disabled aria-describedby="upload-off" />
         </label>{" "}
-        <span id="upload-off" className="notice">Uploading your own statements is turned off in the demo.</span>
+        <span id="upload-off" className="notice">Disabled in the demo.</span>
       </p>
       <p>
         <button onClick={loading ? undefined : useSamples} aria-disabled={loading}>Use the sample statements</button>
         {loading && <span className="notice"> Loading…</span>}
       </p>
       {error && <p className="notice">{error}</p>}
-      <p className="notice">These are the statements that will be read in the next step.</p>
       <table className="data-table" aria-label="Your statements">
         <thead>
           <tr><th>File</th><th>Month</th><th>Pages</th><th>Size</th></tr>

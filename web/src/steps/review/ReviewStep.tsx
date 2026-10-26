@@ -13,7 +13,7 @@ export default function ReviewStep() {
   if (pages.length === 0) {
     return (
       <div>
-        <p className="notice">There are no transactions to review.</p>
+        <p className="notice">No transactions to review.</p>
         <ControlBar continueLabel="Finish" onContinue={next} />
       </div>
     );
@@ -27,8 +27,8 @@ export default function ReviewStep() {
       <h3>Review: {current.label}</h3>
       <p className="notice">
         Month {page + 1} of {pages.length}. {current.rows.length === 0
-          ? "Nothing to review this month."
-          : `${current.rows.length} row${current.rows.length === 1 ? "" : "s"} need${current.rows.length === 1 ? "s" : ""} your review.`}
+          ? "Nothing to review."
+          : `${current.rows.length} row${current.rows.length === 1 ? "" : "s"} to review.`}
       </p>
       {current.rows.length > 0 && (
         <table className="review-table">

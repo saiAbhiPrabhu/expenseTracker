@@ -8,7 +8,7 @@ export default function Demo() {
   return (
     <section>
       <h1>Demo</h1>
-      <p className="notice">Runs on made-up sample statements, never on real data.</p>
+      <p className="notice">Sample data only.</p>
       <DemoProvider>
         <StatementsProvider>
           <FlowProvider>

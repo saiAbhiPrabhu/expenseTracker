@@ -8,7 +8,6 @@ import { DashboardData, postDashboard } from "./api";
 import { downloadCsv } from "./csv";
 import "./dashboard.css";
 
-const sign = (amount: number) => (amount > 0 ? "+" : "") + money.format(amount);
 const longDate = (iso: string) => new Date(+iso.slice(0, 4), +iso.slice(5, 7) - 1, +iso.slice(8, 10)).toLocaleDateString("en-US", { dateStyle: "long" });
 const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
 
@@ -58,7 +57,7 @@ export default function DashboardStep() {
   return (
     <div>
       <p className="notice">
-        Expenditure is money that left the account (any negative amount).
+        Expenditure is money that left your account.
         {changed > 0 && ` Includes your ${plural(changed, "change")}.`}
       </p>
       <p className="dash-total" aria-live="polite">
@@ -67,35 +66,28 @@ export default function DashboardStep() {
       <p>{longDate(data.firstDate)} to {longDate(data.lastDate)}</p>
       <label className="dash-check">
         <input type="checkbox" checked={includeMoneyMovement} onChange={(event) => setIncludeMoneyMovement(event.target.checked)} />
-        {" "}Include transfers, savings and debt payments
+        {" "}Include transfers, savings and debt payments ({money.format(data.moneyMovement)})
       </label>
-      <p className="notice">Moving money between accounts or paying off debt is not everyday spending; unchecking leaves it out of every number below.</p>
-      <p>Money movement: <strong>{money.format(data.moneyMovement)}</strong>{includeMoneyMovement ? " (counted in the numbers below)" : " (left out of the numbers below)"}</p>
 
       <h3>By month</h3>
-      <p className="notice">See the trend. Bars are drawn against the largest month.</p>
+      <p className="notice">Bars are relative to the largest month.</p>
       <table className="data-table" aria-label="Expenditure by month">
-        <thead><tr><th>Month</th><th>Expenditure</th><th>Change</th><th>Change %</th><th>Share</th><th aria-label="Bar compared with the largest month" /></tr></thead>
+        <thead><tr><th>Month</th><th>Expenditure</th><th>Share</th><th aria-label="Bar compared with the largest month" /></tr></thead>
         <tbody>
-          {data.months.map((row, i) => {
-            const previous = i > 0 ? data.months[i - 1].expenditure : null;
-            return (
-              <tr key={row.month}>
-                <th scope="row">{monthLabel(row.month)}</th>
-                <td className="amount">{money.format(row.expenditure)}</td>
-                <td className="amount">{previous === null ? "-" : sign(row.expenditure - previous)}</td>
-                <td className="amount">{previous === null || previous === 0 ? "-" : `${row.expenditure >= previous ? "+" : ""}${(((row.expenditure - previous) / previous) * 100).toFixed(1)}%`}</td>
-                <td className="amount">{percent(row.expenditure, total)}</td>
-                <td><Bar part={row.expenditure} whole={largestMonth} /></td>
-              </tr>
-            );
-          })}
+          {data.months.map((row) => (
+            <tr key={row.month}>
+              <th scope="row">{monthLabel(row.month)}</th>
+              <td className="amount">{money.format(row.expenditure)}</td>
+              <td className="amount">{percent(row.expenditure, total)}</td>
+              <td><Bar part={row.expenditure} whole={largestMonth} /></td>
+            </tr>
+          ))}
         </tbody>
-        <tfoot><tr><th scope="row">Total</th><td className="amount">{money.format(total)}</td><td /><td /><td className="amount">{percent(total, total)}</td><td /></tr></tfoot>
+        <tfoot><tr><th scope="row">Total</th><td className="amount">{money.format(total)}</td><td className="amount">{percent(total, total)}</td><td /></tr></tfoot>
       </table>
 
       <h3>By category</h3>
-      <p className="notice">See where the money goes. Bars are drawn against the largest category.</p>
+      <p className="notice">Bars are relative to the largest category.</p>
       <table className="data-table" aria-label="Expenditure by category">
         <thead><tr><th>Category</th><th>Expenditure</th><th>Share</th><th aria-label="Bar compared with the largest category" /></tr></thead>
         <tbody>
@@ -111,10 +103,10 @@ export default function DashboardStep() {
         <tfoot><tr><th scope="row">Total</th><td className="amount">{money.format(total)}</td><td className="amount">{percent(total, total)}</td><td /></tr></tfoot>
       </table>
 
-      <h3>Essential or not</h3>
-      <p className="notice">See what is optional. The dark part of the bar is essential spending.</p>
+      <h3>By necessity</h3>
+      <p className="notice">The dark part of the bar is essential.</p>
       <div className="dash-split" aria-hidden="true"><div style={{ width: `${essentialShare}%` }} /></div>
-      <table className="data-table" aria-label="Essential versus non-essential">
+      <table className="data-table" aria-label="Expenditure by necessity">
         <thead><tr><th>Type</th><th>Expenditure</th><th>Share</th></tr></thead>
         <tbody>
           <tr><th scope="row">Essential</th><td className="amount">{money.format(data.essential.essential)}</td><td className="amount">{percent(data.essential.essential, total)}</td></tr>
@@ -124,7 +116,6 @@ export default function DashboardStep() {
 
       <details className="dash-details">
         <summary>Show category by month</summary>
-        <p className="notice">Every category in every month, to spot when a category grew or shrank.</p>
         <div className="dash-scroll">
           <table className="data-table" aria-label="Expenditure by category and month">
             <thead>
@@ -147,21 +138,7 @@ export default function DashboardStep() {
       </details>
 
       <details className="dash-details">
-        <summary>Show top merchants</summary>
-        <p className="notice">The ten places you spent the most in total, with similar statement titles grouped together.</p>
-        <table className="data-table" aria-label="Top merchants">
-          <thead><tr><th>Merchant</th><th>Transactions</th><th>Total</th></tr></thead>
-          <tbody>
-            {data.merchants.map((row) => (
-              <tr key={row.name}><th scope="row">{row.name}</th><td className="amount">{row.count}</td><td className="amount">{money.format(row.total)}</td></tr>
-            ))}
-          </tbody>
-        </table>
-      </details>
-
-      <details className="dash-details">
         <summary>Show largest transactions</summary>
-        <p className="notice">The ten biggest single payments, in case one looks wrong or can be avoided.</p>
         <table className="data-table" aria-label="Largest transactions">
           <thead><tr><th>Date</th><th>Title</th><th>Category</th><th>Amount</th></tr></thead>
           <tbody>
@@ -173,10 +150,23 @@ export default function DashboardStep() {
       </details>
 
       <details className="dash-details">
+        <summary>Show top merchants</summary>
+        <p className="notice">Similar titles are grouped.</p>
+        <table className="data-table" aria-label="Top merchants">
+          <thead><tr><th>Merchant</th><th>Transactions</th><th>Total</th></tr></thead>
+          <tbody>
+            {data.merchants.map((row) => (
+              <tr key={row.name}><th scope="row">{row.name}</th><td className="amount">{row.count}</td><td className="amount">{money.format(row.total)}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </details>
+
+      <details className="dash-details">
         <summary>Show recurring charges</summary>
-        <p className="notice">Merchants charged in at least 3 different months, with their typical (median) amount, to spot rent and subscriptions.</p>
+        <p className="notice">Charged in 3 or more months. Typical amount is the median.</p>
         {data.recurring.length === 0 ? (
-          <p className="notice">No merchant appears in 3 or more months.</p>
+          <p className="notice">None.</p>
         ) : (
           <table className="data-table" aria-label="Recurring charges">
             <thead><tr><th>Merchant</th><th>Typical amount</th><th>Months</th><th>Category</th></tr></thead>
@@ -190,7 +180,6 @@ export default function DashboardStep() {
       </details>
 
       <button className="dash-download" onClick={() => downloadCsv(transactions, categoryOf, essentialOf)}>Download data (CSV)</button>
-      <p className="notice">Every transaction with the category and essential flag in use after your edits.</p>
       <ControlBar continueLabel="Edit data" onContinue={next} />
     </div>
   );

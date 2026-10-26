@@ -14,7 +14,7 @@ export default function Login() {
         </label>
         <button type="submit" disabled>Log in</button>
       </form>
-      <p className="notice">Accounts are coming soon. Try the demo instead.</p>
+      <p className="notice">Not available yet.</p>
     </section>
   );
 }

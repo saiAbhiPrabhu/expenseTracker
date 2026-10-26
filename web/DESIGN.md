@@ -16,9 +16,10 @@ The demo page is barebones on purpose. **Do not make design decisions.** Everyth
 2. **No new colors, fonts, icons, images (other than the statement page images the Process step shows), shadows or font sizes.** If you think something needs one, leave it out and mention it in your report.
 3. **No new npm dependencies** unless there is no other way. If you add one, say so loudly in your report.
 4. **Reuse components:** `ControlBar` (the Back / Continue bar) and the classes above. Do not invent a second way to navigate.
-5. **Comfort.** A feature must (a) sit in the page flow with the same table style, (b) have a one-sentence caption saying what it is for, and (c) if it is not useful every time, be hidden by default inside a `<details>` element with a clear summary line ("Show category by month").
-6. **Order must be obvious.** Every step has one primary action, always in the `ControlBar`. If it is disabled, say why next to it (`disabledReason`).
-7. Keyboard and screen readers: every control needs a visible or `aria-label` name; tables need an `aria-label`; use real `<button>`s.
+5. **Comfort.** A feature must (a) sit in the page flow with the same table style, (b) say what it is without help from prose, and (c) if it is not useful every time, be hidden by default inside a `<details>` element with a clear summary line ("Show category by month").
+6. **Few words.** Cut any text that repeats its heading, the step instruction or the control it sits beside. Keep a caption only for a definition or a scale ("Bars are relative to the largest month"). Prefer "Label: value" lines to sentences. Put the number next to the thing it describes (the money-movement amount sits inside its checkbox label).
+7. **Order must be obvious.** Every step has one primary action, always in the `ControlBar`. If it is disabled, say why next to it (`disabledReason`).
+8. Keyboard and screen readers: every control needs a visible or `aria-label` name; tables need an `aria-label`; use real `<button>`s.
 
 ## The flow
 `Upload -> Process -> Review -> Dashboard -> Edit data`. The first time through, the user moves forward with the primary button. After that, **the dashboard is home**: it has an "Edit data" button, and "Done" on the Edit page always returns to the dashboard. Completed steps are clickable in the step list. See `src/flow/`.
