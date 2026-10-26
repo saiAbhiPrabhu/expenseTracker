@@ -58,23 +58,20 @@ function Details({ s }: { s: ProcessedStatement }) {
 
       <details className="process-nested">
         <summary>Rows</summary>
-        <div className="process-scroll">
-          <table className="data-table" aria-label={`Rows of ${s.label}`}>
-            <thead><tr><th>Date</th><th>Title</th><th>Cleaned title</th><th>Amount</th><th>Section</th><th>Status</th></tr></thead>
-            <tbody>
-              {s.rows.map((r, i) => (
-                <tr key={i}>
-                  <td>{r.date}</td>
-                  <td>{r.title}</td>
-                  <td>{r.scrubbedTitle}</td>
-                  <td className="amount">{money.format(r.amount)}</td>
-                  <td>{r.section}</td>
-                  <td>{r.kept ? "Kept" : "Removed"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <table className="data-table process-rows" aria-label={`Rows of ${s.label}`}>
+          <thead><tr><th>Date</th><th>Title</th><th>Cleaned title</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody>
+            {s.rows.map((r, i) => (
+              <tr key={i}>
+                <td data-label="Date">{r.date}</td>
+                <td data-label="Title">{r.title}</td>
+                <td data-label="Cleaned title">{r.scrubbedTitle}</td>
+                <td className="amount" data-label="Amount">{money.format(r.amount)}</td>
+                <td data-label="Status">{r.kept ? "Kept" : "Removed"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </details>
     </details>
   );
