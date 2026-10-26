@@ -24,6 +24,13 @@ export default function ReviewStep() {
 
   return (
     <div>
+      <div className="tab-row" role="group" aria-label="Months">
+        {pages.map((p, i) => (
+          <button key={p.key} className="tab" aria-pressed={i === page} onClick={() => setReviewPage(i)}>
+            {p.label.split(" ")[0]}{p.rows.length > 0 && <span className="tab-count"> {p.rows.length}</span>}
+          </button>
+        ))}
+      </div>
       <h3>Review: {current.label}</h3>
       <p className="notice">
         Month {page + 1} of {pages.length}. {current.rows.length === 0
@@ -31,7 +38,7 @@ export default function ReviewStep() {
           : `${current.rows.length} row${current.rows.length === 1 ? "" : "s"} to review.`}
       </p>
       {current.rows.length > 0 && (
-        <table className="review-table">
+        <table className="review-table" aria-label={`Rows to review for ${current.label}`}>
           <thead>
             <tr>
               <th>Date</th>
@@ -47,10 +54,10 @@ export default function ReviewStep() {
               const edited = category !== row.category20.choice;
               return (
                 <tr key={row.key} className={edited ? "edited" : ""}>
-                  <td>{row.date}</td>
-                  <td className="amount">{money.format(row.amount)}</td>
-                  <td>{row.title}</td>
-                  <td>
+                  <td className="rv-date">{row.date}</td>
+                  <td className="amount rv-amount">{money.format(row.amount)}</td>
+                  <td className="rv-title">{row.title}</td>
+                  <td className="rv-cat">
                     <select
                       value={category}
                       aria-label={`Category for ${row.title}`}
@@ -61,10 +68,12 @@ export default function ReviewStep() {
                       ))}
                     </select>
                   </td>
-                  <td>
-                    <button onClick={() => undoCategory(row)} disabled={!edited} aria-label={`Undo change for ${row.title}`}>
-                      Undo
-                    </button>
+                  <td className="rv-undo">
+                    {edited && (
+                      <button onClick={() => undoCategory(row)} aria-label={`Undo change for ${row.title}`}>
+                        Undo
+                      </button>
+                    )}
                   </td>
                 </tr>
               );

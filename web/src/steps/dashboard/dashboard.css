@@ -1,13 +1,37 @@
-/* Dashboard only. Same look as styles.css: #222 on white, #e3e3e3 tracks, 1px borders. */
-.dash-check { display: block; margin: 8px 0 4px; }
-.dash-bar { background: #e3e3e3; height: 12px; min-width: 160px; }
-.dash-bar > div { background: #222; height: 100%; }
-.dash-split { display: flex; background: #e3e3e3; height: 12px; max-width: 480px; margin-bottom: 8px; }
-.dash-split > div { background: #222; height: 100%; }
+/* Dashboard only: bars are lines, sections are hairline bars. See ledger/shell.css for the shared language. */
+.dash-check { display: block; margin: 14px 0 4px; }
+/* Wide screens: the category ledger is the main column, month and necessity sit in the margin. */
+.dash-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 0 56px; align-items: start; }
+.dash-grid h3:first-child, .dash-side section:first-child h3 { margin-top: 28px; }
+@media (max-width: 1100px) { .dash-grid { display: block; } }
+.dash-total { font-size: 22px; margin: 16px 0 4px; }
+
+/* A bar: a hairline track over its full extent, and the share drawn as a thicker rule along it. */
+.dash-bar, .dash-split { position: relative; display: flex; align-items: center; height: 10px; }
+.dash-bar { min-width: 72px; }
+.dash-split { max-width: 480px; margin: 12px 0 8px; }
+.dash-bar::before, .dash-split::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--navy); }
+.dash-bar > div, .dash-split > div { position: relative; height: 4px; background: var(--navy); }
 .dash-scroll { overflow-x: auto; }
-.dash-details { margin: 16px 0; border: 1px solid #ccc; border-radius: 4px; padding: 8px 16px; }
-.dash-details summary { cursor: pointer; }
-.dash-details[open] summary { margin-bottom: 8px; }
-.data-table tfoot th, .data-table tfoot td { border-top: 1px solid #222; border-bottom: none; font-weight: 700; }
 .data-table .dash-wrap { white-space: normal; max-width: 360px; }
-.dash-download { margin-top: 16px; }
+
+/* A "Show ..." section: one hairline frame, a plus that becomes a minus when open. */
+.dash-details { margin: 16px 0; border: 1px solid var(--navy); padding: 0 20px; }
+.dash-details summary { position: relative; padding: 14px 32px 14px 0; list-style: none; cursor: pointer; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.dash-details summary::-webkit-details-marker { display: none; }
+.dash-details summary::before, .dash-details summary::after { content: ""; position: absolute; right: 2px; top: 50%; background: var(--navy); }
+.dash-details summary::before { width: 12px; height: 1px; }
+.dash-details summary::after { width: 1px; height: 12px; margin: -6px 5.5px 0 0; }
+.dash-details summary::before { margin-top: 0; }
+.dash-details[open] summary::after { display: none; }
+.dash-details summary:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+.dash-details::details-content { block-size: 0; overflow: clip; transition: block-size var(--quick) var(--ease), content-visibility var(--quick) allow-discrete; }
+.dash-details[open]::details-content { block-size: auto; }
+.dash-details[open] summary { border-bottom: 1px solid var(--rule); margin-bottom: 8px; }
+
+.dash-download { margin: 28px 6px 0; }
+@media (prefers-reduced-motion: reduce) { .dash-details::details-content { transition: none; } }
+@media (max-width: 520px) {
+  .dash-bar { min-width: 24px; }
+  .dash-details { padding: 0 12px; }
+}

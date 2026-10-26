@@ -34,10 +34,9 @@ export default function EditStep() {
         {summary
           ? `Total expenditure ${money.format(summary.totalExpenditure)}${includeMoneyMovement ? "" : " (without transfers, savings and debt payments)"}. Essential ${money.format(summary.essential.essential)}, non-essential ${money.format(summary.essential.nonEssential)}. ${changed} row${changed === 1 ? "" : "s"} changed.`
           : summaryError ? "" : "Loading the totals…"}
-        {summaryError && <span className="notice"> Could not update the totals.</span>}
+        {summaryError && <span className="notice error"><span className="error-label">Error</span>Could not update the totals.</span>}
       </p>
-      <ControlBar continueLabel="Done" onContinue={() => goTo("dashboard")} hideBack />
-      <p>
+      <p className="filter-row">
         <label>
           Month{" "}
           <select value={month} onChange={(event) => setMonth(event.target.value)}>
@@ -56,7 +55,7 @@ export default function EditStep() {
       {shown.length === 0 && (
         <p className="notice">{onlyChanged && changed === 0 ? "No changed rows." : "No rows match."}</p>
       )}
-      <table className="review-table" aria-label="All transactions">
+      <table className="review-table edit-table" aria-label="All transactions">
         <thead>
           <tr>
             <th>Date</th>
@@ -70,10 +69,10 @@ export default function EditStep() {
         <tbody>
           {shown.map((row) => (
             <tr key={row.key} className={isEdited(row) ? "edited" : ""}>
-              <td>{row.date}</td>
-              <td className="amount">{money.format(row.amount)}</td>
-              <td>{row.title}</td>
-              <td>
+              <td className="rv-date">{row.date}</td>
+              <td className="amount rv-amount">{money.format(row.amount)}</td>
+              <td className="rv-title">{row.title}</td>
+              <td className="rv-cat">
                 <select
                   value={categoryOf(row)}
                   aria-label={`Category for ${row.title}`}
@@ -84,7 +83,7 @@ export default function EditStep() {
                   ))}
                 </select>
               </td>
-              <td>
+              <td className="rv-ess" data-label="Essential">
                 <input
                   type="checkbox"
                   checked={essentialOf(row)}
@@ -92,10 +91,12 @@ export default function EditStep() {
                   onChange={(event) => setEssential(row, event.target.checked)}
                 />
               </td>
-              <td>
-                <button onClick={() => undoRow(row)} disabled={!isEdited(row)} aria-label={`Undo change for ${row.title}`}>
-                  Undo
-                </button>
+              <td className="rv-undo">
+                {isEdited(row) && (
+                  <button onClick={() => undoRow(row)} aria-label={`Undo change for ${row.title}`}>
+                    Undo
+                  </button>
+                )}
               </td>
             </tr>
           ))}

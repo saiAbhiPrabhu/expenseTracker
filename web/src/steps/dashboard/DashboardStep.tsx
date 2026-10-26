@@ -40,7 +40,7 @@ export default function DashboardStep() {
   if (error) {
     return (
       <div>
-        <p className="notice">{error}</p>
+        <p className="notice error"><span className="error-label">Error</span>{error}</p>
         <p><button onClick={() => setAttempt(attempt + 1)}>Try again</button></p>
         <ControlBar continueLabel="Edit data" onContinue={next} />
       </div>
@@ -69,23 +69,8 @@ export default function DashboardStep() {
         {" "}Include transfers, savings and debt payments ({money.format(data.moneyMovement)})
       </label>
 
-      <h3>By month</h3>
-      <p className="notice">Bars are relative to the largest month.</p>
-      <table className="data-table" aria-label="Expenditure by month">
-        <thead><tr><th>Month</th><th>Expenditure</th><th>Share</th><th aria-label="Bar compared with the largest month" /></tr></thead>
-        <tbody>
-          {data.months.map((row) => (
-            <tr key={row.month}>
-              <th scope="row">{monthLabel(row.month)}</th>
-              <td className="amount">{money.format(row.expenditure)}</td>
-              <td className="amount">{percent(row.expenditure, total)}</td>
-              <td><Bar part={row.expenditure} whole={largestMonth} /></td>
-            </tr>
-          ))}
-        </tbody>
-        <tfoot><tr><th scope="row">Total</th><td className="amount">{money.format(total)}</td><td className="amount">{percent(total, total)}</td><td /></tr></tfoot>
-      </table>
-
+      <div className="dash-grid">
+        <section className="dash-main">
       <h3>By category</h3>
       <p className="notice">Bars are relative to the largest category.</p>
       <table className="data-table" aria-label="Expenditure by category">
@@ -103,6 +88,28 @@ export default function DashboardStep() {
         <tfoot><tr><th scope="row">Total</th><td className="amount">{money.format(total)}</td><td className="amount">{percent(total, total)}</td><td /></tr></tfoot>
       </table>
 
+        </section>
+        <div className="dash-side">
+          <section>
+      <h3>By month</h3>
+      <p className="notice">Bars are relative to the largest month.</p>
+      <table className="data-table" aria-label="Expenditure by month">
+        <thead><tr><th>Month</th><th>Expenditure</th><th>Share</th><th aria-label="Bar compared with the largest month" /></tr></thead>
+        <tbody>
+          {data.months.map((row) => (
+            <tr key={row.month}>
+              <th scope="row">{monthLabel(row.month)}</th>
+              <td className="amount">{money.format(row.expenditure)}</td>
+              <td className="amount">{percent(row.expenditure, total)}</td>
+              <td><Bar part={row.expenditure} whole={largestMonth} /></td>
+            </tr>
+          ))}
+        </tbody>
+        <tfoot><tr><th scope="row">Total</th><td className="amount">{money.format(total)}</td><td className="amount">{percent(total, total)}</td><td /></tr></tfoot>
+      </table>
+
+          </section>
+          <section>
       <h3>By necessity</h3>
       <p className="notice">The dark part of the bar is essential.</p>
       <div className="dash-split" aria-hidden="true"><div style={{ width: `${essentialShare}%` }} /></div>
@@ -113,6 +120,10 @@ export default function DashboardStep() {
           <tr><th scope="row">Non-essential</th><td className="amount">{money.format(data.essential.nonEssential)}</td><td className="amount">{percent(data.essential.nonEssential, total)}</td></tr>
         </tbody>
       </table>
+
+          </section>
+        </div>
+      </div>
 
       <details className="dash-details">
         <summary>Show category by month</summary>

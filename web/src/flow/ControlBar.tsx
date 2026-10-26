@@ -1,3 +1,5 @@
+import { createPortal } from "react-dom";
+import { useActionSlot } from "./ActionSlot";
 import { useFlow } from "./FlowContext";
 
 interface Props {
@@ -11,15 +13,19 @@ interface Props {
   hideBack?: boolean;
 }
 
-// The one place a step puts its Back and primary buttons. Every step uses it, so the order of events is always clear.
+// The one place a step puts its Back and primary buttons. It renders into the page's sticky action bar,
+// so every step's primary action sits in the same place.
 export default function ControlBar({ continueLabel, onContinue, disabledReason, onBack, hideBack }: Props) {
   const { index, back } = useFlow();
+  const slot = useActionSlot();
   const showBack = !hideBack && (onBack !== undefined || index > 0);
-  return (
+  if (!slot) return null;
+  return createPortal(
     <div className="button-row control-bar">
       {showBack && <button onClick={onBack ?? back}>Back</button>}
       <button onClick={onContinue} disabled={disabledReason !== undefined}>{continueLabel}</button>
       {disabledReason !== undefined && <span className="notice">{disabledReason}</span>}
-    </div>
+    </div>,
+    slot,
   );
 }

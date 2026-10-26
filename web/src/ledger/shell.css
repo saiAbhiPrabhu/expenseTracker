@@ -1,0 +1,148 @@
+/* The ledger language for the demo flow: a two-page spread, ruled tables, hairline controls. Scoped to .ledger-page. */
+:root { interpolate-size: allow-keywords; }
+body.ledger main { max-width: 1240px; }
+
+.ledger-page { --rule: color-mix(in srgb, var(--navy) 26%, transparent); color: var(--navy); font-size: 16px; line-height: 1.55; }
+.ledger-page h1, .ledger-page h2, .ledger-page h3 { font-weight: 600; margin: 0; }
+/* The running head: a small spaced title above a rule, like the top of a ledger page. */
+.ledger-page h1 { margin: 4px 0 28px; padding-bottom: 12px; border-bottom: 1px solid var(--navy); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; }
+.ledger-page h2 { font-size: 30px; line-height: 1.2; letter-spacing: -0.005em; }
+.ledger-page h2:focus { outline: 0; }
+.ledger-page h3 { margin: 44px 0 10px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; }
+.ledger-page .notice { color: var(--navy-quiet); margin: 6px 0 14px; }
+.ledger-page .step-instruction { margin: 8px 0 28px; font-size: 17px; }
+.ledger-page .notice.error { color: var(--navy); padding-left: 12px; box-shadow: inset 2px 0 0 var(--ink-red); }
+.ledger-page .error-label { margin-right: 10px; color: var(--ink-red); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.ledger-page strong { font-weight: 700; }
+
+/* The spread: the rail is the left page, the step is the right page, the rule between them is the spine. */
+.ledger-page .spread { display: grid; grid-template-columns: 252px minmax(0, 1fr); align-items: stretch; }
+.ledger-page .rail { padding: 4px 32px 0 0; border-right: 1px solid var(--navy); }
+.ledger-page .rail-inner { position: sticky; top: 24px; }
+.ledger-page .page { min-width: 0; padding: 0 0 0 48px; }
+.ledger-page .page-body { min-height: 320px; }
+
+.ledger-page .rail-steps { margin: 0; padding: 0; list-style: none; }
+.ledger-page .rail-steps li { margin: 0 0 4px; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.ledger-page .rail-steps .rail-label, .ledger-page .rail-steps .stepper-link { display: inline-block; padding: 8px 0; }
+.ledger-page .rail-steps li:not(.current) .rail-label { opacity: 0.5; }
+.ledger-page .rail-steps li.current .rail-label { font-weight: 700; border-bottom: 3px double var(--navy); }
+.ledger-page .stepper-link {
+  border: 0; border-radius: 0; background: none; outline: 0 solid var(--navy); outline-offset: 4px;
+  font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; cursor: pointer; text-align: left;
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px;
+  text-decoration-color: color-mix(in srgb, var(--navy) 35%, transparent); transition: text-decoration-color var(--quick) var(--ease);
+}
+.ledger-page .stepper-link:hover { text-decoration-color: var(--navy); }
+.ledger-page .stepper-link:focus-visible { outline-width: 3px; }
+
+.ledger-page .rail-facts { margin: 40px 0 0; padding-top: 20px; border-top: 1px solid var(--rule); }
+.ledger-page .rail-facts div { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+.ledger-page .rail-facts dt { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-quiet); }
+.ledger-page .rail-facts dd { margin: 0; font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums lining-nums; }
+.ledger-page .rail-facts .attention dd { color: var(--ink-red); }
+
+/* The action bar: Back and the primary action, always in the same place. */
+.ledger-page .action-bar { position: sticky; bottom: 0; z-index: 5; margin-top: 40px; padding: 20px 8px 22px; background: var(--cream); border-top: 1px solid var(--navy); }
+.ledger-page .action-bar .button-row { margin: 0; }
+
+/* Buttons: one style. A step's primary action is the right-hand one. */
+.ledger-page .button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 28px; justify-content: flex-start; }
+.ledger-page button, .ledger-page a.button {
+  padding: 12px 26px; margin: 0; border: 1px solid var(--navy); border-radius: 0; background: var(--cream); color: var(--navy);
+  outline: 1px solid var(--navy); outline-offset: 3px;
+  font: inherit; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; cursor: pointer;
+  transition: outline-offset var(--quick) var(--ease);
+}
+.ledger-page button:hover, .ledger-page a.button:hover { outline-offset: 5px; }
+.ledger-page button:focus-visible, .ledger-page a.button:focus-visible { outline-width: 3px; outline-offset: 5px; }
+.ledger-page button:disabled, .ledger-page button[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; outline-style: dashed; }
+.ledger-page button:disabled:hover { outline-offset: 3px; }
+.ledger-page td button { padding: 6px 14px; font-size: 11.5px; }
+.ledger-page .stepper-link, .ledger-page .stepper-link:hover { padding: 8px 0; outline-offset: 4px; }
+
+/* Tabs: months in Review, details in Process. Text with a rule beneath, not buttons. */
+.ledger-page .tab-row { display: flex; flex-wrap: wrap; gap: 4px 28px; margin: 4px 0 8px; border-bottom: 1px solid var(--navy); }
+.ledger-page button.tab {
+  padding: 10px 2px 9px; border: 0; outline: 0 solid var(--navy); outline-offset: 2px; background: none; border-bottom: 3px double transparent; margin-bottom: -1px;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.1em;
+}
+.ledger-page button.tab:hover { outline-offset: 2px; border-bottom-color: color-mix(in srgb, var(--navy) 35%, transparent); }
+.ledger-page button.tab[aria-pressed="true"], .ledger-page button.tab[aria-expanded="true"] { border-bottom-color: var(--navy); }
+.ledger-page button.tab:focus-visible { outline-width: 3px; }
+.ledger-page .tab-count { color: var(--ink-red); font-variant-numeric: tabular-nums lining-nums; }
+.ledger-page .tab-panel { padding-top: 12px; }
+
+/* Fields: a single hairline. */
+.ledger-page input, .ledger-page select, .ledger-page textarea { font: inherit; font-size: 15px; color: var(--navy); background: var(--cream); border: 1px solid var(--navy); border-radius: 0; padding: 8px 10px; }
+.ledger-page input:focus-visible, .ledger-page select:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+.ledger-page input:disabled, .ledger-page select:disabled { opacity: 0.5; border-style: dashed; }
+.ledger-page select { appearance: none; padding-right: 30px; background-repeat: no-repeat; background-position: right 10px center; background-size: 10px 6px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2316203f' stroke-width='1.25'/%3E%3C/svg%3E"); }
+.ledger-page input[type="checkbox"] { appearance: none; position: relative; width: 20px; height: 20px; padding: 0; margin: 0 8px -5px 0; cursor: pointer; }
+.ledger-page input[type="checkbox"]:checked::after { content: ""; position: absolute; left: 6px; top: 1px; width: 5px; height: 11px; border: solid var(--navy); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.ledger-page input[type="file"] { padding: 6px; }
+.ledger-page input[type="file"]::file-selector-button { margin-right: 12px; padding: 6px 12px; border: 1px solid var(--navy); border-radius: 0; background: var(--cream); color: var(--navy); font: inherit; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* Links in running content. */
+.ledger-page a:not(.button) { color: var(--navy); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: color-mix(in srgb, var(--navy) 35%, transparent); transition: text-decoration-color var(--quick) var(--ease); }
+.ledger-page a:not(.button):hover { text-decoration-color: var(--navy); }
+.ledger-page a:not(.button):focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+
+/* Tables: no fills, a double rule under the header and above the totals, hairlines between rows. */
+.ledger-page table { font-variant-numeric: tabular-nums lining-nums; }
+.ledger-page .data-table, .ledger-page .review-table { margin: 12px 0 20px; font-size: 15px; }
+.ledger-page .dash-grid .data-table { width: 100%; min-width: 0; }
+.ledger-page .data-table th, .ledger-page .data-table td, .ledger-page .review-table th, .ledger-page .review-table td { border-bottom: 1px solid var(--rule); padding: 10px 16px 10px 8px; text-align: left; font-weight: 400; }
+.ledger-page .data-table .amount, .ledger-page .review-table .amount { text-align: right; }
+.ledger-page .data-table thead th, .ledger-page .review-table thead th { padding-bottom: 10px; border-bottom: 3px double var(--navy); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.ledger-page .data-table tbody th { font-weight: 400; }
+.ledger-page .data-table tfoot th, .ledger-page .data-table tfoot td { border-top: 3px double var(--navy); border-bottom: 0; font-weight: 700; }
+.ledger-page .review-table .edited, .ledger-page .data-table .edited { background: none; box-shadow: inset 4px 0 0 var(--navy); }
+.ledger-page .review-table { width: 100%; }
+.ledger-page .review-table .rv-cat select { width: 100%; max-width: 230px; }
+.ledger-page .review-table .rv-title { min-width: 150px; }
+.ledger-page .review-table td.rv-undo, .ledger-page .review-table th:last-child { width: 88px; padding-right: 8px; }
+
+/* Upload: a blank page with a ruled area for choosing files. */
+.ledger-page .dropzone { margin: 4px 0 24px; padding: 24px; border: 1px solid var(--navy); }
+.ledger-page .dropzone p { margin: 0 0 14px; }
+.ledger-page .dropzone p:last-child { margin: 18px 0 0 4px; }
+
+/* Edit: the filters stay in view while the long table scrolls. */
+.ledger-page .filter-row { position: sticky; top: 0; z-index: 4; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin: 18px 0 8px; padding: 14px 0; background: var(--cream); border-bottom: 1px solid var(--rule); }
+
+@media (max-width: 900px) {
+  .ledger-page .spread { display: block; }
+  .ledger-page .rail-inner { position: static; }
+  .ledger-page .rail { padding: 0 0 12px; border-right: 0; border-bottom: 1px solid var(--navy); margin-bottom: 28px; }
+  .ledger-page .rail-steps { display: flex; flex-wrap: wrap; gap: 0 22px; }
+  .ledger-page .rail-facts { display: none; }
+  .ledger-page .page { padding: 0; }
+}
+@media (max-width: 520px) {
+  .ledger-page h2 { font-size: 24px; }
+  .ledger-page .action-bar { padding: 14px 6px 18px; }
+  .ledger-page .button-row { gap: 22px; }
+  .ledger-page .data-table { min-width: 0; width: 100%; }
+  .ledger-page .data-table th, .ledger-page .data-table td { padding: 8px 4px; }
+  .ledger-page .data-table thead th { letter-spacing: 0.06em; font-size: 11px; }
+  .ledger-page .dropzone { padding: 16px; }
+  .ledger-page .review-table, .ledger-page .review-table tbody { display: block; width: 100%; }
+  .ledger-page .review-table thead { display: none; }
+  .ledger-page .review-table tr { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; row-gap: 8px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--rule); grid-template-areas: "title amount" "date date" "cat undo"; }
+  .ledger-page .review-table.edit-table tr { grid-template-areas: "title amount" "date date" "cat cat" "ess undo"; }
+  .ledger-page .review-table td { padding: 0; border: 0; }
+  .ledger-page .review-table td.rv-title { grid-area: title; }
+  .ledger-page .review-table td.rv-amount { grid-area: amount; }
+  .ledger-page .review-table td.rv-date { grid-area: date; color: var(--navy-quiet); }
+  .ledger-page .review-table td.rv-cat { grid-area: cat; }
+  .ledger-page .review-table td.rv-cat select { width: 100%; max-width: none; }
+  .ledger-page .review-table td.rv-ess { grid-area: ess; }
+  .ledger-page .review-table td.rv-ess::before { content: attr(data-label); margin-right: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+  .ledger-page .review-table td.rv-undo { grid-area: undo; width: auto; justify-self: end; }
+  .ledger-page .review-table .edited { box-shadow: inset 4px 0 0 var(--navy); padding-left: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ledger-page button, .ledger-page a.button, .ledger-page .stepper-link, .ledger-page a:not(.button) { transition: none !important; }
+}

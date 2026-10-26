@@ -17,63 +17,81 @@ function Summary({ s }: { s: ProcessedStatement }) {
   );
 }
 
+type Tab = "pages" | "text" | "rows";
+const TABS: { id: Tab; label: string }[] = [
+  { id: "pages", label: "Pages" },
+  { id: "text", label: "Text from pages" },
+  { id: "rows", label: "Rows" },
+];
+
+// Three tabs per statement. Pressing the open tab again closes it, so the page stays short by default.
 function Details({ s }: { s: ProcessedStatement }) {
+  const [tab, setTab] = useState<Tab | null>(null);
   const parsed = s.pageReadings.filter((p) => p.status === "read");
   return (
-    <details>
-      <summary>Show details</summary>
+    <div>
+      <div className="tab-row" role="group" aria-label={`Details of ${s.label}`}>
+        {TABS.map((t) => (
+          <button key={t.id} className="tab" aria-expanded={tab === t.id} aria-controls={`${s.id}-${t.id}`} onClick={() => setTab(tab === t.id ? null : t.id)}>
+            {t.label}
+          </button>
+        ))}
+      </div>
 
-      <details className="process-nested">
-        <summary>Pages</summary>
-        {s.pageReadings.map((p) =>
-          p.status === "read" ? (
+      {tab === "pages" && (
+        <div id={`${s.id}-pages`} className="tab-panel">
+          {s.pageReadings.map((p) =>
+            p.status === "read" ? (
+              <div key={p.page}>
+                <p>Page {p.page}</p>
+                <div className="process-pair">
+                  <figure>
+                    <img loading="lazy" src={p.beforeImage} alt={`${s.label} page ${p.page} as printed, with your name and account number at the top`} />
+                    <figcaption className="notice">As printed</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src={p.afterImage} alt={`${s.label} page ${p.page} with the top cut off, name and account number gone`} />
+                    <figcaption className="notice">Top cut off</figcaption>
+                  </figure>
+                </div>
+              </div>
+            ) : (
+              <p key={p.page} className="notice">Page {p.page}: skipped</p>
+            ),
+          )}
+        </div>
+      )}
+
+      {tab === "text" && (
+        <div id={`${s.id}-text`} className="tab-panel">
+          {parsed.map((p) => (
             <div key={p.page}>
               <p>Page {p.page}</p>
-              <div className="process-pair">
-                <figure>
-                  <img src={p.beforeImage} alt={`${s.label} page ${p.page} as printed, with your name and account number at the top`} />
-                  <figcaption className="notice">As printed</figcaption>
-                </figure>
-                <figure>
-                  <img src={p.afterImage} alt={`${s.label} page ${p.page} with the top cut off, name and account number gone`} />
-                  <figcaption className="notice">Top cut off</figcaption>
-                </figure>
-              </div>
+              <pre className="process-text" aria-label={`Text read from ${s.label} page ${p.page}`} tabIndex={0}>{p.ocrText}</pre>
             </div>
-          ) : (
-            <p key={p.page} className="notice">Page {p.page}: skipped</p>
-          ),
-        )}
-      </details>
+          ))}
+        </div>
+      )}
 
-      <details className="process-nested">
-        <summary>Text from pages</summary>
-        {parsed.map((p) => (
-          <div key={p.page}>
-            <p>Page {p.page}</p>
-            <pre className="process-text" aria-label={`Text read from ${s.label} page ${p.page}`} tabIndex={0}>{p.ocrText}</pre>
-          </div>
-        ))}
-      </details>
-
-      <details className="process-nested">
-        <summary>Rows</summary>
-        <table className="data-table process-rows" aria-label={`Rows of ${s.label}`}>
-          <thead><tr><th>Date</th><th>Title</th><th>Cleaned title</th><th>Amount</th><th>Status</th></tr></thead>
-          <tbody>
-            {s.rows.map((r, i) => (
-              <tr key={i}>
-                <td data-label="Date">{r.date}</td>
-                <td data-label="Title">{r.title}</td>
-                <td data-label="Cleaned title">{r.scrubbedTitle}</td>
-                <td className="amount" data-label="Amount">{money.format(r.amount)}</td>
-                <td data-label="Status">{r.kept ? "Kept" : "Removed"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </details>
-    </details>
+      {tab === "rows" && (
+        <div id={`${s.id}-rows`} className="tab-panel">
+          <table className="data-table process-rows" aria-label={`Rows of ${s.label}`}>
+            <thead><tr><th>Date</th><th>Title</th><th>Cleaned title</th><th>Amount</th><th>Status</th></tr></thead>
+            <tbody>
+              {s.rows.map((r, i) => (
+                <tr key={i}>
+                  <td data-label="Date">{r.date}</td>
+                  <td data-label="Title">{r.title}</td>
+                  <td data-label="Cleaned title">{r.scrubbedTitle}</td>
+                  <td className="amount" data-label="Amount">{money.format(r.amount)}</td>
+                  <td data-label="Status">{r.kept ? "Kept" : "Removed"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -108,12 +126,12 @@ export default function ProcessStep() {
   const reason = error ?? (results ? undefined : "Reading your statements…");
   return (
     <div>
-      {error && <p className="notice">{error}</p>}
+      {error && <p className="notice error"><span className="error-label">Error</span>{error}</p>}
       {!error && !results && <p className="notice">Reading your statements…</p>}
       {results && results.map((s) => (
         <div key={s.id} className="process-block">
           <h3>{s.label}</h3>
-          <p className="notice">{s.fileName}</p>
+          <p className="notice file-name">{s.fileName}</p>
           <Summary s={s} />
           <Details s={s} />
         </div>

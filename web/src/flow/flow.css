@@ -1,3 +1,2 @@
-/* Step list and control bar. Same language as styles.css: no color, no motion. */
-.stepper .stepper-link { border: none; background: none; padding: 0; font: inherit; text-decoration: underline; cursor: pointer; }
+/* Control bar. Layout and buttons are styled by ledger/shell.css. */
 .control-bar { align-items: center; }

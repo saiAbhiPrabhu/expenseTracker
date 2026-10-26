@@ -1,10 +1,15 @@
-.process-block { border-bottom: 1px solid #e3e3e3; margin-bottom: 16px; }
-.process-list { padding-left: 24px; }
+/* Process step: one block per statement, with the "Show..." sections nested under a heavier left rule. See ledger/shell.css. */
+.process-block { margin-bottom: 40px; }
+.process-block h3 { margin-top: 28px; }
+.file-name { margin-top: 2px; }
+.process-list { padding-left: 20px; margin: 12px 0 16px; }
 .process-list li { margin-bottom: 4px; }
-.process-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.process-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 8px 0 16px; }
 .process-pair figure { margin: 0; }
-.process-pair img { max-width: 100%; height: auto; border: 1px solid #ccc; }
-.process-text { border: 1px solid #ccc; border-radius: 4px; padding: 8px; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 240px; overflow-y: auto; }
+.process-pair img { display: block; max-width: 100%; height: auto; border: 1px solid var(--navy); }
+.process-pair figcaption { margin-top: 6px; }
+.process-text { margin: 8px 0 16px; padding: 12px; border: 1px solid var(--navy); font: 12.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 240px; overflow-y: auto; }
+.process-text:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
 /* The rows table fills the width and wraps its text, so it never scrolls sideways. */
 .data-table.process-rows { width: 100%; min-width: 0; table-layout: fixed; }
 .process-rows th, .process-rows td { overflow-wrap: anywhere; padding-right: 8px; }
@@ -13,15 +18,14 @@
 .process-rows th:nth-child(2), .process-rows th:nth-child(3) { width: 27%; }
 .process-rows th:nth-child(4) { width: 15%; }
 .process-rows th:nth-child(5) { width: 12%; }
-.process-block summary { cursor: pointer; margin-bottom: 8px; }
-.process-nested { margin: 8px 0 8px 16px; }
 
 /* On a phone each row becomes a short block of labeled lines instead of five cramped columns. */
 @media (max-width: 520px) {
+  .process-pair { grid-template-columns: 1fr; }
   .data-table.process-rows, .process-rows tbody, .process-rows tr, .process-rows td { display: block; width: 100%; }
   .process-rows thead { display: none; }
-  .process-rows tr { border-bottom: 1px solid #e3e3e3; padding: 8px 0; }
-  .data-table.process-rows td { border: none; padding: 2px 0; }
+  .process-rows tr { border-bottom: 1px solid var(--rule); padding: 8px 0; }
+  .ledger-page .data-table.process-rows td { border: none; padding: 2px 0; }
   .process-rows td.amount { text-align: left; }
-  .process-rows td::before { content: attr(data-label) ": "; color: #666; }
+  .process-rows td::before { content: attr(data-label) ": "; color: var(--navy-quiet); }
 }

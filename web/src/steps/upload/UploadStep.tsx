@@ -24,6 +24,7 @@ export default function UploadStep() {
 
   return (
     <div>
+      <div className="dropzone">
       <p>
         <label>
           Statement PDFs{" "}
@@ -35,7 +36,8 @@ export default function UploadStep() {
         <button onClick={loading ? undefined : useSamples} aria-disabled={loading}>Use the sample statements</button>
         {loading && <span className="notice"> Loading…</span>}
       </p>
-      {error && <p className="notice">{error}</p>}
+      </div>
+      {error && <p className="notice error"><span className="error-label">Error</span>{error}</p>}
       <table className="data-table" aria-label="Your statements">
         <thead>
           <tr><th>File</th><th>Month</th><th>Pages</th><th>Size</th></tr>

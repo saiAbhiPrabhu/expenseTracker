@@ -1,0 +1,114 @@
+/* The ledger design language for the login screen and the book menu. See design-notes.md at the repo root. */
+@font-face {
+  font-family: "Literata";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/fonts/literata-opsz.woff2") format("woff2");
+}
+
+:root {
+  --cream: #faf6ec;
+  --navy: #16203f;
+  --navy-quiet: #5a6073; /* navy at 70% on cream, 5.8:1 */
+  --ink-red: #9b1c1c; /* ledger red ink: errors and counts that need attention, 7.5:1 on cream */
+  --font: "Literata", Georgia, serif;
+  --ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --quick: 220ms;
+  --slow: 600ms;
+  --book-w: 26px;
+  --book-h: 34px;
+}
+
+body.ledger { background: var(--cream); color: var(--navy); font-family: "Literata", Georgia, serif; font-optical-sizing: auto; }
+body.ledger ::selection { background: var(--navy); color: var(--cream); }
+
+/* The menu: a book that opens, and a bar that slides out beside it. */
+.book-menu { position: relative; padding: 20px 24px; color: var(--navy); font-family: "Literata", Georgia, serif; font-optical-sizing: auto; }
+.book-menu .book-row { position: relative; display: flex; align-items: center; }
+
+.book-menu .book-toggle {
+  width: var(--book-w); height: var(--book-h); padding: 0; margin: 0; border: 0; border-radius: 0; background: none;
+  outline: 0 solid var(--navy); outline-offset: 8px; cursor: pointer;
+  perspective: 240px;
+}
+.book-menu .book-toggle:focus-visible { outline-width: 3px; }
+
+.book { position: relative; display: block; width: var(--book-w); height: var(--book-h); transform-style: preserve-3d; transition: transform var(--slow) var(--ease); }
+.book-menu.open .book { transform: translateX(var(--book-w)); }
+
+.book .cover, .book .leaf {
+  position: absolute; inset: 0; display: block; transform-origin: left center; transform-style: preserve-3d;
+  transition: transform var(--slow) var(--ease);
+}
+.book .face { position: absolute; inset: 0; display: block; backface-visibility: hidden; }
+.book .front { background: var(--navy); }
+.book .front::after { content: ""; position: absolute; top: 0; bottom: 0; left: 5px; width: 1px; background: var(--cream); }
+.book .back { background: var(--navy); transform: rotateY(180deg); }
+.book .back::after { content: ""; position: absolute; inset: 3px; border: 1px solid var(--cream); }
+.book .leaf { background: var(--cream); border: 1px solid var(--navy); }
+
+/* Closed: stacked, cover on top. The last page falls first, the cover closes last. */
+.book .cover { transform: translateZ(4px); transition-delay: 180ms; }
+.book .l1 { transform: translateZ(2px); transition-delay: 120ms; }
+.book .l2 { transform: translateZ(1px); transition-delay: 60ms; }
+.book .l3 { transform: translateZ(0); transition-delay: 0ms; }
+
+/* Open: cover and first page lie to the left, one page stands at the spine, the last is slightly lifted. */
+.book-menu.open .book .cover { transform: translateZ(4px) rotateY(-180deg); transition-delay: 0ms; }
+.book-menu.open .book .l1 { transform: translateZ(2px) rotateY(-176deg); transition-delay: 60ms; }
+.book-menu.open .book .l2 { transform: translateZ(1px) rotateY(-90deg); transition-delay: 120ms; }
+.book-menu.open .book .l3 { transform: rotateY(-7deg); transition-delay: 180ms; }
+
+.book-menu .book-bar {
+  position: absolute; left: calc(var(--book-w) * 2 + 28px); top: 50%;
+  display: flex; align-items: center; gap: 4px; padding: 4px 8px;
+  background: var(--cream); border: 1px solid var(--navy); outline: 1px solid var(--navy); outline-offset: 3px;
+  opacity: 0; visibility: hidden; transform: translate(-24px, -50%);
+  transition: opacity var(--slow) var(--ease), transform var(--slow) var(--ease), visibility 0s linear var(--slow);
+}
+.book-menu.open .book-bar { opacity: 1; visibility: visible; transform: translate(0, -50%); transition-delay: 0s; }
+
+.book-menu .book-bar a, .book-menu .book-bar .unavailable {
+  padding: 10px 16px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap;
+  color: var(--navy); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px;
+  text-decoration-color: color-mix(in srgb, var(--navy) 35%, transparent);
+  outline: 0 solid var(--navy); outline-offset: 2px;
+  transition: text-decoration-color var(--quick) var(--ease);
+}
+.book-menu .book-bar a:hover { text-decoration-color: var(--navy); }
+.book-menu .book-bar a:focus-visible { outline-width: 3px; }
+.book-menu .book-bar .unavailable { opacity: 0.5; text-decoration: none; }
+
+@media (max-width: 520px) {
+  .book-menu .book-bar { left: 24px; top: calc(100% + 18px); flex-wrap: wrap; transform: translate(0, -12px); }
+  .book-menu.open .book-bar { transform: translate(0, 0); }
+}
+
+/* The login screen. */
+.home { min-height: 68vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 56px; text-align: center; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.home .choices { display: flex; flex-wrap: wrap; justify-content: center; gap: 36px; }
+.home .choice { position: relative; display: block; }
+
+.home .ledger-button {
+  display: block; min-width: 220px; padding: 16px 28px; margin: 0; border: 1px solid var(--navy); border-radius: 0; background: var(--cream); color: var(--navy);
+  outline: 1px solid var(--navy); outline-offset: 3px;
+  font: inherit; font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; text-align: center; cursor: pointer;
+  transition: outline-offset var(--quick) var(--ease);
+}
+.home .ledger-button:hover { outline-offset: 6px; }
+.home .ledger-button:focus-visible { outline-width: 3px; outline-offset: 5px; }
+.home .ledger-button:disabled { opacity: 0.5; cursor: not-allowed; outline-style: dashed; }
+.home .ledger-button:disabled:hover { outline-offset: 3px; }
+.home .choice-note { position: absolute; top: calc(100% + 18px); left: 0; right: 0; margin: 0; font-size: 14px; color: var(--navy-quiet); }
+.home .privacy { max-width: 36ch; margin: 0; font-size: 17px; line-height: 1.5; color: var(--navy-quiet); text-wrap: balance; }
+
+@media (max-width: 520px) {
+  .home .choice-note { position: static; margin-top: 14px; }
+  .home .choices { flex-direction: column; gap: 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book, .book .cover, .book .leaf, .book-menu .book-bar, .book-menu .book-bar a, .home .ledger-button { transition: none !important; }
+}
