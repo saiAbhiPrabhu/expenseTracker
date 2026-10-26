@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-26T21:47:58.943210Z",
+  "title": "Design System: Expense Tracker",
+  "extensions": {
+    "colorMeta": {
+      "cream-page": {
+        "role": "neutral",
+        "displayName": "Cream Page",
+        "canonical": "#faf6ec",
+        "tonalRamp": [
+          "#faf6ec",
+          "#dcdad5",
+          "#bebebf",
+          "#a0a2a8",
+          "#828591",
+          "#64697a",
+          "#464d64",
+          "#28314d"
+        ]
+      },
+      "ink-navy": {
+        "role": "primary",
+        "displayName": "Ink Navy",
+        "canonical": "#16203f",
+        "tonalRamp": [
+          "#16203f",
+          "#343c56",
+          "#52586c",
+          "#707483",
+          "#8e919a",
+          "#acadb1",
+          "#cac9c7",
+          "#e8e5de"
+        ]
+      },
+      "quiet-navy": {
+        "role": "neutral",
+        "displayName": "Quiet Navy",
+        "canonical": "#5a6073",
+        "tonalRamp": [
+          "#5a6073",
+          "#6f7483",
+          "#848793",
+          "#999ba3",
+          "#aeafb3",
+          "#c3c3c3",
+          "#d8d6d2",
+          "#edeae2"
+        ]
+      },
+      "red-ink": {
+        "role": "secondary",
+        "displayName": "Red Ink",
+        "canonical": "#9b1c1c",
+        "tonalRamp": [
+          "#9b1c1c",
+          "#a73937",
+          "#b45553",
+          "#c0726e",
+          "#cd8f89",
+          "#d9aba5",
+          "#e6c8c0",
+          "#f2e5db"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "running-head": {
+        "displayName": "Running head",
+        "purpose": "The small spaced title above the page rule."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Step titles in sentence case."
+      },
+      "section": {
+        "displayName": "Section",
+        "purpose": "Table and section headings in short caps."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose, form labels, instructions."
+      },
+      "table": {
+        "displayName": "Table",
+        "purpose": "Table cells with tabular lining figures."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, tabs, Show bars, table headers."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-ledger",
+        "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "purpose": "Every transition: slow in, quick through the middle, settled out."
+      },
+      {
+        "name": "quick",
+        "value": "220ms",
+        "purpose": "Hover, focus, tabs, the opening of Show sections."
+      },
+      {
+        "name": "slow",
+        "value": "600ms",
+        "purpose": "The book opening and the menu bar sliding out. Nothing else."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "rail-collapses",
+        "value": "900px"
+      },
+      {
+        "name": "dashboard-stacks",
+        "value": "1100px"
+      },
+      {
+        "name": "rows-stack",
+        "value": "520px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Button",
+      "kind": "button",
+      "refersTo": "button",
+      "description": "The one button style; the primary action is the right-hand one in the action bar.",
+      "html": "<button class=\"ds-btn\">Continue</button>",
+      "css": ".ds-btn{padding:12px 26px;border:1px solid #16203f;border-radius:0;background:#faf6ec;color:#16203f;outline:1px solid #16203f;outline-offset:3px;font:600 13px/1.55 Literata,Georgia,serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:outline-offset .22s cubic-bezier(.65,0,.35,1)}.ds-btn:hover{outline-offset:5px}.ds-btn:focus-visible{outline:3px solid #16203f;outline-offset:5px}.ds-btn:disabled{opacity:.5;outline-style:dashed;cursor:not-allowed}"
+    },
+    {
+      "name": "Disabled button",
+      "kind": "button",
+      "refersTo": "button-disabled",
+      "description": "Faint with a dashed outer outline; the reason sits beside it.",
+      "html": "<button class=\"ds-btn\" disabled>Log in</button>",
+      "css": ".ds-btn{padding:12px 26px;border:1px solid #16203f;border-radius:0;background:#faf6ec;color:#16203f;outline:1px solid #16203f;outline-offset:3px;font:600 13px/1.55 Literata,Georgia,serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:outline-offset .22s cubic-bezier(.65,0,.35,1)}.ds-btn:hover{outline-offset:5px}.ds-btn:focus-visible{outline:3px solid #16203f;outline-offset:5px}.ds-btn:disabled{opacity:.5;outline-style:dashed;cursor:not-allowed}"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "A single-hairline select with a thin chevron.",
+      "html": "<select class=\"ds-field\"><option>Dining and Drinks</option></select>",
+      "css": ".ds-field{appearance:none;padding:8px 30px 8px 10px;border:1px solid #16203f;border-radius:0;background:#faf6ec url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2316203f' stroke-width='1.25'/%3E%3C/svg%3E\") no-repeat right 10px center;color:#16203f;font:400 15px Literata,Georgia,serif}.ds-field:focus-visible{outline:3px solid #16203f;outline-offset:2px}"
+    },
+    {
+      "name": "Tab",
+      "kind": "nav",
+      "description": "Spaced-caps text over a rule; the open tab has a double rule beneath. Count in red ink.",
+      "html": "<div class=\"ds-tabs\"><button class=\"ds-tab on\">June <span>12</span></button><button class=\"ds-tab\">July <span>3</span></button></div>",
+      "css": ".ds-tabs{display:flex;gap:28px;border-bottom:1px solid #16203f}.ds-tab{padding:10px 2px 9px;border:0;border-bottom:3px double transparent;margin-bottom:-1px;background:none;color:#16203f;font:600 13px Literata,Georgia,serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}.ds-tab.on{border-bottom-color:#16203f}.ds-tab span{color:#9b1c1c}"
+    },
+    {
+      "name": "Ledger table",
+      "kind": "custom",
+      "description": "Double rule under the header, hairlines between rows, a double rule above totals, tabular figures.",
+      "html": "<table class=\"ds-table\"><thead><tr><th>Category</th><th>Expenditure</th></tr></thead><tbody><tr><td>Housing</td><td class=\"n\">$7,384.34</td></tr><tr><td>Groceries</td><td class=\"n\">$2,302.67</td></tr></tbody><tfoot><tr><td>Total</td><td class=\"n\">$9,687.01</td></tr></tfoot></table>",
+      "css": ".ds-table{border-collapse:collapse;font:400 15px Literata,Georgia,serif;font-variant-numeric:tabular-nums lining-nums;color:#16203f}.ds-table th{padding:0 16px 10px 8px;border-bottom:3px double #16203f;font:600 12px Literata,Georgia,serif;letter-spacing:.1em;text-transform:uppercase;text-align:left}.ds-table td{padding:10px 16px 10px 8px;border-bottom:1px solid rgba(22,32,63,.26)}.ds-table .n{text-align:right}.ds-table tfoot td{border-top:3px double #16203f;border-bottom:0;font-weight:700}"
+    },
+    {
+      "name": "Show section",
+      "kind": "custom",
+      "description": "A hairline bar with a drawn plus that becomes a minus when open.",
+      "html": "<details class=\"ds-show\"><summary>Show top merchants</summary></details>",
+      "css": ".ds-show{border:1px solid #16203f;padding:0 20px;color:#16203f}.ds-show summary{position:relative;padding:14px 32px 14px 0;list-style:none;cursor:pointer;font:600 13px Literata,Georgia,serif;letter-spacing:.1em;text-transform:uppercase}.ds-show summary::before,.ds-show summary::after{content:'';position:absolute;right:2px;top:50%;background:#16203f}.ds-show summary::before{width:12px;height:1px}.ds-show summary::after{width:1px;height:12px;margin:-6px 5.5px 0 0}.ds-show[open] summary::after{display:none}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Ledger Spread",
+    "overview": "The interface is an open book of accounts: a rail of steps and counts on the left page, the step at hand on the right, a ruled spine between. Ink on cream, nothing filled dark, nothing raised, nothing rounded; importance by rule weight, red ink only for what needs attention.",
+    "keyCharacteristics": [
+      "Two inks and a quiet tint: navy on cream, with navy at 70% for secondary text.",
+      "Line, not fill: hairlines, double rules and a heavier rule carry hierarchy.",
+      "Square everywhere; no radius, shadow or gradient.",
+      "One serif (Literata); spaced capitals only for short labels.",
+      "Motion is 200 to 250ms; only the book and its bar take about 600ms."
+    ],
+    "rules": [
+      {
+        "name": "The Two Inks Rule",
+        "body": "Navy carries everything; red ink is the only other colour and always travels with a text label or a rule.",
+        "section": "colors"
+      },
+      {
+        "name": "The Weight-Not-Colour Rule",
+        "body": "If something matters more, make its rule heavier, double or longer. Do not tint it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Short-Caps Rule",
+        "body": "Spaced capitals are for words of a few letters. Category names, merchants and descriptions stay in sentence case.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Every figure column uses tabular lining numerals, right-aligned.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Primary Place Rule",
+        "body": "The primary action is the right-hand button in the action bar. It is not louder than Back; its place is its priority.",
+        "section": "layout"
+      },
+      {
+        "name": "The No-Raise Rule",
+        "body": "Nothing is lifted, glowing or blurred. If something must stand apart, it gets a rule.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Frame Means Action Rule",
+        "body": "Only things you press get the double outline. Containers use hairlines.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do show importance with rule weight, position and type weight.",
+      "Do keep every figure right-aligned in tabular lining numerals.",
+      "Do use the double outline only on things you press, hairlines on containers.",
+      "Do give red ink a text label or a rule alongside it.",
+      "Do keep state-change motion to 200 to 250ms and honour prefers-reduced-motion."
+    ],
+    "donts": [
+      "Don't use fills, shadows, gradients or rounded corners.",
+      "Don't add colours: navy, its tints and red ink are the whole palette.",
+      "Don't set long labels, categories or descriptions in spaced capitals.",
+      "Don't nest a double outline inside another double outline.",
+      "Don't loop any animation or use a spinner; loading is a static notice.",
+      "Don't let a table scroll sideways; stack its rows instead."
+    ]
+  }
+}
