@@ -19,4 +19,16 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .stepper { display: flex; gap: 16px; list-style: none; padding: 0; flex-wrap: wrap; }
 .stepper .current { font-weight: 700; text-decoration: underline; }
-.panel { border: 1px solid #ccc; border-radius: 4px; padding: 24px; min-height: 240px; margin-bottom: 16px; }
+.panel { border: 1px solid #ccc; border-radius: 4px; padding: 24px; min-height: 240px; margin-bottom: 16px; overflow-x: auto; }
+
+.review-table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+.review-table th, .review-table td { text-align: left; padding: 8px; border-bottom: 1px solid #e3e3e3; vertical-align: middle; }
+.review-table .amount { text-align: right; white-space: nowrap; }
+.review-table select { max-width: 240px; }
+.review-table .edited { background: #f6f6f6; box-shadow: inset 3px 0 0 #222; }
+
+.data-table { border-collapse: collapse; margin-bottom: 16px; min-width: 360px; }
+.data-table th, .data-table td { text-align: left; padding: 6px 16px 6px 8px; border-bottom: 1px solid #e3e3e3; }
+.data-table thead th { border-bottom: 1px solid #222; }
+.data-table .amount { text-align: right; white-space: nowrap; }
+.dash-total { font-size: 18px; }

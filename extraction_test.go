@@ -150,3 +150,22 @@ func TestScrubIsIdempotent(t *testing.T) {
 		}
 	}
 }
+
+func TestExtractWithSections(t *testing.T) {
+	_, got, err := ExtractWithSections(sampleText)
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := []SectionSummary{
+		{"Deposits and other additions", 2, 100550, 100550},
+		{"ATM and debit card subtractions", 2, -2425, -2425},
+	}
+	if len(got) != len(want) {
+		t.Fatalf("got %+v, want %+v", got, want)
+	}
+	for i := range want {
+		if got[i] != want[i] {
+			t.Errorf("section %d: got %+v, want %+v", i, got[i], want[i])
+		}
+	}
+}

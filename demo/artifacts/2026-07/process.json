@@ -1,0 +1,506 @@
+{
+  "id": "2026-07",
+  "label": "July 2026",
+  "fileName": "statement-2026-07.pdf",
+  "pages": 7,
+  "pageReadings": [
+    {
+      "page": 1,
+      "status": "skipped",
+      "reason": "The first page is the account summary. It is never read."
+    },
+    {
+      "page": 2,
+      "status": "skipped",
+      "reason": "No transactions on this page."
+    },
+    {
+      "page": 3,
+      "status": "read",
+      "beforeImage": "/api/demo/statements/2026-07/pages/3/before.png",
+      "afterImage": "/api/demo/statements/2026-07/pages/3/after.png",
+      "removedTopPercent": 12.5,
+      "ocrText": "Deposits and other additions\nDate Description Amount\n07/03/26 ACME CORP PAYROLL PPD ID: 1234567890 2,450.00\n07/17/26 ACME CORP PAYROLL PPD ID: 1234567890 2,450.00\n07/28/26 Online Banking transfer from SAV 4321 Confirmation# 200.00\n5550123\nTotal deposits and other additions $5,100.00\nWithdrawals and other subtractions\nATM and debit card subtractions\nDate Description Amount\n07/01/26 HEARTLAND DENTAL 1784 BROADWAY DR -43.52\nNASHVILLE37201 TN USA\n07/02/26 traderjoes #07 minneapo -108.33\n07/03/26 META VERIFIED -4.99\n07/03/26 playstation game -9.87\n07/04/26 Mlb.tv 9184 -21.74\n07/05/26 HAND \u0026 STONE.COM -24.68\n07/05/26 SOUTHWEST AIRLINES #628 AUSTIN -190.99\n07/07/26 SPOTHERO.COM -28.50\n07/09/26 GOOGLE *SMARTSHEET -15.49\n07/09/26 DENNY'S 6038 INDUSTRIAL LN QUEENS11101 NY USA -11.53\n07/09/26 PUBLIX #54342 -101.78\n07/09/26 Giant Eagle #29378 -53.64\n07/09/26 FACEBOOK MARKETPLACE 2540 MAIN DR HAYWARD -75.70\n94541-2676CA USA\n07/09/26 CROSSFIT - SAN DIEGO -71.88\ncontinued on the next page\nPage 3 of 7\n"
+    },
+    {
+      "page": 4,
+      "status": "read",
+      "beforeImage": "/api/demo/statements/2026-07/pages/4/before.png",
+      "afterImage": "/api/demo/statements/2026-07/pages/4/after.png",
+      "removedTopPercent": 12.5,
+      "ocrText": "Withdrawals and other subtractions - continued\nATM and debit card subtractions - continued\nDate Description Amount\n07/10/26 Vons 5465 Elm Ln Raleigh 27601 Nc Usa -27.89\n07/12/26 99 RANCH #285 PHILADELPHIA -116.04\n07/12/26 Jiffy Lube.com -13.71\n07/13/26 PAYPAL *SHAW'S 0NSZKLOLBX -47.28\n07/15/26 AMERICAN WATER 2428 UNIVERSITY WAY BOSTON -41.64\n\n02101 MA USA\n07/15/26 TOFU HOUSE 00764462 -23.65\n07/16/26 EL POLLO LOCO NEW YORK 6619 -8.09\n07/16/26 Uber *trip Union City Tk38e6 -36.95\n07/17/26 CHEESECAKE FACTORY 4173 BROADWAY LN LAS -19.98\n\nVEGAS 89101 NV USA\n07/17/26 Kindle Unltd*LADNSY1K5 -19.45\n07/17/26 TARGET #1465 AUSTIN -34.48\n07/17/26 76 - Las Vegas -29.29\n07/17/26 MONTHLY SERVICE FEE - 08/09 -35.00\n07/18/26 INNOUT 35419 -11.24\n07/18/26 Amazon.com*X35DABJJD -61.29\n07/19/26 PGANDE 226943 -69.44\n07/20/26 COOK OUT 09206 -13.28\n07/21/26 UPS STORE #4547 SAN JOSE -15.60\n07/22/26 TST*EL POLLO LOCO - INDIANAPOLIS -23.72\n07/22/26 FRESH MARKET #687 -46.37\n07/22/26 EXPEDITED SHIPPING FEE - 84/19 -8.00\n07/23/26 haidilao #476 boston -9.65\ncontinued on the next page\n\nPage 4 of 7\n"
+    },
+    {
+      "page": 5,
+      "status": "read",
+      "beforeImage": "/api/demo/statements/2026-07/pages/5/before.png",
+      "afterImage": "/api/demo/statements/2026-07/pages/5/after.png",
+      "removedTopPercent": 12.5,
+      "ocrText": "Withdrawals and other subtractions - continued\nATM and debit card subtractions - continued\nDate Description Amount\n07/25/26 DAVE'S HOT CHICKEN 8426 ELM AVE SACRAMENTO -42.28\n95814-7311CA USA\n07/25/26 PEARSON; CHARGE -56.17\n07/27/26 AMAZON MKTPL*BHEFXE4P5 -41.77\n07/28/26 CLV*fatburger -12.08\nTotal ATM and debit card subtractions -$1,626.98\nOther subtractions\nDate Description Amount\n07/01/26 MAA RENT PMT 47818361 PPD ID: 265900095 -1,800.00\n07/08/26 LEMONADE INSPAYMENT PPD ID: 1467678542 -160.00\n07/11/26 Buyer Payment: Walmart Pharmacy -23.19\n07/12/26 WITHDRAWAL FROM CITY WATER PHONE -90.29\n07/12/26 HUNTINGTON IFI DDA TO DDA UHANBXX3 WEB ID: -10.00\nINTFITRVOS\n07/13/26 preauthorized withdrawal to blizzard -9.45\n07/17/26 PAYPAL INST XFER SPOTIFY WEB ID: PAYPALSI44 -12.99\n07/18/26 ZIONS BANK DDA TO DDA F3WVSFAIBP WEB ID: -20.00\nDGHG19NG8P\n07/24/26 PAYPAL INST XFER SUBSTACK WEB ID: PAYPALSI04 -17.99\n07/28/26 Zelle payment to SANDRA JOHNSON NASHVILLE TN -200.00\n15208341787\nTotal other subtractions -$2,343.91\nPage 5 of 7\n"
+    },
+    {
+      "page": 6,
+      "status": "skipped",
+      "reason": "No transactions on this page."
+    },
+    {
+      "page": 7,
+      "status": "skipped",
+      "reason": "No transactions on this page."
+    }
+  ],
+  "sections": [
+    {
+      "name": "Deposits and other additions",
+      "rows": 3,
+      "printedTotal": 5100.00,
+      "rowsTotal": 5100.00,
+      "matches": true
+    },
+    {
+      "name": "ATM and debit card subtractions",
+      "rows": 40,
+      "printedTotal": -1626.98,
+      "rowsTotal": -1626.98,
+      "matches": true
+    },
+    {
+      "name": "Other subtractions",
+      "rows": 10,
+      "printedTotal": -2343.91,
+      "rowsTotal": -2343.91,
+      "matches": true
+    }
+  ],
+  "rows": [
+    {
+      "date": "07/03/26",
+      "amount": 2450.00,
+      "title": "ACME CORP PAYROLL PPD ID: 1234567890",
+      "scrubbedTitle": "ACME CORP PAYROLL PPD ID: [REDACTED]",
+      "section": "Deposits and other additions",
+      "kept": false
+    },
+    {
+      "date": "07/17/26",
+      "amount": 2450.00,
+      "title": "ACME CORP PAYROLL PPD ID: 1234567890",
+      "scrubbedTitle": "ACME CORP PAYROLL PPD ID: [REDACTED]",
+      "section": "Deposits and other additions",
+      "kept": false
+    },
+    {
+      "date": "07/28/26",
+      "amount": 200.00,
+      "title": "Online Banking transfer from SAV 4321 Confirmation# 5550123",
+      "scrubbedTitle": "Online Banking transfer from SAV 4321 Confirmation# [REDACTED]",
+      "section": "Deposits and other additions",
+      "kept": false
+    },
+    {
+      "date": "07/01/26",
+      "amount": -43.52,
+      "title": "HEARTLAND DENTAL 1784 BROADWAY DR NASHVILLE37201 TN USA",
+      "scrubbedTitle": "HEARTLAND DENTAL 1784 BROADWAY DR NASHVILLE37201 TN USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/02/26",
+      "amount": -108.33,
+      "title": "traderjoes #07 minneapo",
+      "scrubbedTitle": "traderjoes #07 minneapo",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/03/26",
+      "amount": -4.99,
+      "title": "META VERIFIED",
+      "scrubbedTitle": "META VERIFIED",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/03/26",
+      "amount": -9.87,
+      "title": "playstation game",
+      "scrubbedTitle": "playstation game",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/04/26",
+      "amount": -21.74,
+      "title": "Mlb.tv 9184",
+      "scrubbedTitle": "Mlb.tv 9184",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/05/26",
+      "amount": -24.68,
+      "title": "HAND \u0026 STONE.COM",
+      "scrubbedTitle": "HAND \u0026 STONE.COM",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/05/26",
+      "amount": -190.99,
+      "title": "SOUTHWEST AIRLINES #628 AUSTIN",
+      "scrubbedTitle": "SOUTHWEST AIRLINES #628 AUSTIN",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/07/26",
+      "amount": -28.50,
+      "title": "SPOTHERO.COM",
+      "scrubbedTitle": "SPOTHERO.COM",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/09/26",
+      "amount": -15.49,
+      "title": "GOOGLE *SMARTSHEET",
+      "scrubbedTitle": "GOOGLE *SMARTSHEET",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/09/26",
+      "amount": -11.53,
+      "title": "DENNY'S 6038 INDUSTRIAL LN QUEENS11101 NY USA",
+      "scrubbedTitle": "DENNY'S 6038 INDUSTRIAL LN QUEENS11101 NY USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/09/26",
+      "amount": -101.78,
+      "title": "PUBLIX #54342",
+      "scrubbedTitle": "PUBLIX #54342",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/09/26",
+      "amount": -53.64,
+      "title": "Giant Eagle #29378",
+      "scrubbedTitle": "Giant Eagle #29378",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/09/26",
+      "amount": -75.70,
+      "title": "FACEBOOK MARKETPLACE 2540 MAIN DR HAYWARD 94541-2676CA USA",
+      "scrubbedTitle": "FACEBOOK MARKETPLACE 2540 MAIN DR HAYWARD 94541-2676CA USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/09/26",
+      "amount": -71.88,
+      "title": "CROSSFIT - SAN DIEGO",
+      "scrubbedTitle": "CROSSFIT - SAN DIEGO",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/10/26",
+      "amount": -27.89,
+      "title": "Vons 5465 Elm Ln Raleigh 27601 Nc Usa",
+      "scrubbedTitle": "Vons 5465 Elm Ln Raleigh 27601 Nc Usa",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/12/26",
+      "amount": -116.04,
+      "title": "99 RANCH #285 PHILADELPHIA",
+      "scrubbedTitle": "99 RANCH #285 PHILADELPHIA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/12/26",
+      "amount": -13.71,
+      "title": "Jiffy Lube.com",
+      "scrubbedTitle": "Jiffy Lube.com",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/13/26",
+      "amount": -47.28,
+      "title": "PAYPAL *SHAW'S 0NSZKLOLBX",
+      "scrubbedTitle": "PAYPAL *SHAW'S 0NSZKLOLBX",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/15/26",
+      "amount": -41.64,
+      "title": "AMERICAN WATER 2428 UNIVERSITY WAY BOSTON 02101 MA USA",
+      "scrubbedTitle": "AMERICAN WATER 2428 UNIVERSITY WAY BOSTON 02101 MA USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/15/26",
+      "amount": -23.65,
+      "title": "TOFU HOUSE 00764462",
+      "scrubbedTitle": "TOFU HOUSE [REDACTED]",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/16/26",
+      "amount": -8.09,
+      "title": "EL POLLO LOCO NEW YORK 6619",
+      "scrubbedTitle": "EL POLLO LOCO NEW YORK 6619",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/16/26",
+      "amount": -36.95,
+      "title": "Uber *trip Union City Tk38e6",
+      "scrubbedTitle": "Uber *trip Union City Tk38e6",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/17/26",
+      "amount": -19.98,
+      "title": "CHEESECAKE FACTORY 4173 BROADWAY LN LAS VEGAS 89101 NV USA",
+      "scrubbedTitle": "CHEESECAKE FACTORY 4173 BROADWAY LN LAS VEGAS 89101 NV USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/17/26",
+      "amount": -19.45,
+      "title": "Kindle Unltd*LADNSY1K5",
+      "scrubbedTitle": "Kindle Unltd*LADNSY1K5",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/17/26",
+      "amount": -34.48,
+      "title": "TARGET #1465 AUSTIN",
+      "scrubbedTitle": "TARGET #1465 AUSTIN",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/17/26",
+      "amount": -29.29,
+      "title": "76 - Las Vegas",
+      "scrubbedTitle": "76 - Las Vegas",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/17/26",
+      "amount": -35.00,
+      "title": "MONTHLY SERVICE FEE - 08/09",
+      "scrubbedTitle": "MONTHLY SERVICE FEE - 08/09",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/18/26",
+      "amount": -11.24,
+      "title": "INNOUT 35419",
+      "scrubbedTitle": "INNOUT 35419",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/18/26",
+      "amount": -61.29,
+      "title": "Amazon.com*X35DABJJD",
+      "scrubbedTitle": "Amazon.com*X35DABJJD",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/19/26",
+      "amount": -69.44,
+      "title": "PGANDE 226943",
+      "scrubbedTitle": "PGANDE [REDACTED]",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/20/26",
+      "amount": -13.28,
+      "title": "COOK OUT 09206",
+      "scrubbedTitle": "COOK OUT 09206",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/21/26",
+      "amount": -15.60,
+      "title": "UPS STORE #4547 SAN JOSE",
+      "scrubbedTitle": "UPS STORE #4547 SAN JOSE",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/22/26",
+      "amount": -23.72,
+      "title": "TST*EL POLLO LOCO - INDIANAPOLIS",
+      "scrubbedTitle": "TST*EL POLLO LOCO - INDIANAPOLIS",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/22/26",
+      "amount": -46.37,
+      "title": "FRESH MARKET #687",
+      "scrubbedTitle": "FRESH MARKET #687",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/22/26",
+      "amount": -8.00,
+      "title": "EXPEDITED SHIPPING FEE - 84/19",
+      "scrubbedTitle": "EXPEDITED SHIPPING FEE - 84/19",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/23/26",
+      "amount": -9.65,
+      "title": "haidilao #476 boston",
+      "scrubbedTitle": "haidilao #476 boston",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/25/26",
+      "amount": -42.28,
+      "title": "DAVE'S HOT CHICKEN 8426 ELM AVE SACRAMENTO 95814-7311CA USA",
+      "scrubbedTitle": "DAVE'S HOT CHICKEN 8426 ELM AVE SACRAMENTO 95814-7311CA USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/25/26",
+      "amount": -56.17,
+      "title": "PEARSON; CHARGE",
+      "scrubbedTitle": "PEARSON; CHARGE",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/27/26",
+      "amount": -41.77,
+      "title": "AMAZON MKTPL*BHEFXE4P5",
+      "scrubbedTitle": "AMAZON MKTPL*BHEFXE4P5",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/28/26",
+      "amount": -12.08,
+      "title": "CLV*fatburger",
+      "scrubbedTitle": "CLV*fatburger",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/01/26",
+      "amount": -1800.00,
+      "title": "MAA RENT PMT 47818361 PPD ID: 265900095",
+      "scrubbedTitle": "MAA RENT PMT [REDACTED] PPD ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/08/26",
+      "amount": -160.00,
+      "title": "LEMONADE INSPAYMENT PPD ID: 1467678542",
+      "scrubbedTitle": "LEMONADE INSPAYMENT PPD ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/11/26",
+      "amount": -23.19,
+      "title": "Buyer Payment: Walmart Pharmacy",
+      "scrubbedTitle": "Buyer Payment: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/12/26",
+      "amount": -90.29,
+      "title": "WITHDRAWAL FROM CITY WATER PHONE",
+      "scrubbedTitle": "WITHDRAWAL FROM CITY WATER PHONE",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/12/26",
+      "amount": -10.00,
+      "title": "HUNTINGTON IFI DDA TO DDA UHANBXX3 WEB ID: INTFITRVOS",
+      "scrubbedTitle": "HUNTINGTON IFI DDA TO DDA UHANBXX3 WEB ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/13/26",
+      "amount": -9.45,
+      "title": "preauthorized withdrawal to blizzard",
+      "scrubbedTitle": "preauthorized withdrawal to blizzard",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/17/26",
+      "amount": -12.99,
+      "title": "PAYPAL INST XFER SPOTIFY WEB ID: PAYPALSI44",
+      "scrubbedTitle": "PAYPAL INST XFER SPOTIFY WEB ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/18/26",
+      "amount": -20.00,
+      "title": "ZIONS BANK DDA TO DDA F3WVSFAIBP WEB ID: DGHG19NG8P",
+      "scrubbedTitle": "ZIONS BANK DDA TO DDA F3WVSFAIBP WEB ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/24/26",
+      "amount": -17.99,
+      "title": "PAYPAL INST XFER SUBSTACK WEB ID: PAYPALSI04",
+      "scrubbedTitle": "PAYPAL INST XFER SUBSTACK WEB ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "07/28/26",
+      "amount": -200.00,
+      "title": "Zelle payment to SANDRA JOHNSON NASHVILLE TN 15208341787",
+      "scrubbedTitle": "Zelle payment to [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    }
+  ],
+  "summary": {
+    "rowsFound": 53,
+    "depositsRemoved": 3,
+    "spendingRows": 50
+  }
+}

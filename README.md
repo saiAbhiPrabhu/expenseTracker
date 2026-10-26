@@ -47,13 +47,15 @@ If a row's amount is misread by OCR, the run stops by design (the checksum would
 | `abtest.go` | Compares the two category sets and formats the agreement report. |
 | `serve.go` | The web server: serves the built front end (`web/dist`) and mounts the `/api` routes. |
 | `demo.go` | The demo's saved data and API. Replays the cached JEV run on synthetic transactions (`demo/`); no JEV calls, no per-user server state. |
-| `web/` | The front end (React and TypeScript, built with Vite): home page with a folded menu, a non-functional log-in page, and the 5-step demo (placeholders for now). |
+| `demo_dashboard.go` | The dashboard numbers: per month and category, essential split, category by month, top merchants, largest transactions, recurring charges, with the money-movement toggle. |
+| `demo_process.go`, `demo_artifacts.go` | The Upload and Process screens' data: the sample statements and what each stage of reading them produced (page images before and after the crop, OCR text, rows, section checks). `demo_artifacts.go` builds the saved artifacts; the server embeds them. |
+| `web/` | The front end (React and TypeScript, built with Vite): home page with a folded menu, a non-functional log-in page, and the 5-step demo (Upload, Process, Review, Dashboard, Edit data). `web/DESIGN.md` holds the design rules. |
 | `titles_csv.go` | TEMPORARY: loads already-extracted titles from a CSV (`-titles-csv`) to test JEV without re-running the PDF pipeline. |
 | `transaction_categories.json` | The 20-category and 12-category sets with descriptions. |
 | `*_test.go` | Tests for the file with the same name. |
 | `CLAUDE.md`, `PERFECT_FUNCTION.md` | Working rules for the repo: behavior, and function design. |
 | `future_isses.md` | Known problems and planned fixes. |
-| `demo/` | Synthetic demo data (safe to commit): `transactions.csv`, its generator `build_demo_data.py`, and the saved JEV run in `cache/`. |
+| `demo/` | Synthetic demo data (safe to commit): `transactions.csv` and its generator, four sample statement PDFs in `statements/` (with their generator), the saved Process artifacts in `artifacts/`, and the saved JEV run in `cache/`. |
 | `documents/`, `snapshots/`, `abtest/` | Local data: statements and labels, per-page images and text, and A/B outputs. All gitignored. |
 
 ## How to Use
@@ -92,12 +94,12 @@ go run . -export abtest/combined abtest/may/results.json abtest/jun/results.json
 ```
 Combines the A/B `results.json` files into `jev_states.json` and `jev_states.csv` (raw answers for every transaction, oldest first, each with its key) and `expenditure_totals.json` (expenditure per month, per category, and overall).
 
-### Run the web app (skeleton)
+### Run the web app
 ```
 cd web && npm install && npm run build && cd ..
 go run . -serve :8080
 ```
-Open `http://localhost:8080`. The demo API reads the saved run in `demo/cache/results.json`:
+Open `http://localhost:8080`, then **DEMO**. The flow is Upload (use the sample statements), Process (what was done to each statement), Review (the low-confidence rows, one month per page), Dashboard, and Edit data; after the first pass the dashboard is home. No API key is needed: the demo replays saved results. The demo API reads the saved run in `demo/cache/results.json`:
 - `GET /api/demo/transactions`: every transaction with JEV's answers and a review flag (confidence below 0.5).
 - `GET /api/demo/categories`: the 20 categories plus "Other".
 - `GET` or `POST /api/demo/summary`: dashboard numbers (expenditure per month, per category, essential split). `POST` takes `{"edits": {"<key>": {"category": "...", "essential": true}}}` and returns the numbers with those edits applied; the browser keeps the edits.
@@ -106,7 +108,8 @@ For front-end development, run `go run . -serve :8080` and `npm run dev` (in `we
 
 ### Useful flags
 - `-abtest-dir <dir>`: run JEV and write results to `<dir>`.
-- `-serve <addr>`: start the web app, for example `:8080`.
+- `-serve <addr>`: start the web app, for example `:8080`. `-web-dir <dir>` sets the built front end (default `web/dist`).
+- `-build-demo-artifacts <dir>`: read the statement PDFs given as arguments and write the demo's saved Process artifacts (needs Tesseract and Poppler). Example: `go run . -build-demo-artifacts demo/artifacts demo/statements/*.pdf`.
 - `-export <dir>`: read the `results.json` files given as arguments and write the export files to `<dir>`.
 - `-fix-ocr 'OLD=NEW'`: correct a known OCR misread before extraction (repeatable). The text must appear exactly once, and the section checksum still has to pass. Example: `-fix-ocr '-177.4)=-177.41'`.
 - `-titles-csv <file>`: temporary. Use titles from a CSV with `date`, `amount` and `title` columns instead of a PDF (titles are scrubbed on load).

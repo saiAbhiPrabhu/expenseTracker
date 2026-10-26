@@ -37,9 +37,27 @@ var (
 // Logic: Computer reads the OCR text and returns every transaction row, tagged with its section.
 // Each section's printed Total is checked against the sum of its rows; a mismatch means OCR misread a row.
 func ExtractTransactionsFromText(textFile string) ([]Transaction, error) {
+	transactions, _, err := ExtractWithSections(textFile)
+	return transactions, err
+}
+
+// SectionSummary is the check of one section: its row count, the Total the statement prints and the
+// sum of the rows. They always match when extraction succeeds.
+type SectionSummary struct {
+	Name         string
+	Rows         int
+	PrintedCents int64
+	RowsCents    int64
+}
+
+// ExtractWithSections is ExtractTransactionsFromText that also reports each section's check, in the
+// order the statement prints the section Totals.
+func ExtractWithSections(textFile string) ([]Transaction, []SectionSummary, error) {
 	var (
 		transactions []Transaction
+		sections     []SectionSummary
 		sectionSums  = map[string]int64{}
+		sectionRows  = map[string]int{}
 		section      string
 		capturing    bool
 		previousLine string
@@ -56,15 +74,18 @@ func ExtractTransactionsFromText(textFile string) ([]Transaction, error) {
 		case sectionTotalLine.MatchString(line):
 			capturing = false
 			if err := checkSectionTotal(section, line, sectionSums[section]); err != nil {
-				return nil, err
+				return nil, nil, err
 			}
+			printed, _ := printedTotalCents(line) // already parsed by checkSectionTotal
+			sections = append(sections, SectionSummary{section, sectionRows[section], printed, sectionSums[section]})
 		case datePrefix.MatchString(line):
 			transaction, err := parseTransactionRow(line, section)
 			if err != nil {
-				return nil, err
+				return nil, nil, err
 			}
 			transactions = append(transactions, transaction)
 			sectionSums[section] += transaction.AmountCents
+			sectionRows[section]++
 		case len(transactions) > 0:
 			last := &transactions[len(transactions)-1]
 			last.Description += " " + line
@@ -73,7 +94,7 @@ func ExtractTransactionsFromText(textFile string) ([]Transaction, error) {
 			previousLine = line
 		}
 	}
-	return transactions, nil
+	return transactions, sections, nil
 }
 
 const depositsSection = "Deposits and other additions"
@@ -103,8 +124,7 @@ func parseTransactionRow(line string, section string) (Transaction, error) {
 }
 
 func checkSectionTotal(section string, totalLine string, rowSumCents int64) error {
-	match := sectionTotalLine.FindStringSubmatch(totalLine)
-	printed, err := parseCents(match[1] + match[2])
+	printed, err := printedTotalCents(totalLine)
 	if err != nil {
 		return err
 	}
@@ -112,6 +132,11 @@ func checkSectionTotal(section string, totalLine string, rowSumCents int64) erro
 		return fmt.Errorf("section %q: printed total %d cents, rows sum to %d cents", section, printed, rowSumCents)
 	}
 	return nil
+}
+
+func printedTotalCents(totalLine string) (int64, error) {
+	match := sectionTotalLine.FindStringSubmatch(totalLine)
+	return parseCents(match[1] + match[2])
 }
 
 // parseCents converts "-1,641.60" to -164160.

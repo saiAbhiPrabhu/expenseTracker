@@ -1,0 +1,498 @@
+{
+  "id": "2026-08",
+  "label": "August 2026",
+  "fileName": "statement-2026-08.pdf",
+  "pages": 7,
+  "pageReadings": [
+    {
+      "page": 1,
+      "status": "skipped",
+      "reason": "The first page is the account summary. It is never read."
+    },
+    {
+      "page": 2,
+      "status": "skipped",
+      "reason": "No transactions on this page."
+    },
+    {
+      "page": 3,
+      "status": "read",
+      "beforeImage": "/api/demo/statements/2026-08/pages/3/before.png",
+      "afterImage": "/api/demo/statements/2026-08/pages/3/after.png",
+      "removedTopPercent": 12.5,
+      "ocrText": "Deposits and other additions\nDate Description Amount\n08/07/26 ACME CORP PAYROLL PPD ID: 1234567890 2,450.00\n08/21/26 ACME CORP PAYROLL PPD ID: 1234567890 2,450.00\nTotal deposits and other additions $4,900.00\nWithdrawals and other subtractions\nATM and debit card subtractions\nDate Description Amount\n08/01/26 SQ *Crepe Bar #145 -12.14\n08/02/26 NORDSTROM 121174 -51.10\n08/02/26 Dr. Jones Chiropractic -46.31\n08/03/26 META VERIFIED -4.99\n08/03/26 SMARTFINAL #35874 BOSTON -67.33\n08/03/26 WHOLE FOODS #571 SAN JOSE -63.96\n08/04/26 Dave's Hot Chicken San Jose 7899 -7.89\n08/04/26 FACEBOOK MARKETPLACE -32.57\n08/05/26 COSTCO GAS #607 LOS ANGELES -15.36\n08/08/26 Tofu House - Los Angeles -13.79\n08/09/26 GOOGLE *SMARTSHEET -15.49\n08/09/26 Whole Foods 9924 Los Angeles -37.57\n08/09/26 ORANGETHEORY*L8ZF3VBZQ1 -17.38\n08/10/26 UBER *TRIP CHARLOTTE DIFZ7P -6.19\n08/11/26 GAMESTOP #40711 -102.74\n08/11/26 ACCOUNT CLOSURE FEE - 37/08 -8.00\n08/12/26 Spec's 32590626 -72.89\n08/13/26 MITSUWA 482507 -114.20\ncontinued on the next page\n\nPage 3 of 7\n"
+    },
+    {
+      "page": 4,
+      "status": "read",
+      "beforeImage": "/api/demo/statements/2026-08/pages/4/before.png",
+      "afterImage": "/api/demo/statements/2026-08/pages/4/after.png",
+      "removedTopPercent": 12.5,
+      "ocrText": "Withdrawals and other subtractions - continued\nATM and debit card subtractions - continued\nDate Description Amount\n08/14/26 Nando's #96113 Union City -29,.21\n08/15/26 AMERICAN WATER 2428 UNIVERSITY WAY BOSTON -44.51\n\n02101 MA USA\n08/16/26 ESPN+ INC -12.60\n08/17/26 TST*PORTILLO'S - HAYWARD -30.78\n08/17/26 WAL-MART #2932 -124.33\n08/18/26 account maintenance fee - 57/60 -15.00\n08/19/26 PGANDE 226943 -65.64\n08/19/26 CHECKERS - SAN JOSE -10.38\n08/19/26 BLUE BOTTLE*27NUT3VPP -23.35\n08/19/26 LION SUPERMARKET 837249 -96.58\n08/19/26 AMZN DIGITAL*2QBZ6YGPA3Q -58.51\n08/19/26 EVGO 2792 UNIVERSITY AVE SALT LAKE CITY 84101 UT -34.91\n\nUSA\n08/19/26 Chargepoint *evgo Station 6233 -21.62\n08/20/26 SQ *WHATABURGER - DALLAS -10.79\n08/21/26 amazon kindle - oakland -41.02\n08/21/26 DOUBLETREE #3385 CHARLOTTE -549.78\n08/22/26 IN-N-OUT 8293 CENTER CT SAN DIEGO92101 CA USA -11.74\n08/22/26 WHOLEFDS #42139 DENVER -30.35\n08/22/26 VONS #26185 -141.84\n08/23/26 DENTAL365 2569 PARK PKWY AUSTIN78701 TX USA -113.52\n08/25/26 PAYPAL *DAVE \u0026 BUSTER'S -15.40\n08/26/26 TST*farm house kitchen - PORTLAND -16.69\ncontinued on the next page\n\nPage 4 of 7\n"
+    },
+    {
+      "page": 5,
+      "status": "read",
+      "beforeImage": "/api/demo/statements/2026-08/pages/5/before.png",
+      "afterImage": "/api/demo/statements/2026-08/pages/5/after.png",
+      "removedTopPercent": 12.5,
+      "ocrText": "Withdrawals and other subtractions - continued\nATM and debit card subtractions - continued\nDate Description Amount\n08/27/26 espn+ 505 center ct new york10001 ny usa -16.08\nTotal ATM and debit card subtractions -$2,204.53\nOther subtractions\nDate Description Amount\n08/01/26 MAA RENT PMT 47818361 PPD ID: 265900095 -1,800.00\n08/08/26 LEMONADE INSPAYMENT PPD ID: 1467678542 -160.00\n08/12/26 WITHDRAWAL FROM CITY WATER PHONE -89.68\n08/17/26 PAYPAL INST XFER SPOTIFY WEB ID: PAYPALSI44 -12.99\n08/20/26 CASH APP PAYMENT TO SANDRA PARK -100.00\n08/20/26 Manual Db-bkrg 33/61 -100.00\n08/22/26 ATM WITHDRAWAL - 8818 BROADWAY ST BROOKLYN -100.00\n\nNY\n08/24/26 PAYPAL INST XFER SUBSTACK WEB ID: PAYPALSI04 -17.99\n08/24/26 Preauthorized Withdrawal To Planet Fitness -79.80\nTotal other subtractions -$2,460.46\n\nPage 5 of 7\n"
+    },
+    {
+      "page": 6,
+      "status": "skipped",
+      "reason": "No transactions on this page."
+    },
+    {
+      "page": 7,
+      "status": "skipped",
+      "reason": "No transactions on this page."
+    }
+  ],
+  "sections": [
+    {
+      "name": "Deposits and other additions",
+      "rows": 2,
+      "printedTotal": 4900.00,
+      "rowsTotal": 4900.00,
+      "matches": true
+    },
+    {
+      "name": "ATM and debit card subtractions",
+      "rows": 41,
+      "printedTotal": -2204.53,
+      "rowsTotal": -2204.53,
+      "matches": true
+    },
+    {
+      "name": "Other subtractions",
+      "rows": 9,
+      "printedTotal": -2460.46,
+      "rowsTotal": -2460.46,
+      "matches": true
+    }
+  ],
+  "rows": [
+    {
+      "date": "08/07/26",
+      "amount": 2450.00,
+      "title": "ACME CORP PAYROLL PPD ID: 1234567890",
+      "scrubbedTitle": "ACME CORP PAYROLL PPD ID: [REDACTED]",
+      "section": "Deposits and other additions",
+      "kept": false
+    },
+    {
+      "date": "08/21/26",
+      "amount": 2450.00,
+      "title": "ACME CORP PAYROLL PPD ID: 1234567890",
+      "scrubbedTitle": "ACME CORP PAYROLL PPD ID: [REDACTED]",
+      "section": "Deposits and other additions",
+      "kept": false
+    },
+    {
+      "date": "08/01/26",
+      "amount": -12.14,
+      "title": "SQ *Crepe Bar #145",
+      "scrubbedTitle": "SQ *Crepe Bar #145",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/02/26",
+      "amount": -51.10,
+      "title": "NORDSTROM 121174",
+      "scrubbedTitle": "NORDSTROM [REDACTED]",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/02/26",
+      "amount": -46.31,
+      "title": "Dr. Jones Chiropractic",
+      "scrubbedTitle": "Dr. Jones Chiropractic",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/03/26",
+      "amount": -4.99,
+      "title": "META VERIFIED",
+      "scrubbedTitle": "META VERIFIED",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/03/26",
+      "amount": -67.33,
+      "title": "SMARTFINAL #35874 BOSTON",
+      "scrubbedTitle": "SMARTFINAL #35874 BOSTON",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/03/26",
+      "amount": -63.96,
+      "title": "WHOLE FOODS #571 SAN JOSE",
+      "scrubbedTitle": "WHOLE FOODS #571 SAN JOSE",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/04/26",
+      "amount": -7.89,
+      "title": "Dave's Hot Chicken San Jose 7899",
+      "scrubbedTitle": "Dave's Hot Chicken San Jose 7899",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/04/26",
+      "amount": -32.57,
+      "title": "FACEBOOK MARKETPLACE",
+      "scrubbedTitle": "FACEBOOK MARKETPLACE",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/05/26",
+      "amount": -15.36,
+      "title": "COSTCO GAS #607 LOS ANGELES",
+      "scrubbedTitle": "COSTCO GAS #607 LOS ANGELES",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/08/26",
+      "amount": -13.79,
+      "title": "Tofu House - Los Angeles",
+      "scrubbedTitle": "Tofu House - Los Angeles",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/09/26",
+      "amount": -15.49,
+      "title": "GOOGLE *SMARTSHEET",
+      "scrubbedTitle": "GOOGLE *SMARTSHEET",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/09/26",
+      "amount": -37.57,
+      "title": "Whole Foods 9924 Los Angeles",
+      "scrubbedTitle": "Whole Foods 9924 Los Angeles",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/09/26",
+      "amount": -17.38,
+      "title": "ORANGETHEORY*L8ZF3VBZQ1",
+      "scrubbedTitle": "ORANGETHEORY*L8ZF3VBZQ1",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/10/26",
+      "amount": -6.19,
+      "title": "UBER *TRIP CHARLOTTE DIFZ7P",
+      "scrubbedTitle": "UBER *TRIP CHARLOTTE DIFZ7P",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/11/26",
+      "amount": -102.74,
+      "title": "GAMESTOP #40711",
+      "scrubbedTitle": "GAMESTOP #40711",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/11/26",
+      "amount": -8.00,
+      "title": "ACCOUNT CLOSURE FEE - 37/08",
+      "scrubbedTitle": "ACCOUNT CLOSURE FEE - 37/08",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/12/26",
+      "amount": -72.89,
+      "title": "Spec's 32590626",
+      "scrubbedTitle": "Spec's [REDACTED]",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/13/26",
+      "amount": -114.20,
+      "title": "MITSUWA 482507",
+      "scrubbedTitle": "MITSUWA [REDACTED]",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/14/26",
+      "amount": -29.21,
+      "title": "Nando's #96113 Union City",
+      "scrubbedTitle": "Nando's #96113 Union City",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/15/26",
+      "amount": -44.51,
+      "title": "AMERICAN WATER 2428 UNIVERSITY WAY BOSTON 02101 MA USA",
+      "scrubbedTitle": "AMERICAN WATER 2428 UNIVERSITY WAY BOSTON 02101 MA USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/16/26",
+      "amount": -12.60,
+      "title": "ESPN+ INC",
+      "scrubbedTitle": "ESPN+ INC",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/17/26",
+      "amount": -30.78,
+      "title": "TST*PORTILLO'S - HAYWARD",
+      "scrubbedTitle": "TST*PORTILLO'S - HAYWARD",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/17/26",
+      "amount": -124.33,
+      "title": "WAL-MART #2932",
+      "scrubbedTitle": "WAL-MART #2932",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/18/26",
+      "amount": -15.00,
+      "title": "account maintenance fee - 57/60",
+      "scrubbedTitle": "account maintenance fee - 57/60",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/19/26",
+      "amount": -65.64,
+      "title": "PGANDE 226943",
+      "scrubbedTitle": "PGANDE [REDACTED]",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/19/26",
+      "amount": -10.38,
+      "title": "CHECKERS - SAN JOSE",
+      "scrubbedTitle": "CHECKERS - SAN JOSE",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/19/26",
+      "amount": -23.35,
+      "title": "BLUE BOTTLE*27NUT3VPP",
+      "scrubbedTitle": "BLUE BOTTLE*27NUT3VPP",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/19/26",
+      "amount": -96.58,
+      "title": "LION SUPERMARKET 837249",
+      "scrubbedTitle": "LION SUPERMARKET [REDACTED]",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/19/26",
+      "amount": -58.51,
+      "title": "AMZN DIGITAL*2QBZ6YGPA3Q",
+      "scrubbedTitle": "AMZN DIGITAL*2QBZ6YGPA3Q",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/19/26",
+      "amount": -34.91,
+      "title": "EVGO 2792 UNIVERSITY AVE SALT LAKE CITY 84101 UT USA",
+      "scrubbedTitle": "EVGO 2792 UNIVERSITY AVE SALT LAKE CITY 84101 UT USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/19/26",
+      "amount": -21.62,
+      "title": "Chargepoint *evgo Station 6233",
+      "scrubbedTitle": "Chargepoint *evgo Station 6233",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/20/26",
+      "amount": -10.79,
+      "title": "SQ *WHATABURGER - DALLAS",
+      "scrubbedTitle": "SQ *WHATABURGER - DALLAS",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/21/26",
+      "amount": -41.02,
+      "title": "amazon kindle - oakland",
+      "scrubbedTitle": "amazon kindle - oakland",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/21/26",
+      "amount": -549.78,
+      "title": "DOUBLETREE #3385 CHARLOTTE",
+      "scrubbedTitle": "DOUBLETREE #3385 CHARLOTTE",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/22/26",
+      "amount": -11.74,
+      "title": "IN-N-OUT 8293 CENTER CT SAN DIEGO92101 CA USA",
+      "scrubbedTitle": "IN-N-OUT 8293 CENTER CT SAN DIEGO92101 CA USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/22/26",
+      "amount": -30.35,
+      "title": "WHOLEFDS #42139 DENVER",
+      "scrubbedTitle": "WHOLEFDS #42139 DENVER",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/22/26",
+      "amount": -141.84,
+      "title": "VONS #26185",
+      "scrubbedTitle": "VONS #26185",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/23/26",
+      "amount": -113.52,
+      "title": "DENTAL365 2569 PARK PKWY AUSTIN78701 TX USA",
+      "scrubbedTitle": "DENTAL365 2569 PARK PKWY AUSTIN78701 TX USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/25/26",
+      "amount": -15.40,
+      "title": "PAYPAL *DAVE \u0026 BUSTER'S",
+      "scrubbedTitle": "PAYPAL *DAVE \u0026 BUSTER'S",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/26/26",
+      "amount": -16.69,
+      "title": "TST*farm house kitchen - PORTLAND",
+      "scrubbedTitle": "TST*farm house kitchen - PORTLAND",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/27/26",
+      "amount": -16.08,
+      "title": "espn+ 505 center ct new york10001 ny usa",
+      "scrubbedTitle": "espn+ 505 center ct new york10001 ny usa",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/01/26",
+      "amount": -1800.00,
+      "title": "MAA RENT PMT 47818361 PPD ID: 265900095",
+      "scrubbedTitle": "MAA RENT PMT [REDACTED] PPD ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/08/26",
+      "amount": -160.00,
+      "title": "LEMONADE INSPAYMENT PPD ID: 1467678542",
+      "scrubbedTitle": "LEMONADE INSPAYMENT PPD ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/12/26",
+      "amount": -89.68,
+      "title": "WITHDRAWAL FROM CITY WATER PHONE",
+      "scrubbedTitle": "WITHDRAWAL FROM CITY WATER PHONE",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/17/26",
+      "amount": -12.99,
+      "title": "PAYPAL INST XFER SPOTIFY WEB ID: PAYPALSI44",
+      "scrubbedTitle": "PAYPAL INST XFER SPOTIFY WEB ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/20/26",
+      "amount": -100.00,
+      "title": "CASH APP PAYMENT TO SANDRA PARK",
+      "scrubbedTitle": "CASH APP PAYMENT TO [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/20/26",
+      "amount": -100.00,
+      "title": "Manual Db-bkrg 33/61",
+      "scrubbedTitle": "Manual Db-bkrg 33/61",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/22/26",
+      "amount": -100.00,
+      "title": "ATM WITHDRAWAL - 8818 BROADWAY ST BROOKLYN NY",
+      "scrubbedTitle": "ATM WITHDRAWAL - 8818 BROADWAY ST BROOKLYN NY",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/24/26",
+      "amount": -17.99,
+      "title": "PAYPAL INST XFER SUBSTACK WEB ID: PAYPALSI04",
+      "scrubbedTitle": "PAYPAL INST XFER SUBSTACK WEB ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "08/24/26",
+      "amount": -79.80,
+      "title": "Preauthorized Withdrawal To Planet Fitness",
+      "scrubbedTitle": "Preauthorized Withdrawal To Planet Fitness",
+      "section": "Other subtractions",
+      "kept": true
+    }
+  ],
+  "summary": {
+    "rowsFound": 52,
+    "depositsRemoved": 2,
+    "spendingRows": 50
+  }
+}

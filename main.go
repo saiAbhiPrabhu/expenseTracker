@@ -17,8 +17,10 @@ const categoriesFile = "transaction_categories.json"
 
 func main() {
 	abTestDir := flag.String("abtest-dir", "", "run the JEV A/B test and write results.json and report.md here")
+	artifactsDir := flag.String("build-demo-artifacts", "", "read the statement PDFs given as arguments and write the demo's saved Process artifacts to this directory")
 	var ocrFixes []OCRFix
-	serveAddr := flag.String("serve", "", "start the web app on this address (for example :8080), serving web/dist")
+	serveAddr := flag.String("serve", "", "start the web app on this address (for example :8080)")
+	webDir := flag.String("web-dir", "web/dist", "the built front end that -serve serves")
 	exportDir := flag.String("export", "", "read the A/B results.json files given as arguments and write the combined states and expenditure totals to this directory")
 	titlesCSV := flag.String("titles-csv", "", "TEMPORARY: use already-extracted titles from this CSV instead of a PDF")
 	flag.Func("fix-ocr", "manual OCR correction as OLD=NEW (repeatable)", func(value string) error {
@@ -30,14 +32,21 @@ func main() {
 		return nil
 	})
 	flag.Parse()
+	if *artifactsDir != "" {
+		if err := BuildDemoArtifacts(*artifactsDir, flag.Args()); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
+		return
+	}
 	if *serveAddr != "" {
 		demo, err := loadDemoFiles()
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)
 		}
-		fmt.Fprintf(os.Stderr, "serving web/dist and the demo API on %s\n", *serveAddr)
-		if err := http.ListenAndServe(*serveAddr, NewWebHandler(os.DirFS("web/dist"), demo)); err != nil {
+		fmt.Fprintf(os.Stderr, "serving %s and the demo API on %s\n", *webDir, *serveAddr)
+		if err := http.ListenAndServe(*serveAddr, NewWebHandler(os.DirFS(*webDir), demo)); err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)
 		}

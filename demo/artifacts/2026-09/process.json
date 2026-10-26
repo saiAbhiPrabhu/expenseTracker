@@ -1,0 +1,506 @@
+{
+  "id": "2026-09",
+  "label": "September 2026",
+  "fileName": "statement-2026-09.pdf",
+  "pages": 7,
+  "pageReadings": [
+    {
+      "page": 1,
+      "status": "skipped",
+      "reason": "The first page is the account summary. It is never read."
+    },
+    {
+      "page": 2,
+      "status": "skipped",
+      "reason": "No transactions on this page."
+    },
+    {
+      "page": 3,
+      "status": "read",
+      "beforeImage": "/api/demo/statements/2026-09/pages/3/before.png",
+      "afterImage": "/api/demo/statements/2026-09/pages/3/after.png",
+      "removedTopPercent": 12.5,
+      "ocrText": "Deposits and other additions\nDate Description Amount\n09/04/26 ACME CORP PAYROLL PPD ID: 1234567890 2,450.00\n09/18/26 ACME CORP PAYROLL PPD ID: 1234567890 2,450.00\n09/25/26 REFUND ONLINE ORDER 7781 RETURN CREDIT 64.15\nTotal deposits and other additions $4,964.15\nWithdrawals and other subtractions\nATM and debit card subtractions\nDate Description Amount\n09/01/26 JACK IN THE BOX PHOENIX 9544 -9.18\n09/01/26 CLV*SMASHBURGER -40.58\n09/01/26 STATE DMV 9049 INDUSTRIAL DR ATLANTA -32.83\n30301-7419GA USA\n09/02/26 PORTILLO'S 1499 BROADWAY ST UNION CITY 94587 CA -9.88\nUSA\n09/02/26 TARGET 86865305 -39.86\n09/02/26 H\u0026m #1910 -43.77\n09/03/26 META VERIFIED -4.99\n09/03/26 Paypal *bowling Gju1b1t6kh -14.00\n09/03/26 Annual Fee - 81/48 -35.00\n09/04/26 ALBERTSONS #57255 -43.56\n09/05/26 insufficient funds fee - 89/58 -12.00\n09/07/26 krispy kreme 467614 -35.27\n09/08/26 Sprouts #429 -62.29\n09/09/26 GOOGLE *SMARTSHEET -15.49\n09/10/26 Safeway #10340 -139.17\ncontinued on the next page\nPage 3 of 7\n"
+    },
+    {
+      "page": 4,
+      "status": "read",
+      "beforeImage": "/api/demo/statements/2026-09/pages/4/before.png",
+      "afterImage": "/api/demo/statements/2026-09/pages/4/after.png",
+      "removedTopPercent": 12.5,
+      "ocrText": "Withdrawals and other subtractions - continued\nATM and debit card subtractions - continued\nDate Description Amount\n09/10/26 ELECTRIFY AMERICA #12408 -16.86\n09/10/26 Talkspace - Los Angeles -61.04\n09/11/26 KEBAB PALACE #09944 COLUMBUS -23.94\n09/11/26 SPORT CLIPS 1428 MISSION AVE PORTLAND 97201 OR -13.36\nUSA\n09/11/26 BLUEMERCURY 5684 CENTER BLVD INDIANAPOLIS -14.65\n46201 IN USA\n09/12/26 WINCO FOODS #31231 -71.39\n09/14/26 CLV*Poke Bowl -15.37\n09/15/26 AMERICAN WATER 2428 UNIVERSITY WAY BOSTON -49.00\n02101 MA USA\n09/15/26 O'REILLY MEDIA 58090500 -261.66\n09/17/26 SAKURA SUSHI 84748 -14.12\n09/17/26 AMAZON MKTPL*O3WO4EMSL -13.04\n09/17/26 WAL-MART #0147 -32.47\n09/17/26 DR SHAH PSYCHIATRY -55.89\n09/19/26 PGANDE 226943 -71.51\n09/19/26 OUTBACK STEAKHOUSE 86456 -6.41\n09/21/26 CLV*EL POLLO LOCO - MINNEAPOLIS -11.79\n09/23/26 BJ'S WHOLESALE 2084 OAKLAND -135.38\n09/23/26 TARGET #7574 SAN FRANCISCO -46.74\n09/24/26 marukai 1731 orlando -70.12\n09/24/26 LIVENATION 7437 MAIN WAY PHOENIX 85001-4113AZ -17.19\nUSA\ncontinued on the next page\nPage 4 of 7\n"
+    },
+    {
+      "page": 5,
+      "status": "read",
+      "beforeImage": "/api/demo/statements/2026-09/pages/5/before.png",
+      "afterImage": "/api/demo/statements/2026-09/pages/5/after.png",
+      "removedTopPercent": 12.5,
+      "ocrText": "Withdrawals and other subtractions - continued\nATM and debit card subtractions - continued\nDate Description Amount\n09/27/26 CLV*STIX FOOD HALL -21.51\n09/28/26 sam's club -53.08\n09/28/26 HAMPTON INN.com -271.87\nTotal ATM and debit card subtractions -$1,886.26\nOther subtractions\nDate Description Amount\n09/01/26 MAA RENT PMT 47818361 PPD ID: 265900095 -1,800.00\n09/08/26 LEMONADE INSPAYMENT PPD ID: 1467678542 -160.00\n09/12/26 WITHDRAWAL FROM CITY WATER PHONE -86.00\n09/13/26 TXTAG TOLL PMT WEB ID: VPROHBRC -7.76\n09/13/26 TASTYTRADE MONEYLINK PPD ID: 164083355 -40.00\n09/13/26 Zelle payment to LINDA JACKSON MINNEAPOLIS MN -150.00\n82162960315\n09/17/26 PAYPAL INST XFER SPOTIFY WEB ID: PAYPALSI44 -12.99\n09/21/26 PAYPAL INST XFER SMOG CHECK WEB ID: PAYPALSI56 -30.74\n09/23/26 BUYER PAYMENT: HOBBY LOBBY -63.14\n09/23/26 CAPITAL ONE AUTOPAY PPD ID: 7289615039 -100.00\n09/24/26 PAYPAL INST XFER SUBSTACK WEB ID: PAYPALSI04 -17.99\n09/27/26 PAYPAL INST XFER CLIMBING GYM WEB ID: -42.29\nPAYPALSI41\nTotal other subtractions -$2,510.91\nPage 5 of 7\n"
+    },
+    {
+      "page": 6,
+      "status": "skipped",
+      "reason": "No transactions on this page."
+    },
+    {
+      "page": 7,
+      "status": "skipped",
+      "reason": "No transactions on this page."
+    }
+  ],
+  "sections": [
+    {
+      "name": "Deposits and other additions",
+      "rows": 3,
+      "printedTotal": 4964.15,
+      "rowsTotal": 4964.15,
+      "matches": true
+    },
+    {
+      "name": "ATM and debit card subtractions",
+      "rows": 38,
+      "printedTotal": -1886.26,
+      "rowsTotal": -1886.26,
+      "matches": true
+    },
+    {
+      "name": "Other subtractions",
+      "rows": 12,
+      "printedTotal": -2510.91,
+      "rowsTotal": -2510.91,
+      "matches": true
+    }
+  ],
+  "rows": [
+    {
+      "date": "09/04/26",
+      "amount": 2450.00,
+      "title": "ACME CORP PAYROLL PPD ID: 1234567890",
+      "scrubbedTitle": "ACME CORP PAYROLL PPD ID: [REDACTED]",
+      "section": "Deposits and other additions",
+      "kept": false
+    },
+    {
+      "date": "09/18/26",
+      "amount": 2450.00,
+      "title": "ACME CORP PAYROLL PPD ID: 1234567890",
+      "scrubbedTitle": "ACME CORP PAYROLL PPD ID: [REDACTED]",
+      "section": "Deposits and other additions",
+      "kept": false
+    },
+    {
+      "date": "09/25/26",
+      "amount": 64.15,
+      "title": "REFUND ONLINE ORDER 7781 RETURN CREDIT",
+      "scrubbedTitle": "REFUND ONLINE ORDER 7781 RETURN CREDIT",
+      "section": "Deposits and other additions",
+      "kept": false
+    },
+    {
+      "date": "09/01/26",
+      "amount": -9.18,
+      "title": "JACK IN THE BOX PHOENIX 9544",
+      "scrubbedTitle": "JACK IN THE BOX PHOENIX 9544",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/01/26",
+      "amount": -40.58,
+      "title": "CLV*SMASHBURGER",
+      "scrubbedTitle": "CLV*SMASHBURGER",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/01/26",
+      "amount": -32.83,
+      "title": "STATE DMV 9049 INDUSTRIAL DR ATLANTA 30301-7419GA USA",
+      "scrubbedTitle": "STATE DMV 9049 INDUSTRIAL DR ATLANTA 30301-7419GA USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/02/26",
+      "amount": -9.88,
+      "title": "PORTILLO'S 1499 BROADWAY ST UNION CITY 94587 CA USA",
+      "scrubbedTitle": "PORTILLO'S 1499 BROADWAY ST UNION CITY 94587 CA USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/02/26",
+      "amount": -39.86,
+      "title": "TARGET 86865305",
+      "scrubbedTitle": "TARGET [REDACTED]",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/02/26",
+      "amount": -43.77,
+      "title": "H\u0026m #1910",
+      "scrubbedTitle": "H\u0026m #1910",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/03/26",
+      "amount": -4.99,
+      "title": "META VERIFIED",
+      "scrubbedTitle": "META VERIFIED",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/03/26",
+      "amount": -14.00,
+      "title": "Paypal *bowling Gju1b1t6kh",
+      "scrubbedTitle": "Paypal *bowling Gju1b1t6kh",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/03/26",
+      "amount": -35.00,
+      "title": "Annual Fee - 81/48",
+      "scrubbedTitle": "Annual Fee - 81/48",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/04/26",
+      "amount": -43.56,
+      "title": "ALBERTSONS #57255",
+      "scrubbedTitle": "ALBERTSONS #57255",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/05/26",
+      "amount": -12.00,
+      "title": "insufficient funds fee - 89/58",
+      "scrubbedTitle": "insufficient funds fee - 89/58",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/07/26",
+      "amount": -35.27,
+      "title": "krispy kreme 467614",
+      "scrubbedTitle": "krispy kreme [REDACTED]",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/08/26",
+      "amount": -62.29,
+      "title": "Sprouts #429",
+      "scrubbedTitle": "Sprouts #429",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/09/26",
+      "amount": -15.49,
+      "title": "GOOGLE *SMARTSHEET",
+      "scrubbedTitle": "GOOGLE *SMARTSHEET",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/10/26",
+      "amount": -139.17,
+      "title": "Safeway #10340",
+      "scrubbedTitle": "Safeway #10340",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/10/26",
+      "amount": -16.86,
+      "title": "ELECTRIFY AMERICA #12408",
+      "scrubbedTitle": "ELECTRIFY AMERICA #12408",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/10/26",
+      "amount": -61.04,
+      "title": "Talkspace - Los Angeles",
+      "scrubbedTitle": "Talkspace - Los Angeles",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/11/26",
+      "amount": -23.94,
+      "title": "KEBAB PALACE #09944 COLUMBUS",
+      "scrubbedTitle": "KEBAB PALACE #09944 COLUMBUS",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/11/26",
+      "amount": -13.36,
+      "title": "SPORT CLIPS 1428 MISSION AVE PORTLAND 97201 OR USA",
+      "scrubbedTitle": "SPORT CLIPS 1428 MISSION AVE PORTLAND 97201 OR USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/11/26",
+      "amount": -14.65,
+      "title": "BLUEMERCURY 5684 CENTER BLVD INDIANAPOLIS 46201 IN USA",
+      "scrubbedTitle": "BLUEMERCURY 5684 CENTER BLVD INDIANAPOLIS 46201 IN USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/12/26",
+      "amount": -71.39,
+      "title": "WINCO FOODS #31231",
+      "scrubbedTitle": "WINCO FOODS #31231",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/14/26",
+      "amount": -15.37,
+      "title": "CLV*Poke Bowl",
+      "scrubbedTitle": "CLV*Poke Bowl",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/15/26",
+      "amount": -49.00,
+      "title": "AMERICAN WATER 2428 UNIVERSITY WAY BOSTON 02101 MA USA",
+      "scrubbedTitle": "AMERICAN WATER 2428 UNIVERSITY WAY BOSTON 02101 MA USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/15/26",
+      "amount": -261.66,
+      "title": "O'REILLY MEDIA 58090500",
+      "scrubbedTitle": "O'REILLY MEDIA [REDACTED]",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/17/26",
+      "amount": -14.12,
+      "title": "SAKURA SUSHI 84748",
+      "scrubbedTitle": "SAKURA SUSHI 84748",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/17/26",
+      "amount": -13.04,
+      "title": "AMAZON MKTPL*O3WO4EMSL",
+      "scrubbedTitle": "AMAZON MKTPL*O3WO4EMSL",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/17/26",
+      "amount": -32.47,
+      "title": "WAL-MART #0147",
+      "scrubbedTitle": "WAL-MART #0147",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/17/26",
+      "amount": -55.89,
+      "title": "DR SHAH PSYCHIATRY",
+      "scrubbedTitle": "DR SHAH PSYCHIATRY",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/19/26",
+      "amount": -71.51,
+      "title": "PGANDE 226943",
+      "scrubbedTitle": "PGANDE [REDACTED]",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/19/26",
+      "amount": -6.41,
+      "title": "OUTBACK STEAKHOUSE 86456",
+      "scrubbedTitle": "OUTBACK STEAKHOUSE 86456",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/21/26",
+      "amount": -11.79,
+      "title": "CLV*EL POLLO LOCO - MINNEAPOLIS",
+      "scrubbedTitle": "CLV*EL POLLO LOCO - MINNEAPOLIS",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/23/26",
+      "amount": -135.38,
+      "title": "BJ'S WHOLESALE 2084 OAKLAND",
+      "scrubbedTitle": "BJ'S WHOLESALE 2084 OAKLAND",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/23/26",
+      "amount": -46.74,
+      "title": "TARGET #7574 SAN FRANCISCO",
+      "scrubbedTitle": "TARGET #7574 SAN FRANCISCO",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/24/26",
+      "amount": -70.12,
+      "title": "marukai 1731 orlando",
+      "scrubbedTitle": "marukai 1731 orlando",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/24/26",
+      "amount": -17.19,
+      "title": "LIVENATION 7437 MAIN WAY PHOENIX 85001-4113AZ USA",
+      "scrubbedTitle": "LIVENATION 7437 MAIN WAY PHOENIX 85001-4113AZ USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/27/26",
+      "amount": -21.51,
+      "title": "CLV*STIX FOOD HALL",
+      "scrubbedTitle": "CLV*STIX FOOD HALL",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/28/26",
+      "amount": -53.08,
+      "title": "sam's club",
+      "scrubbedTitle": "sam's club",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/28/26",
+      "amount": -271.87,
+      "title": "HAMPTON INN.com",
+      "scrubbedTitle": "HAMPTON INN.com",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/01/26",
+      "amount": -1800.00,
+      "title": "MAA RENT PMT 47818361 PPD ID: 265900095",
+      "scrubbedTitle": "MAA RENT PMT [REDACTED] PPD ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/08/26",
+      "amount": -160.00,
+      "title": "LEMONADE INSPAYMENT PPD ID: 1467678542",
+      "scrubbedTitle": "LEMONADE INSPAYMENT PPD ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/12/26",
+      "amount": -86.00,
+      "title": "WITHDRAWAL FROM CITY WATER PHONE",
+      "scrubbedTitle": "WITHDRAWAL FROM CITY WATER PHONE",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/13/26",
+      "amount": -7.76,
+      "title": "TXTAG TOLL PMT WEB ID: VPROHBRC",
+      "scrubbedTitle": "TXTAG TOLL PMT WEB ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/13/26",
+      "amount": -40.00,
+      "title": "TASTYTRADE MONEYLINK PPD ID: 164083355",
+      "scrubbedTitle": "TASTYTRADE MONEYLINK PPD ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/13/26",
+      "amount": -150.00,
+      "title": "Zelle payment to LINDA JACKSON MINNEAPOLIS MN 82162960315",
+      "scrubbedTitle": "Zelle payment to [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/17/26",
+      "amount": -12.99,
+      "title": "PAYPAL INST XFER SPOTIFY WEB ID: PAYPALSI44",
+      "scrubbedTitle": "PAYPAL INST XFER SPOTIFY WEB ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/21/26",
+      "amount": -30.74,
+      "title": "PAYPAL INST XFER SMOG CHECK WEB ID: PAYPALSI56",
+      "scrubbedTitle": "PAYPAL INST XFER SMOG CHECK WEB ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/23/26",
+      "amount": -63.14,
+      "title": "BUYER PAYMENT: HOBBY LOBBY",
+      "scrubbedTitle": "BUYER PAYMENT: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/23/26",
+      "amount": -100.00,
+      "title": "CAPITAL ONE AUTOPAY PPD ID: 7289615039",
+      "scrubbedTitle": "CAPITAL ONE AUTOPAY PPD ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/24/26",
+      "amount": -17.99,
+      "title": "PAYPAL INST XFER SUBSTACK WEB ID: PAYPALSI04",
+      "scrubbedTitle": "PAYPAL INST XFER SUBSTACK WEB ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "09/27/26",
+      "amount": -42.29,
+      "title": "PAYPAL INST XFER CLIMBING GYM WEB ID: PAYPALSI41",
+      "scrubbedTitle": "PAYPAL INST XFER CLIMBING GYM WEB ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    }
+  ],
+  "summary": {
+    "rowsFound": 53,
+    "depositsRemoved": 3,
+    "spendingRows": 50
+  }
+}

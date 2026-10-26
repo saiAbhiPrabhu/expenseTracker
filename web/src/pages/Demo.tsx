@@ -1,30 +1,21 @@
-import { useState } from "react";
-import { DashboardStep, EditStep, ProcessStep, ReviewStep, UploadStep } from "../demo/steps";
-import { DEMO_STEPS } from "../types";
+import { DemoProvider } from "../demo/DemoContext";
+import { StatementsProvider } from "../demo/StatementsContext";
+import Flow from "../flow/Flow";
+import { FlowProvider } from "../flow/FlowContext";
 
-const STEP_VIEWS = [UploadStep, ProcessStep, ReviewStep, DashboardStep, EditStep];
-
+// The demo is the same flow a logged-in session will use; only the data source differs.
 export default function Demo() {
-  const [step, setStep] = useState(0);
-  const View = STEP_VIEWS[step];
   return (
     <section>
       <h1>Demo</h1>
-      <p className="notice">Runs on a made-up sample statement, never on real data.</p>
-      <ol className="stepper">
-        {DEMO_STEPS.map((name, index) => (
-          <li key={name} className={index === step ? "current" : ""}>
-            {index + 1}. {name}
-          </li>
-        ))}
-      </ol>
-      <div className="panel">
-        <View />
-      </div>
-      <div className="button-row">
-        <button onClick={() => setStep(step - 1)} disabled={step === 0}>Back</button>
-        <button onClick={() => setStep(step + 1)} disabled={step === DEMO_STEPS.length - 1}>Next</button>
-      </div>
+      <p className="notice">Runs on made-up sample statements, never on real data.</p>
+      <DemoProvider>
+        <StatementsProvider>
+          <FlowProvider>
+            <Flow />
+          </FlowProvider>
+        </StatementsProvider>
+      </DemoProvider>
     </section>
   );
 }

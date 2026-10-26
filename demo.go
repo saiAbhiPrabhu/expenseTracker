@@ -107,6 +107,28 @@ func LoadDemoData(resultsJSON, categoriesJSON []byte) (*DemoData, error) {
 	return data, nil
 }
 
+// applyEdits returns JEV's decisions with the user's edits applied, leaving the saved ones untouched.
+// An unknown key or category is an error.
+func (d *DemoData) applyEdits(edits map[string]demoEdit) ([]Decision, error) {
+	decisions := append([]Decision(nil), d.decisions...)
+	for key, edit := range edits {
+		i, known := d.indexByKey[key]
+		if !known {
+			return nil, fmt.Errorf("unknown transaction key %q", key)
+		}
+		if edit.Category != nil {
+			if !d.validCategory[*edit.Category] {
+				return nil, fmt.Errorf("unknown category %q", *edit.Category)
+			}
+			decisions[i].Category = *edit.Category
+		}
+		if edit.Essential != nil {
+			decisions[i].Essential = *edit.Essential
+		}
+	}
+	return decisions, nil
+}
+
 // Function Contract:
 // Input: edits keyed by transaction key
 // Output: the dashboard numbers with the edits applied
@@ -114,21 +136,9 @@ func LoadDemoData(resultsJSON, categoriesJSON []byte) (*DemoData, error) {
 // expenditure (any outflow) per month, per category, overall, and split by essential. Unknown keys or
 // categories are errors.
 func (d *DemoData) Summarize(edits map[string]demoEdit) (demoSummary, error) {
-	decisions := append([]Decision(nil), d.decisions...)
-	for key, edit := range edits {
-		i, known := d.indexByKey[key]
-		if !known {
-			return demoSummary{}, fmt.Errorf("unknown transaction key %q", key)
-		}
-		if edit.Category != nil {
-			if !d.validCategory[*edit.Category] {
-				return demoSummary{}, fmt.Errorf("unknown category %q", *edit.Category)
-			}
-			decisions[i].Category = *edit.Category
-		}
-		if edit.Essential != nil {
-			decisions[i].Essential = *edit.Essential
-		}
+	decisions, err := d.applyEdits(edits)
+	if err != nil {
+		return demoSummary{}, err
 	}
 	totals, err := ComputeTotals(decisions)
 	if err != nil {
@@ -170,6 +180,8 @@ const maxEditsBodyBytes = 1 << 20
 //	GET  /api/demo/summary        dashboard numbers for JEV's answers as they are
 //	POST /api/demo/summary        the same, with {"edits": {"<key>": {"category": "...", "essential": true}}}
 func (d *DemoData) Routes(mux *http.ServeMux) {
+	d.dashboardRoutes(mux) // demo_dashboard.go
+	d.processRoutes(mux)   // demo_process.go
 	mux.HandleFunc("GET /api/demo/transactions", func(w http.ResponseWriter, r *http.Request) {
 		writeJSON(w, http.StatusOK, d.transactions)
 	})

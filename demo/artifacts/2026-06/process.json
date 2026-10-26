@@ -1,0 +1,506 @@
+{
+  "id": "2026-06",
+  "label": "June 2026",
+  "fileName": "statement-2026-06.pdf",
+  "pages": 7,
+  "pageReadings": [
+    {
+      "page": 1,
+      "status": "skipped",
+      "reason": "The first page is the account summary. It is never read."
+    },
+    {
+      "page": 2,
+      "status": "skipped",
+      "reason": "No transactions on this page."
+    },
+    {
+      "page": 3,
+      "status": "read",
+      "beforeImage": "/api/demo/statements/2026-06/pages/3/before.png",
+      "afterImage": "/api/demo/statements/2026-06/pages/3/after.png",
+      "removedTopPercent": 12.5,
+      "ocrText": "Deposits and other additions\nDate Description Amount\n06/05/26 ACME CORP PAYROLL PPD ID: 1234567890 2,450.00\n06/19/26 ACME CORP PAYROLL PPD ID: 1234567890 2,450.00\n06/24/26 REFUND STORE 4411 PURCHASE RETURN 37.82\nTotal deposits and other additions $4,937.82\nWithdrawals and other subtractions\nATM and debit card subtractions\nDate Description Amount\n06/01/26 PAYPAL *wok express -10.20\n06/03/26 META VERIFIED -4.99\n06/03/26 CLV*HARVEST TABLE -10.72\n06/03/26 CARDENAS 8151 UNIVERSITY DR BROOKLYN 11201 NY -45.11\nUSA\n06/03/26 BP - PHILADELPHIA -85.55\n06/05/26 SPROUTS #168 -87.05\n06/05/26 SPROUTS #9256 -81.26\n06/05/26 DAILY CASH ADJUSTMENT - 28/82 -5.00\n06/06/26 KUNG FU TEA*SXVHGPUWCNI -29.61\n06/08/26 JIFFY LUBE*ZLUSSYUT4 -31.48\n06/09/26 GOOGLE *SMARTSHEET -15.49\n06/09/26 WENDY'S 8722 UNIVERSITY PKWY DALLAS75201 TX -22.52\nUSA\n06/11/26 CHICK-FIL-A PITTSBURGH 5417 -20.57\n06/11/26 COOK OUT 83576982 -18.53\n06/11/26 RITE AID 9640 UNIVERSITY AVE CHICAGO60601 IL USA -34.07\ncontinued on the next page\nPage 3 of 7\n"
+    },
+    {
+      "page": 4,
+      "status": "read",
+      "beforeImage": "/api/demo/statements/2026-06/pages/4/before.png",
+      "afterImage": "/api/demo/statements/2026-06/pages/4/after.png",
+      "removedTopPercent": 12.5,
+      "ocrText": "Withdrawals and other subtractions - continued\nATM and debit card subtractions - continued\nDate Description Amount\n06/12/26 FLOYD'S 99 #00900 PHILADELPHIA -30.93\n06/13/26 climbing gym - san jose -31.26\n06/14/26 stop \u0026 shop #616 -15.62\n06/14/26 rite aid 9462 -80.84\n06/15/26 AMERICAN WATER 2428 UNIVERSITY WAY BOSTON -45.66\n02101 MA USA\n06/15/26 FLOYD'S 99 624 MISSION RD BOSTON 02101-9062MA -15.76\nUSA\n06/16/26 MASTERCLASS*GLHCVER8LBA -28.60\n06/19/26 PGANDE 226943 -60.65\n06/19/26 H MART 6842 NEW YORK -50.93\n06/19/26 WALMART #9081 -69.65\n06/19/26 LEGALZOOM #1681 -32.20\n06/20/26 CLV*TAQUERIA EL BUEN GUSTO #742 -18.90\n06/20/26 FEDEX OFFICE -16.08\n06/21/26 TST* HARVEST TABLE #894 -16.66\n06/21/26 Traderjoes #84678 San Jose -71.52\n06/21/26 ACH RETURN FEE - 80/71 -3.00\n06/22/26 DRIZLY*5R6MOSDH -43.07\n06/22/26 LYFT *TRIP CHARLOTTE UVWBXW -19.77\n06/22/26 GOLF COURSE 6886 PARK AVE HAYWARD -70.08\n94541-6643CA USA\n06/24/26 PORTILLO'S 6463 -14.01\n06/26/26 TARGET T-1064 -34.27\ncontinued on the next page\nPage 4 of 7\n"
+    },
+    {
+      "page": 5,
+      "status": "read",
+      "beforeImage": "/api/demo/statements/2026-06/pages/5/before.png",
+      "afterImage": "/api/demo/statements/2026-06/pages/5/after.png",
+      "removedTopPercent": 12.5,
+      "ocrText": "Withdrawals and other subtractions - continued\nATM and debit card subtractions - continued\nDate Description Amount\n06/26/26 uber *trip portland ecyqm4 -23.70\n06/26/26 COURTYARD 685351 -184.34\n06/27/26 TARGET #1488 PITTSBURGH -41.51\n06/28/26 TEXAS ROADHOUSE 6052 INDUSTRIAL WAY -25.03\nCHICAGO60601 IL USA\nTotal ATM and debit card subtractions -$1,546.19\nOther subtractions\nDate Description Amount\n06/01/26 MAA RENT PMT 47818361 PPD ID: 265900095 -1,800.00\n06/01/26 Zelle payment to JENNIFER GONZALEZ ATLANTA GA -150.00\n33868376038\n06/03/26 PAYPAL INST XFER SAVEMART WEB ID: PAYPALSI52 -104.82\n06/08/26 LEMONADE INSPAYMENT PPD ID: 1467678542 -160.00\n06/12/26 WITHDRAWAL FROM CITY WATER PHONE -78.52\n06/15/26 PREAUTHORIZED WITHDRAWAL TO LASER TAG -23.17\n06/17/26 PAYPAL INST XFER SPOTIFY WEB ID: PAYPALSI44 -12.99\n06/21/26 Zelle payment to RICHARD WANG SALT LAKE CITY UT -100.00\n41742885617\n06/24/26 PAYPAL INST XFER SUBSTACK WEB ID: PAYPALSI04 -17.99\n06/26/26 venmo payment to emily li -150.00\nTotal other subtractions -$2,597.49\nPage 5 of 7\n"
+    },
+    {
+      "page": 6,
+      "status": "skipped",
+      "reason": "No transactions on this page."
+    },
+    {
+      "page": 7,
+      "status": "skipped",
+      "reason": "No transactions on this page."
+    }
+  ],
+  "sections": [
+    {
+      "name": "Deposits and other additions",
+      "rows": 3,
+      "printedTotal": 4937.82,
+      "rowsTotal": 4937.82,
+      "matches": true
+    },
+    {
+      "name": "ATM and debit card subtractions",
+      "rows": 40,
+      "printedTotal": -1546.19,
+      "rowsTotal": -1546.19,
+      "matches": true
+    },
+    {
+      "name": "Other subtractions",
+      "rows": 10,
+      "printedTotal": -2597.49,
+      "rowsTotal": -2597.49,
+      "matches": true
+    }
+  ],
+  "rows": [
+    {
+      "date": "06/05/26",
+      "amount": 2450.00,
+      "title": "ACME CORP PAYROLL PPD ID: 1234567890",
+      "scrubbedTitle": "ACME CORP PAYROLL PPD ID: [REDACTED]",
+      "section": "Deposits and other additions",
+      "kept": false
+    },
+    {
+      "date": "06/19/26",
+      "amount": 2450.00,
+      "title": "ACME CORP PAYROLL PPD ID: 1234567890",
+      "scrubbedTitle": "ACME CORP PAYROLL PPD ID: [REDACTED]",
+      "section": "Deposits and other additions",
+      "kept": false
+    },
+    {
+      "date": "06/24/26",
+      "amount": 37.82,
+      "title": "REFUND STORE 4411 PURCHASE RETURN",
+      "scrubbedTitle": "REFUND STORE 4411 PURCHASE RETURN",
+      "section": "Deposits and other additions",
+      "kept": false
+    },
+    {
+      "date": "06/01/26",
+      "amount": -10.20,
+      "title": "PAYPAL *wok express",
+      "scrubbedTitle": "PAYPAL *wok express",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/03/26",
+      "amount": -4.99,
+      "title": "META VERIFIED",
+      "scrubbedTitle": "META VERIFIED",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/03/26",
+      "amount": -10.72,
+      "title": "CLV*HARVEST TABLE",
+      "scrubbedTitle": "CLV*HARVEST TABLE",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/03/26",
+      "amount": -45.11,
+      "title": "CARDENAS 8151 UNIVERSITY DR BROOKLYN 11201 NY USA",
+      "scrubbedTitle": "CARDENAS 8151 UNIVERSITY DR BROOKLYN 11201 NY USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/03/26",
+      "amount": -85.55,
+      "title": "BP - PHILADELPHIA",
+      "scrubbedTitle": "BP - PHILADELPHIA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/05/26",
+      "amount": -87.05,
+      "title": "SPROUTS #168",
+      "scrubbedTitle": "SPROUTS #168",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/05/26",
+      "amount": -81.26,
+      "title": "SPROUTS #9256",
+      "scrubbedTitle": "SPROUTS #9256",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/05/26",
+      "amount": -5.00,
+      "title": "DAILY CASH ADJUSTMENT - 28/82",
+      "scrubbedTitle": "DAILY CASH ADJUSTMENT - 28/82",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/06/26",
+      "amount": -29.61,
+      "title": "KUNG FU TEA*SXVHGPUWCNI",
+      "scrubbedTitle": "KUNG FU TEA*SXVHGPUWCNI",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/08/26",
+      "amount": -31.48,
+      "title": "JIFFY LUBE*ZLUSSYUT4",
+      "scrubbedTitle": "JIFFY LUBE*ZLUSSYUT4",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/09/26",
+      "amount": -15.49,
+      "title": "GOOGLE *SMARTSHEET",
+      "scrubbedTitle": "GOOGLE *SMARTSHEET",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/09/26",
+      "amount": -22.52,
+      "title": "WENDY'S 8722 UNIVERSITY PKWY DALLAS75201 TX USA",
+      "scrubbedTitle": "WENDY'S 8722 UNIVERSITY PKWY DALLAS75201 TX USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/11/26",
+      "amount": -20.57,
+      "title": "CHICK-FIL-A PITTSBURGH 5417",
+      "scrubbedTitle": "CHICK-FIL-A PITTSBURGH 5417",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/11/26",
+      "amount": -18.53,
+      "title": "COOK OUT 83576982",
+      "scrubbedTitle": "COOK OUT [REDACTED]",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/11/26",
+      "amount": -34.07,
+      "title": "RITE AID 9640 UNIVERSITY AVE CHICAGO60601 IL USA",
+      "scrubbedTitle": "RITE AID 9640 UNIVERSITY AVE CHICAGO60601 IL USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/12/26",
+      "amount": -30.93,
+      "title": "FLOYD'S 99 #00900 PHILADELPHIA",
+      "scrubbedTitle": "FLOYD'S 99 #00900 PHILADELPHIA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/13/26",
+      "amount": -31.26,
+      "title": "climbing gym - san jose",
+      "scrubbedTitle": "climbing gym - san jose",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/14/26",
+      "amount": -15.62,
+      "title": "stop \u0026 shop #616",
+      "scrubbedTitle": "stop \u0026 shop #616",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/14/26",
+      "amount": -80.84,
+      "title": "rite aid 9462",
+      "scrubbedTitle": "rite aid 9462",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/15/26",
+      "amount": -45.66,
+      "title": "AMERICAN WATER 2428 UNIVERSITY WAY BOSTON 02101 MA USA",
+      "scrubbedTitle": "AMERICAN WATER 2428 UNIVERSITY WAY BOSTON 02101 MA USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/15/26",
+      "amount": -15.76,
+      "title": "FLOYD'S 99 624 MISSION RD BOSTON 02101-9062MA USA",
+      "scrubbedTitle": "FLOYD'S 99 624 MISSION RD BOSTON 02101-9062MA USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/16/26",
+      "amount": -28.60,
+      "title": "MASTERCLASS*GLHCVER8LBA",
+      "scrubbedTitle": "MASTERCLASS*GLHCVER8LBA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/19/26",
+      "amount": -60.65,
+      "title": "PGANDE 226943",
+      "scrubbedTitle": "PGANDE [REDACTED]",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/19/26",
+      "amount": -50.93,
+      "title": "H MART 6842 NEW YORK",
+      "scrubbedTitle": "H MART 6842 NEW YORK",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/19/26",
+      "amount": -69.65,
+      "title": "WALMART #9081",
+      "scrubbedTitle": "WALMART #9081",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/19/26",
+      "amount": -32.20,
+      "title": "LEGALZOOM #1681",
+      "scrubbedTitle": "LEGALZOOM #1681",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/20/26",
+      "amount": -18.90,
+      "title": "CLV*TAQUERIA EL BUEN GUSTO #742",
+      "scrubbedTitle": "CLV*TAQUERIA EL BUEN GUSTO #742",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/20/26",
+      "amount": -16.08,
+      "title": "FEDEX OFFICE",
+      "scrubbedTitle": "FEDEX OFFICE",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/21/26",
+      "amount": -16.66,
+      "title": "TST* HARVEST TABLE #894",
+      "scrubbedTitle": "TST* HARVEST TABLE #894",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/21/26",
+      "amount": -71.52,
+      "title": "Traderjoes #84678 San Jose",
+      "scrubbedTitle": "Traderjoes #84678 San Jose",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/21/26",
+      "amount": -3.00,
+      "title": "ACH RETURN FEE - 80/71",
+      "scrubbedTitle": "ACH RETURN FEE - 80/71",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/22/26",
+      "amount": -43.07,
+      "title": "DRIZLY*5R6MOSDH",
+      "scrubbedTitle": "DRIZLY*5R6MOSDH",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/22/26",
+      "amount": -19.77,
+      "title": "LYFT *TRIP CHARLOTTE UVWBXW",
+      "scrubbedTitle": "LYFT *TRIP CHARLOTTE UVWBXW",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/22/26",
+      "amount": -70.08,
+      "title": "GOLF COURSE 6886 PARK AVE HAYWARD 94541-6643CA USA",
+      "scrubbedTitle": "GOLF COURSE 6886 PARK AVE HAYWARD 94541-6643CA USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/24/26",
+      "amount": -14.01,
+      "title": "PORTILLO'S 6463",
+      "scrubbedTitle": "PORTILLO'S 6463",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/26/26",
+      "amount": -34.27,
+      "title": "TARGET T-1064",
+      "scrubbedTitle": "TARGET T-1064",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/26/26",
+      "amount": -23.70,
+      "title": "uber *trip portland ecyqm4",
+      "scrubbedTitle": "uber *trip portland ecyqm4",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/26/26",
+      "amount": -184.34,
+      "title": "COURTYARD 685351",
+      "scrubbedTitle": "COURTYARD [REDACTED]",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/27/26",
+      "amount": -41.51,
+      "title": "TARGET #1488 PITTSBURGH",
+      "scrubbedTitle": "TARGET #1488 PITTSBURGH",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/28/26",
+      "amount": -25.03,
+      "title": "TEXAS ROADHOUSE 6052 INDUSTRIAL WAY CHICAGO60601 IL USA",
+      "scrubbedTitle": "TEXAS ROADHOUSE 6052 INDUSTRIAL WAY CHICAGO60601 IL USA",
+      "section": "ATM and debit card subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/01/26",
+      "amount": -1800.00,
+      "title": "MAA RENT PMT 47818361 PPD ID: 265900095",
+      "scrubbedTitle": "MAA RENT PMT [REDACTED] PPD ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/01/26",
+      "amount": -150.00,
+      "title": "Zelle payment to JENNIFER GONZALEZ ATLANTA GA 33868376038",
+      "scrubbedTitle": "Zelle payment to [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/03/26",
+      "amount": -104.82,
+      "title": "PAYPAL INST XFER SAVEMART WEB ID: PAYPALSI52",
+      "scrubbedTitle": "PAYPAL INST XFER SAVEMART WEB ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/08/26",
+      "amount": -160.00,
+      "title": "LEMONADE INSPAYMENT PPD ID: 1467678542",
+      "scrubbedTitle": "LEMONADE INSPAYMENT PPD ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/12/26",
+      "amount": -78.52,
+      "title": "WITHDRAWAL FROM CITY WATER PHONE",
+      "scrubbedTitle": "WITHDRAWAL FROM CITY WATER PHONE",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/15/26",
+      "amount": -23.17,
+      "title": "PREAUTHORIZED WITHDRAWAL TO LASER TAG",
+      "scrubbedTitle": "PREAUTHORIZED WITHDRAWAL TO LASER TAG",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/17/26",
+      "amount": -12.99,
+      "title": "PAYPAL INST XFER SPOTIFY WEB ID: PAYPALSI44",
+      "scrubbedTitle": "PAYPAL INST XFER SPOTIFY WEB ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/21/26",
+      "amount": -100.00,
+      "title": "Zelle payment to RICHARD WANG SALT LAKE CITY UT 41742885617",
+      "scrubbedTitle": "Zelle payment to [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/24/26",
+      "amount": -17.99,
+      "title": "PAYPAL INST XFER SUBSTACK WEB ID: PAYPALSI04",
+      "scrubbedTitle": "PAYPAL INST XFER SUBSTACK WEB ID: [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    },
+    {
+      "date": "06/26/26",
+      "amount": -150.00,
+      "title": "venmo payment to emily li",
+      "scrubbedTitle": "venmo payment to [REDACTED]",
+      "section": "Other subtractions",
+      "kept": true
+    }
+  ],
+  "summary": {
+    "rowsFound": 53,
+    "depositsRemoved": 3,
+    "spendingRows": 50
+  }
+}

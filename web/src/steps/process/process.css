@@ -1,0 +1,9 @@
+.process-block { border-bottom: 1px solid #e3e3e3; margin-bottom: 16px; }
+.process-list { padding-left: 24px; }
+.process-list li { margin-bottom: 4px; }
+.process-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.process-pair figure { margin: 0; }
+.process-pair img { max-width: 100%; height: auto; border: 1px solid #ccc; }
+.process-text { border: 1px solid #ccc; border-radius: 4px; padding: 8px; white-space: pre-wrap; overflow-x: auto; max-height: 240px; overflow-y: auto; }
+.process-scroll { overflow-x: auto; }
+.process-block summary { cursor: pointer; margin-bottom: 8px; }

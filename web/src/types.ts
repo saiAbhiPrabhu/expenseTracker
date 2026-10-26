@@ -19,12 +19,33 @@ export interface DemoTransaction {
   essential: boolean; // the essential flag in use
 }
 
+export interface CategoryOption {
+  name: string;
+  description: string;
+}
+
+// What the user changed on a row. An absent field is unchanged.
+export interface RowEdit {
+  category?: string;
+  essential?: boolean;
+}
+
+// The dashboard numbers from POST /api/demo/summary. Amounts are dollars of money that left the account.
+export interface DemoSummary {
+  transactionCount: number;
+  totalExpenditure: number;
+  byMonth: Record<string, number>; // "2026-06" -> dollars
+  byCategory: Record<string, number>;
+  essential: { essential: number; nonEssential: number };
+}
+
 export type EditableField = "category" | "essential";
 
-export const DEMO_STEPS = [
-  "Upload",
-  "Process",
-  "Review",
-  "Dashboard",
-  "Edit data",
-] as const;
+// A statement the user has added in the Upload step (GET /api/demo/statements lists the sample ones).
+export interface StatementInfo {
+  id: string; // "2026-06"
+  label: string; // "June 2026"
+  fileName: string;
+  sizeBytes: number;
+  pages: number;
+}
