@@ -1,28 +1,15 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
-// A small menu bar that is folded until the button is pressed.
+// The top bar: the name, and the three places the site has. Always visible, so nothing is folded away.
 export default function Menu() {
-  const [open, setOpen] = useState(false);
-  const close = () => setOpen(false);
   return (
-    <header className="menu">
-      <button
-        className="menu-toggle"
-        aria-expanded={open}
-        aria-controls="menu-links"
-        aria-label={open ? "Close menu" : "Open menu"}
-        onClick={() => setOpen(!open)}
-      >
-        ☰
-      </button>
-      {open && (
-        <nav id="menu-links" className="menu-links">
-          <Link to="/" onClick={close}>Home</Link>
-          <Link to="/demo" onClick={close}>Demo</Link>
-          <Link to="/login" onClick={close}>Log in</Link>
-        </nav>
-      )}
+    <header className="site-bar">
+      <Link to="/" className="wordmark">Expense Tracker</Link>
+      <nav aria-label="Site">
+        <NavLink to="/" end>Home</NavLink>
+        <NavLink to="/demo">Demo</NavLink>
+        <NavLink to="/login">Log in</NavLink>
+      </nav>
     </header>
   );
 }

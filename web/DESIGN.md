@@ -1,5 +1,7 @@
 # Design language and contributor rules
 
+> **Superseded for visuals.** The look is now the Rams system recorded in the root `DESIGN.md`. The visual rules below (no new colors, fonts or sizes; "barebones on purpose") describe the previous design. The flow, file-ownership and checks sections still apply.
+
 The demo page is barebones on purpose. **Do not make design decisions.** Everything new must look like what is already here, and nothing animates.
 
 ## The design language (as it is today, in `src/styles.css`)

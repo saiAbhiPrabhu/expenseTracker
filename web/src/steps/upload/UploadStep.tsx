@@ -38,7 +38,7 @@ export default function UploadStep() {
       {error && <p className="notice">{error}</p>}
       <table className="data-table" aria-label="Your statements">
         <thead>
-          <tr><th>File</th><th>Month</th><th>Pages</th><th>Size</th></tr>
+          <tr><th>File</th><th>Month</th><th className="amount">Pages</th><th className="amount">Size</th></tr>
         </thead>
         <tbody>
           {statements.length === 0 && (

@@ -1,27 +1,33 @@
-.process-block { border-bottom: 1px solid #e3e3e3; margin-bottom: 16px; }
-.process-list { padding-left: 24px; }
-.process-list li { margin-bottom: 4px; }
-.process-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.process-block { border-bottom: 1px solid var(--rule); margin-bottom: var(--s4); padding-bottom: var(--s3); }
+.process-block h2 { margin-top: 0; }
+.process-list { padding-left: var(--s4); font-size: var(--t-m); }
+.process-list li { margin-bottom: var(--s1); }
+.process-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); margin-bottom: var(--s3); }
 .process-pair figure { margin: 0; }
-.process-pair img { max-width: 100%; height: auto; border: 1px solid #ccc; }
-.process-text { border: 1px solid #ccc; border-radius: 4px; padding: 8px; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 240px; overflow-y: auto; }
+.process-pair img { max-width: 100%; height: auto; border: 1px solid var(--rule); }
+.process-text {
+  border: 1px solid var(--rule); border-radius: var(--radius); background: var(--field); padding: var(--s2);
+  font: 400 var(--t-s)/1.5 ui-monospace, Menlo, Consolas, monospace;
+  white-space: pre-wrap; overflow-wrap: anywhere; max-height: 240px; overflow-y: auto;
+}
 /* The rows table fills the width and wraps its text, so it never scrolls sideways. */
 .data-table.process-rows { width: 100%; min-width: 0; table-layout: fixed; }
-.process-rows th, .process-rows td { overflow-wrap: anywhere; padding-right: 8px; }
+.process-rows th, .process-rows td { overflow-wrap: anywhere; padding-right: var(--s2); }
 .process-rows .amount { white-space: normal; }
 .process-rows th:nth-child(1) { width: 19%; }
 .process-rows th:nth-child(2), .process-rows th:nth-child(3) { width: 27%; }
 .process-rows th:nth-child(4) { width: 15%; }
 .process-rows th:nth-child(5) { width: 12%; }
-.process-block summary { cursor: pointer; margin-bottom: 8px; }
-.process-nested { margin: 8px 0 8px 16px; }
+.process-block summary { cursor: pointer; margin-bottom: var(--s2); font-size: var(--t-m); font-weight: 700; }
+.process-nested { margin: var(--s2) 0 var(--s2) var(--s3); }
 
 /* On a phone each row becomes a short block of labeled lines instead of five cramped columns. */
 @media (max-width: 520px) {
   .data-table.process-rows, .process-rows tbody, .process-rows tr, .process-rows td { display: block; width: 100%; }
   .process-rows thead { display: none; }
-  .process-rows tr { border-bottom: 1px solid #e3e3e3; padding: 8px 0; }
+  .process-rows tr { border-bottom: 1px solid var(--rule); padding: var(--s2) 0; }
   .data-table.process-rows td { border: none; padding: 2px 0; }
   .process-rows td.amount { text-align: left; }
-  .process-rows td::before { content: attr(data-label) ": "; color: #666; }
+  .process-rows td::before { content: attr(data-label) ": "; color: var(--ink-2); }
+  .process-pair { grid-template-columns: 1fr; }
 }

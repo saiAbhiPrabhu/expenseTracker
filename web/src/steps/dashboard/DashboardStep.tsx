@@ -69,10 +69,10 @@ export default function DashboardStep() {
         {" "}Include transfers, savings and debt payments ({money.format(data.moneyMovement)})
       </label>
 
-      <h3>By month</h3>
+      <h2>By month</h2>
       <p className="notice">Bars are relative to the largest month.</p>
       <table className="data-table" aria-label="Expenditure by month">
-        <thead><tr><th>Month</th><th>Expenditure</th><th>Share</th><th aria-label="Bar compared with the largest month" /></tr></thead>
+        <thead><tr><th>Month</th><th className="amount">Expenditure</th><th className="amount">Share</th><th aria-label="Bar compared with the largest month" /></tr></thead>
         <tbody>
           {data.months.map((row) => (
             <tr key={row.month}>
@@ -86,10 +86,10 @@ export default function DashboardStep() {
         <tfoot><tr><th scope="row">Total</th><td className="amount">{money.format(total)}</td><td className="amount">{percent(total, total)}</td><td /></tr></tfoot>
       </table>
 
-      <h3>By category</h3>
+      <h2>By category</h2>
       <p className="notice">Bars are relative to the largest category.</p>
       <table className="data-table" aria-label="Expenditure by category">
-        <thead><tr><th>Category</th><th>Expenditure</th><th>Share</th><th aria-label="Bar compared with the largest category" /></tr></thead>
+        <thead><tr><th>Category</th><th className="amount">Expenditure</th><th className="amount">Share</th><th aria-label="Bar compared with the largest category" /></tr></thead>
         <tbody>
           {data.categories.map((row) => (
             <tr key={row.name}>
@@ -103,11 +103,11 @@ export default function DashboardStep() {
         <tfoot><tr><th scope="row">Total</th><td className="amount">{money.format(total)}</td><td className="amount">{percent(total, total)}</td><td /></tr></tfoot>
       </table>
 
-      <h3>By necessity</h3>
+      <h2>By necessity</h2>
       <p className="notice">The dark part of the bar is essential.</p>
       <div className="dash-split" aria-hidden="true"><div style={{ width: `${essentialShare}%` }} /></div>
       <table className="data-table" aria-label="Expenditure by necessity">
-        <thead><tr><th>Type</th><th>Expenditure</th><th>Share</th></tr></thead>
+        <thead><tr><th>Type</th><th className="amount">Expenditure</th><th className="amount">Share</th></tr></thead>
         <tbody>
           <tr><th scope="row">Essential</th><td className="amount">{money.format(data.essential.essential)}</td><td className="amount">{percent(data.essential.essential, total)}</td></tr>
           <tr><th scope="row">Non-essential</th><td className="amount">{money.format(data.essential.nonEssential)}</td><td className="amount">{percent(data.essential.nonEssential, total)}</td></tr>
@@ -140,7 +140,7 @@ export default function DashboardStep() {
       <details className="dash-details">
         <summary>Show largest transactions</summary>
         <table className="data-table" aria-label="Largest transactions">
-          <thead><tr><th>Date</th><th>Title</th><th>Category</th><th>Amount</th></tr></thead>
+          <thead><tr><th>Date</th><th>Title</th><th>Category</th><th className="amount">Amount</th></tr></thead>
           <tbody>
             {data.largest.map((row, i) => (
               <tr key={i}><td>{row.date}</td><td className="dash-wrap">{row.title}</td><td>{row.category}</td><td className="amount">{money.format(row.amount)}</td></tr>
@@ -153,7 +153,7 @@ export default function DashboardStep() {
         <summary>Show top merchants</summary>
         <p className="notice">Similar titles are grouped.</p>
         <table className="data-table" aria-label="Top merchants">
-          <thead><tr><th>Merchant</th><th>Transactions</th><th>Total</th></tr></thead>
+          <thead><tr><th>Merchant</th><th className="amount">Transactions</th><th className="amount">Total</th></tr></thead>
           <tbody>
             {data.merchants.map((row) => (
               <tr key={row.name}><th scope="row">{row.name}</th><td className="amount">{row.count}</td><td className="amount">{money.format(row.total)}</td></tr>
@@ -169,7 +169,7 @@ export default function DashboardStep() {
           <p className="notice">None.</p>
         ) : (
           <table className="data-table" aria-label="Recurring charges">
-            <thead><tr><th>Merchant</th><th>Typical amount</th><th>Months</th><th>Category</th></tr></thead>
+            <thead><tr><th>Merchant</th><th className="amount">Typical amount</th><th className="amount">Months</th><th>Category</th></tr></thead>
             <tbody>
               {data.recurring.map((row) => (
                 <tr key={row.name}><th scope="row">{row.name}</th><td className="amount">{money.format(row.typicalAmount)}</td><td className="amount">{row.months}</td><td>{row.category}</td></tr>

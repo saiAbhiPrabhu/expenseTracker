@@ -1,3 +1,43 @@
-/* Step list and control bar. Same language as styles.css: no color, no motion. */
-.stepper .stepper-link { border: none; background: none; padding: 0; font: inherit; text-decoration: underline; cursor: pointer; }
-.control-bar { align-items: center; }
+/* The instrument: a control column of step keys and the current step's buttons, beside the working surface. */
+.unit { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: var(--s4); align-items: start; }
+.control {
+  position: sticky; top: var(--s4);
+  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: var(--s3);
+}
+.keys { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--s1); }
+.keys li { display: block; }
+.key {
+  display: flex; align-items: baseline; justify-content: flex-start; gap: var(--s3);
+  width: 100%; min-height: 40px; padding: var(--s2) var(--s3);
+  font-size: var(--t-m); font-weight: 400; text-align: left;
+  border: 1px solid var(--rule); border-radius: var(--radius); background: var(--field); color: var(--ink);
+}
+button.key { cursor: pointer; }
+.key-number { font-variant-numeric: tabular-nums; font-weight: 700; min-width: 1ch; }
+.key-current { background: var(--signal); border-color: var(--signal); color: var(--on-signal); font-weight: 700; }
+.key-off { background: transparent; color: var(--ink-2); border-color: var(--rule); }
+.control-actions { margin-top: var(--s3); padding-top: var(--s3); border-top: 1px solid var(--rule); }
+.control-actions:empty { display: none; }
+.control-bar { display: flex; gap: var(--s2); flex-wrap: wrap; }
+.control-bar .primary { flex: 1 1 0; }
+.control-reason { flex: 1 0 100%; margin: var(--s1) 0 0; font-size: var(--t-s); color: var(--ink-2); }
+.control-note { margin: var(--s3) 0 0; font-size: var(--t-s); color: var(--ink-2); }
+
+/* Narrow screens: the keys become a strip across the top and the buttons stay at the bottom edge. */
+@media (max-width: 820px) {
+  .page { padding: var(--s3); }
+  .site-bar { padding: 0 var(--s3); }
+  .unit { grid-template-columns: minmax(0, 1fr); gap: var(--s3); padding-bottom: 120px; }
+  .control { position: static; padding: var(--s2); }
+  .keys { flex-direction: row; gap: var(--s1); }
+  .keys li { flex: 1 1 0; min-width: 0; }
+  .key { flex-direction: column; align-items: center; gap: 0; padding: var(--s2) 2px; font-size: var(--t-s); text-align: center; }
+  .control-note { margin-top: var(--s2); }
+  .control-actions {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 1;
+    margin: 0; padding: var(--s3);
+    background: var(--surface); border-top: 1px solid var(--ink);
+  }
+  .surface { padding: var(--s3); }
+}

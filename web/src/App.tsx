@@ -8,14 +8,14 @@ export default function App() {
   return (
     <>
       <Menu />
-      <main>
+      <div className="page">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/demo" element={<Demo />} />
-          <Route path="*" element={<p className="notice">Page not found.</p>} />
+          <Route path="*" element={<main className="surface narrow"><p className="notice">Page not found.</p></main>} />
         </Routes>
-      </main>
+      </div>
     </>
   );
 }

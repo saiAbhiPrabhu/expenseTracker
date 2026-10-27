@@ -112,7 +112,7 @@ export default function ProcessStep() {
       {!error && !results && <p className="notice">Reading your statements…</p>}
       {results && results.map((s) => (
         <div key={s.id} className="process-block">
-          <h3>{s.label}</h3>
+          <h2>{s.label}</h2>
           <p className="notice">{s.fileName}</p>
           <Summary s={s} />
           <Details s={s} />

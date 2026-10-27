@@ -24,7 +24,7 @@ export default function ReviewStep() {
 
   return (
     <div>
-      <h3>Review: {current.label}</h3>
+      <h2>Review: {current.label}</h2>
       <p className="notice">
         Month {page + 1} of {pages.length}. {current.rows.length === 0
           ? "Nothing to review."
@@ -35,7 +35,7 @@ export default function ReviewStep() {
           <thead>
             <tr>
               <th>Date</th>
-              <th>Amount</th>
+              <th className="amount">Amount</th>
               <th>Title</th>
               <th>Category</th>
               <th />

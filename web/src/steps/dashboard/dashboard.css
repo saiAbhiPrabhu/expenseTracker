@@ -1,13 +1,13 @@
-/* Dashboard only. Same look as styles.css: #222 on white, #e3e3e3 tracks, 1px borders. */
-.dash-check { display: block; margin: 8px 0 4px; }
-.dash-bar { background: #e3e3e3; height: 12px; min-width: 160px; }
-.dash-bar > div { background: #222; height: 100%; }
-.dash-split { display: flex; background: #e3e3e3; height: 12px; max-width: 480px; margin-bottom: 8px; }
-.dash-split > div { background: #222; height: 100%; }
+/* Dashboard only. Flat bars: dark fill on a light track; the numbers always sit beside them. */
+.dash-check { display: block; margin: var(--s3) 0 var(--s2); font-size: var(--t-m); }
+.dash-bar { background: var(--track); height: 8px; min-width: 48px; }
+.dash-bar > div { background: var(--ink); height: 100%; }
+.dash-split { display: flex; background: var(--track); height: 8px; max-width: 480px; margin-bottom: var(--s3); }
+.dash-split > div { background: var(--ink); height: 100%; }
 .dash-scroll { overflow-x: auto; }
-.dash-details { margin: 16px 0; border: 1px solid #ccc; border-radius: 4px; padding: 8px 16px; }
-.dash-details summary { cursor: pointer; }
-.dash-details[open] summary { margin-bottom: 8px; }
-.data-table tfoot th, .data-table tfoot td { border-top: 1px solid #222; border-bottom: none; font-weight: 700; }
+.dash-details { margin: var(--s3) 0; border: 1px solid var(--rule); border-radius: var(--radius); padding: var(--s2) var(--s3); }
+.dash-details summary { cursor: pointer; font-size: var(--t-m); font-weight: 700; padding: var(--s1) 0; }
+.dash-details[open] summary { margin-bottom: var(--s2); }
+.data-table tfoot th, .data-table tfoot td { border-top: 1px solid var(--ink); border-bottom: none; font-weight: 700; }
 .data-table .dash-wrap { white-space: normal; max-width: 360px; }
-.dash-download { margin-top: 16px; }
+.dash-download { margin: var(--s3) 0; }

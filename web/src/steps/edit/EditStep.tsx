@@ -60,7 +60,7 @@ export default function EditStep() {
         <thead>
           <tr>
             <th>Date</th>
-            <th>Amount</th>
+            <th className="amount">Amount</th>
             <th>Title</th>
             <th>Category</th>
             <th>Essential</th>
@@ -101,7 +101,6 @@ export default function EditStep() {
           ))}
         </tbody>
       </table>
-      <ControlBar continueLabel="Done" onContinue={() => goTo("dashboard")} hideBack />
     </div>
   );
 }
